@@ -107,18 +107,19 @@ nav {
   display: block;
 }
 .page-header h1 {
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-size: 44px;
-  font-weight: 300;
+  font-weight: 400;
+  font-style: italic;
   color: #fff;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   margin-bottom: 1rem;
   line-height: 1.2;
 }
 .page-header h1 em {
   font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 700;
 }
 .page-header p {
   font-family: var(--sans);
@@ -373,6 +374,6 @@ textarea {
   .container { padding: 0 1.5rem; }
 }
 @media (max-width: 480px) {
-  .page-header h1 { font-size: 26px; }
+  .page-header h1 { font-size: 24px; }
   .btn { padding: 9px 18px; font-size: 11px; }
 }
