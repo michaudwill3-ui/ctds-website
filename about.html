@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — CT Society of Dermatology</title>
+<title>About — Connecticut Society of Dermatology and Dermatologic Surgery</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
+
+  /* ── ABOUT GRID ── */
   .about-grid {
     max-width: 1100px;
     margin: 0 auto;
@@ -22,137 +24,30 @@
     margin-bottom: 1.25rem;
   }
 
-  /* ── LEADERSHIP ── */
-  .leadership-grid {
-    max-width: 1100px;
-    margin: 2.5rem auto 0;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .leader-card {
-    background: var(--white);
-    border: 0.5px solid var(--rule);
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
-  }
-  .leader-card.featured {
-    border-color: var(--navy);
-    border-width: 1px;
-  }
-  .leader-role {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-  }
-  .leader-name {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--navy);
-    line-height: 1.3;
-  }
-  .leader-detail {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
-
-  /* ── EXECUTIVE COMMITTEE ── */
-  .exec-grid {
-    max-width: 1100px;
-    margin: 2.5rem auto 0;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-  .exec-member {
-    background: var(--white);
-    border: 0.5px solid var(--rule);
-    border-radius: 6px;
-    padding: 1rem 1.1rem;
-  }
-  .exec-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--navy);
-    line-height: 1.3;
-  }
-  .exec-note {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 3px;
-  }
-
-  /* ── RESIDENTS ── */
-  .residents-band {
-    background: var(--navy);
-    padding: 64px 2rem;
-  }
-  .residents-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .residents-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 2rem;
-  }
-  .resident-card {
-    background: rgba(255,255,255,0.06);
-    border: 0.5px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
-    padding: 1.1rem 1.25rem;
-  }
-  .resident-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: #fff;
-  }
-  .resident-program {
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-    margin-top: 3px;
-  }
-  .resident-year {
-    font-size: 11px;
-    color: var(--parchment);
-    opacity: 0.7;
-    margin-top: 6px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  /* ── BYLAWS ── */
+  /* ── BYLAWS BOX ── */
   .bylaws-box {
     border: 0.5px solid var(--rule);
     border-radius: 8px;
-    padding: 1.5rem;
-    background: var(--white);
+    padding: 1.25rem 1.5rem;
+    background: var(--warm-white);
     display: flex;
     align-items: center;
     gap: 1.25rem;
-    margin-top: 2rem;
+    margin-top: 1.75rem;
   }
   .bylaws-icon {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 6px;
-    background: var(--warm-white);
+    background: var(--white);
     border: 0.5px solid var(--rule);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
   }
-  .bylaws-icon svg { width: 20px; height: 20px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
-  .bylaws-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
+  .bylaws-icon svg { width: 18px; height: 18px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
+  .bylaws-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 2px; }
   .bylaws-sub { font-size: 12px; color: var(--text-muted); }
 
   /* ── SIDEBAR ── */
@@ -194,15 +89,126 @@
   .info-val { color: var(--navy); font-weight: 500; }
   .info-val a { color: var(--navy-light); text-decoration: none; }
 
-  @media (max-width: 900px) {
+  /* ── LEADERSHIP ── */
+  .leadership-grid {
+    max-width: 1100px;
+    margin: 2.5rem auto 0;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .leader-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+  }
+  .leader-card.featured {
+    border-color: var(--navy);
+  }
+  .leader-role {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .leader-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .leader-detail {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .leader-detail a { color: var(--navy-light); text-decoration: none; }
+
+  /* ── EXECUTIVE COMMITTEE ── */
+  .exec-grid {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .exec-member {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+  }
+  .exec-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .exec-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ── LEGISLATIVE COMMITTEE ── */
+  .leg-committee-grid {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  /* ── RESIDENTS ── */
+  .residents-band {
+    background: var(--navy);
+    padding: 64px 2rem;
+  }
+  .residents-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .residents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 2rem;
+  }
+  .resident-card {
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+  }
+  .resident-name { font-size: 14px; font-weight: 500; color: #fff; }
+  .resident-program { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 3px; }
+  .resident-year {
+    font-size: 10px;
+    color: var(--parchment);
+    opacity: 0.7;
+    margin-top: 6px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 960px) {
     .about-grid { grid-template-columns: 1fr; }
     .leadership-grid { grid-template-columns: 1fr 1fr; }
     .exec-grid { grid-template-columns: 1fr 1fr; }
+    .leg-committee-grid { grid-template-columns: 1fr 1fr; }
     .residents-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 600px) {
     .leadership-grid { grid-template-columns: 1fr; }
     .exec-grid { grid-template-columns: 1fr; }
+    .leg-committee-grid { grid-template-columns: 1fr; }
     .residents-grid { grid-template-columns: 1fr; }
   }
 </style>
@@ -229,37 +235,41 @@
 
 <div class="page-header">
   <div class="eyebrow">About the Society</div>
-  <h1>Who We <em>Are</em></h1>
-  <p>The Connecticut Society of Dermatology and Dermatologic Surgery — serving Connecticut's dermatologists since 1968.</p>
+  <h1>Connecticut Society of <em>Dermatology</em></h1>
+  <p>The Connecticut Society of Dermatology and Dermatologic Surgery — serving the state's dermatologists since 1968.</p>
 </div>
 
 <!-- ABOUT + SIDEBAR -->
 <section class="section">
   <div class="about-grid">
     <div class="about-body">
-      <div class="section-label">Our Story</div>
+      <div class="section-label">The Society</div>
       <div class="rule-bar"></div>
-      <h2 class="section-heading">A Society Built by Physicians, for Physicians</h2>
-      <p>The Connecticut Society of Dermatology and Dermatologic Surgery was founded to unite the state's dermatologists under a common mission: to promote excellence in patient care, advance the science of dermatology, and advocate for physicians and their patients at both the state and federal level.</p>
-      <p>For decades, the Society has served as the professional home for Connecticut's dermatologists — connecting members to national organizations including the American Academy of Dermatology, the American Society for Dermatologic Surgery, the American Board of Dermatology, and the American Osteopathic College of Dermatology.</p>
-      <p>The Society is led by an elected Board of Officers and a volunteer Executive Committee of Connecticut dermatologists who give their time to advance the profession, engage the legislature, and support the next generation of physicians entering practice in our state.</p>
+      <h2 class="section-heading">A Professional Society for Connecticut's Dermatologists</h2>
+      <p>The Connecticut Society of Dermatology and Dermatologic Surgery was established to unite the state's dermatologists under a shared commitment to excellence in patient care, the advancement of dermatologic science, and the representation of physicians at the state and federal legislative level.</p>
+      <p>The Society is affiliated with national organizations including the American Academy of Dermatology, the American Society for Dermatologic Surgery, the American Board of Dermatology, and the American Osteopathic College of Dermatology, ensuring that Connecticut members have access to the full breadth of national resources, advocacy, and education.</p>
+      <p>Leadership is provided by an elected Board of Officers and a volunteer Executive Committee of Connecticut dermatologists who represent the Society in legislative, educational, and professional matters across the state and nation.</p>
 
       <div class="bylaws-box">
         <div class="bylaws-icon">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
-        <div>
+        <div style="flex:1;">
           <div class="bylaws-title">Society Bylaws</div>
-          <div class="bylaws-sub">Governing documents of the CT Society of Dermatology &amp; Dermatologic Surgery</div>
+          <div class="bylaws-sub">Governing documents of the Connecticut Society of Dermatology and Dermatologic Surgery</div>
         </div>
-        <a href="bylaws.html" class="btn btn-primary" style="margin-left:auto;white-space:nowrap;">View Bylaws</a>
+        <a href="http://ctdermatologysociety.org/bylaws.html" target="_blank" class="btn btn-primary" style="white-space:nowrap;flex-shrink:0;">View Bylaws</a>
       </div>
     </div>
 
     <div class="about-sidebar">
       <div class="info-card">
-        <div class="info-card-header"><h3>Society Info</h3></div>
+        <div class="info-card-header"><h3>Society Information</h3></div>
         <div class="info-card-body">
+          <div class="info-row">
+            <span class="info-label">Full Name</span>
+            <span class="info-val">Connecticut Society of Dermatology and Dermatologic Surgery</span>
+          </div>
           <div class="info-row">
             <span class="info-label">Founded</span>
             <span class="info-val">1968</span>
@@ -288,23 +298,23 @@
       </div>
 
       <div class="info-card">
-        <div class="info-card-header"><h3>National Affiliations</h3></div>
+        <div class="info-card-header"><h3>National Representatives</h3></div>
         <div class="info-card-body">
           <div class="info-row">
-            <span class="info-label">AAD Rep</span>
-            <span class="info-val">Phil Kerr, MD</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">CSMS Delegate</span>
-            <span class="info-val">Howard Rogers, MD</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">CSMS Alt. Delegate</span>
-            <span class="info-val">Phil Kerr, MD</span>
+            <span class="info-label">AAD Advisory Board</span>
+            <span class="info-val">Phil Kerr, M.D.</span>
           </div>
           <div class="info-row">
             <span class="info-label">CAC Representative</span>
-            <span class="info-val">Howard Rogers, MD</span>
+            <span class="info-val">Howard Rogers, M.D.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">CSMS Delegate</span>
+            <span class="info-val">Howard Rogers, M.D.</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">CSMS Alternate Delegate</span>
+            <span class="info-val">Phil Kerr, M.D.</span>
           </div>
         </div>
       </div>
@@ -322,19 +332,19 @@
   <div class="leadership-grid">
     <div class="leader-card featured">
       <div class="leader-role">President</div>
-      <div class="leader-name">Donna Aiudi, MD</div>
+      <div class="leader-name">Donna Aiudi, M.D.</div>
     </div>
     <div class="leader-card">
       <div class="leader-role">President-Elect</div>
-      <div class="leader-name">Aaron Steen, MD</div>
+      <div class="leader-name">Aaron Steen, M.D.</div>
     </div>
     <div class="leader-card">
       <div class="leader-role">Immediate Past President</div>
-      <div class="leader-name">Phil Kerr, MD</div>
+      <div class="leader-name">Phil Kerr, M.D.</div>
     </div>
     <div class="leader-card">
       <div class="leader-role">Secretary</div>
-      <div class="leader-name">Meagan McCusker, MD</div>
+      <div class="leader-name">Meagan McCusker, M.D.</div>
     </div>
     <div class="leader-card">
       <div class="leader-role">Treasurer</div>
@@ -342,21 +352,33 @@
     </div>
     <div class="leader-card">
       <div class="leader-role">Education Chair</div>
-      <div class="leader-name">Omar Ibrahimi, MD</div>
+      <div class="leader-name">Omar Ibrahimi, M.D.</div>
     </div>
     <div class="leader-card">
       <div class="leader-role">Executive Director</div>
       <div class="leader-name">Debbie Osborn</div>
-      <div class="leader-detail"><a href="mailto:debbieosborn36@yahoo.com" style="color:var(--navy-light);font-size:12px;">debbieosborn36@yahoo.com</a></div>
+      <div class="leader-detail"><a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></div>
     </div>
     <div class="leader-card">
-      <div class="leader-role">Yale Dept. Chair — Dermatology</div>
-      <div class="leader-name">Keith Choate, MD</div>
+      <div class="leader-role">CAC Representative</div>
+      <div class="leader-name">Howard Rogers, M.D.</div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-role">AAD Advisory Board Representative</div>
+      <div class="leader-name">Phil Kerr, M.D.</div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-role">CSMS Delegate</div>
+      <div class="leader-name">Howard Rogers, M.D.</div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-role">CSMS Alternate Delegate</div>
+      <div class="leader-name">Phil Kerr, M.D.</div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-role">Yale Department of Dermatology — Chair</div>
+      <div class="leader-name">Keith Choate, M.D.</div>
       <div class="leader-detail">Yale School of Medicine</div>
-    </div>
-    <div class="leader-card">
-      <div class="leader-role">AAD Advisory Board / CSMS Delegate</div>
-      <div class="leader-name">Howard Rogers, MD</div>
     </div>
   </div>
 </section>
@@ -367,75 +389,75 @@
     <div class="section-label">Governance</div>
     <div class="rule-bar"></div>
     <h2 class="section-heading">Executive Committee</h2>
-    <p style="font-size:14px;color:var(--text-muted);max-width:580px;">The Executive Committee is composed of volunteer Connecticut dermatologists who guide the Society's strategic direction, programs, and advocacy initiatives.</p>
+    <p style="font-size:14px;color:var(--text-muted);max-width:600px;">Volunteer Connecticut dermatologists who guide the Society's strategic direction, programs, and advocacy initiatives.</p>
   </div>
   <div class="exec-grid">
+    <div class="exec-member"><div class="exec-name">Donna Aiudi, M.D.</div></div>
     <div class="exec-member">
-      <div class="exec-name">Donna Aiudi, MD</div>
+      <div class="exec-name">Keith Choate, M.D.</div>
+      <div class="exec-note">Yale — Chair, Dept. of Dermatology</div>
     </div>
+    <div class="exec-member"><div class="exec-name">Marimeg Clairwood, M.D.</div></div>
+    <div class="exec-member"><div class="exec-name">John Edelglass, M.D.</div></div>
+    <div class="exec-member"><div class="exec-name">Dennis Feinberg, M.D.</div></div>
+    <div class="exec-member"><div class="exec-name">Loyd Godwin, M.D.</div></div>
+    <div class="exec-member"><div class="exec-name">Mark Goldstein, M.D.</div></div>
     <div class="exec-member">
-      <div class="exec-name">Keith Choate, MD</div>
-      <div class="exec-note">Yale — Dept. Chair</div>
-    </div>
-    <div class="exec-member">
-      <div class="exec-name">Marimeg Clairwood, MD</div>
-    </div>
-    <div class="exec-member">
-      <div class="exec-name">John Edelglass, MD</div>
-    </div>
-    <div class="exec-member">
-      <div class="exec-name">Dennis Feinberg, MD</div>
-    </div>
-    <div class="exec-member">
-      <div class="exec-name">Loyd Godwin, MD</div>
-    </div>
-    <div class="exec-member">
-      <div class="exec-name">Mark Goldstein, MD</div>
-    </div>
-    <div class="exec-member">
-      <div class="exec-name">Omar Ibrahimi, MD</div>
+      <div class="exec-name">Omar Ibrahimi, M.D.</div>
       <div class="exec-note">Education Chair</div>
     </div>
+    <div class="exec-member"><div class="exec-name">Mark Marchitto, M.D.</div></div>
+    <div class="exec-member"><div class="exec-name">Janelle Manton, M.D.</div></div>
     <div class="exec-member">
-      <div class="exec-name">Mark Marchitto, MD</div>
-    </div>
-    <div class="exec-member">
-      <div class="exec-name">Janelle Manton, MD</div>
-    </div>
-    <div class="exec-member">
-      <div class="exec-name">Meagan McCusker, MD</div>
+      <div class="exec-name">Meagan McCusker, M.D.</div>
       <div class="exec-note">Secretary</div>
     </div>
+    <div class="exec-member"><div class="exec-name">Jeremy Moss, M.D.</div></div>
     <div class="exec-member">
-      <div class="exec-name">Jeremy Moss, MD</div>
+      <div class="exec-name">Howard Rogers, M.D.</div>
+      <div class="exec-note">CAC Rep · CSMS Delegate</div>
     </div>
+    <div class="exec-member"><div class="exec-name">Mona Shahriari, M.D.</div></div>
     <div class="exec-member">
-      <div class="exec-name">Howard Rogers, MD</div>
-      <div class="exec-note">CAC &amp; CSMS Rep</div>
-    </div>
-    <div class="exec-member">
-      <div class="exec-name">Mona Shahriari, MD</div>
-    </div>
-    <div class="exec-member">
-      <div class="exec-name">Aaron Steen, MD</div>
+      <div class="exec-name">Aaron Steen, M.D.</div>
       <div class="exec-note">President-Elect</div>
     </div>
+    <div class="exec-member"><div class="exec-name">Matthew Vesely, M.D.</div></div>
+    <div class="exec-member"><div class="exec-name">Gillian Weston, M.D.</div></div>
+  </div>
+</section>
+
+<!-- LEGISLATIVE COMMITTEE -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Advocacy</div>
+    <div class="rule-bar"></div>
+    <h2 class="section-heading">Legislative Committee</h2>
+    <p style="font-size:14px;color:var(--text-muted);max-width:600px;">The Legislative Committee oversees the Society's state and federal advocacy efforts and coordinates with the CTDS lobbyist on matters affecting dermatology practice in Connecticut.</p>
+  </div>
+  <div class="leg-committee-grid">
     <div class="exec-member">
-      <div class="exec-name">Matthew Vesely, MD</div>
+      <div class="exec-name">Donna Aiudi, M.D.</div>
     </div>
     <div class="exec-member">
-      <div class="exec-name">Gillian Weston, MD</div>
+      <div class="exec-name">Mark Goldstein, M.D.</div>
     </div>
+    <div class="exec-member">
+      <div class="exec-name">Howard Rogers, M.D.</div>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:1.25rem auto 0;padding:0 2rem;">
+    <p style="font-size:13px;color:var(--text-muted);">Legislative Committee Chair: <strong style="color:var(--navy);">To be announced</strong></p>
   </div>
 </section>
 
 <!-- NEW RESIDENTS -->
 <div class="residents-band">
   <div class="residents-inner">
-    <div class="section-label light">Training &amp; Pipeline</div>
+    <div class="section-label light">Residency</div>
     <div class="rule-bar light"></div>
-    <h2 class="section-heading light">New Residents</h2>
-    <p style="font-size:14px;color:rgba(255,255,255,0.55);max-width:540px;">Connecticut's incoming dermatology residents — the next generation of the state's dermatology community. Contact the Society to update resident listings.</p>
+    <h2 class="section-heading light">Dermatology Residents</h2>
+    <p style="font-size:14px;color:rgba(255,255,255,0.5);max-width:560px;">Connecticut's current dermatology residents. Resident listings are updated annually. To submit or update resident information, contact Debbie Osborn.</p>
     <div class="residents-grid">
       <div class="resident-card">
         <div class="resident-name">Resident Name</div>
@@ -449,6 +471,11 @@
       </div>
       <div class="resident-card">
         <div class="resident-name">Resident Name</div>
+        <div class="resident-program">Yale Dermatology Residency Program</div>
+        <div class="resident-year">PGY-4 · 2025</div>
+      </div>
+      <div class="resident-card">
+        <div class="resident-name">Resident Name</div>
         <div class="resident-program">UConn Dermatology Residency Program</div>
         <div class="resident-year">PGY-2 · 2025</div>
       </div>
@@ -459,16 +486,15 @@
       </div>
       <div class="resident-card">
         <div class="resident-name">Resident Name</div>
-        <div class="resident-program">Yale Dermatology Residency Program</div>
-        <div class="resident-year">PGY-4 · 2025</div>
-      </div>
-      <div class="resident-card">
-        <div class="resident-name">Resident Name</div>
         <div class="resident-program">UConn Dermatology Residency Program</div>
         <div class="resident-year">PGY-4 · 2025</div>
       </div>
     </div>
-    <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:1.5rem;">Resident listings are updated annually. To add or update a resident, contact Debbie Osborn at <a href="mailto:debbieosborn36@yahoo.com" style="color:rgba(255,255,255,0.5);">debbieosborn36@yahoo.com</a>.</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:1.5rem;">
+      To add or update resident information, contact Debbie Osborn at
+      <a href="mailto:debbieosborn36@yahoo.com" style="color:rgba(255,255,255,0.45);">debbieosborn36@yahoo.com</a>
+      or <a href="tel:8605673787" style="color:rgba(255,255,255,0.45);">(860) 567-3787</a>.
+    </p>
   </div>
 </div>
 
@@ -483,7 +509,7 @@
     <li><a href="trials.html">Clinical Trials</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <p>Connecticut Society of Dermatology &amp; Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a></p>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a> &nbsp;·&nbsp; <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></p>
   <p style="margin-top:6px;">© 2025 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
 </footer>
 
