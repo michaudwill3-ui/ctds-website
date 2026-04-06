@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Join the Society — CT Society of Dermatology</title>
+<title>Membership — Connecticut Society of Dermatology and Dermatologic Surgery</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-  .main {
+
+  /* ── LAYOUT ── */
+  .signup-main {
     max-width: 1100px;
     margin: 0 auto;
     padding: 60px 2rem 80px;
     display: grid;
-    grid-template-columns: 1fr 360px;
+    grid-template-columns: 1fr 320px;
     gap: 48px;
     align-items: start;
   }
+
+  /* ── FORM CARD ── */
   .form-card {
     background: var(--white);
     border: 0.5px solid var(--rule);
@@ -48,7 +52,7 @@
     flex-shrink: 0;
   }
   .form-group { margin-bottom: 1.1rem; }
-  .form-row {
+  .form-row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 14px;
@@ -58,6 +62,8 @@
     border-top: 0.5px solid var(--rule);
     margin: 1.75rem 0;
   }
+
+  /* ── PHOTO UPLOAD ── */
   .photo-upload {
     border: 1px dashed var(--rule);
     border-radius: 6px;
@@ -66,11 +72,21 @@
     cursor: pointer;
     background: var(--warm-white);
     position: relative;
+    transition: border-color 0.15s, background 0.15s;
   }
   .photo-upload:hover { border-color: var(--navy-light); background: #f0f3f8; }
-  .photo-upload input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-  .photo-upload p { font-size: 13px; color: var(--text-muted); }
+  .photo-upload input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+  .photo-upload p { font-size: 13px; color: var(--text-muted); margin-bottom: 3px; }
   .photo-upload span { font-size: 11px; color: var(--text-muted); opacity: 0.7; }
+
+  /* ── TIER OPTIONS ── */
   .tier-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.1rem; }
   .tier-option {
     border: 0.5px solid var(--rule);
@@ -84,11 +100,18 @@
   }
   .tier-option:hover { border-color: var(--navy-light); background: #f5f8ff; }
   .tier-option.selected { border-color: var(--navy); background: #f0f4fa; }
-  .tier-option input[type="radio"] { width: 16px; height: 16px; accent-color: var(--navy); flex-shrink: 0; }
+  .tier-option input[type="radio"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--navy);
+    flex-shrink: 0;
+  }
   .tier-info { flex: 1; }
   .tier-name { font-size: 13px; font-weight: 500; color: var(--navy); }
-  .tier-desc { font-size: 11px; color: var(--text-muted); }
+  .tier-desc { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
   .tier-price { font-size: 15px; font-weight: 600; color: var(--navy); white-space: nowrap; }
+
+  /* ── OPT-IN BOXES ── */
   .opt-in-box {
     border: 0.5px solid var(--rule);
     border-radius: 6px;
@@ -99,18 +122,40 @@
     gap: 12px;
     margin-bottom: 8px;
   }
-  .opt-in-box input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--navy); flex-shrink: 0; margin-top: 3px; }
-  .opt-text strong { display: block; font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 2px; }
+  .opt-in-box input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--navy);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .opt-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
   .opt-text span { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── STRIPE PLACEHOLDER ── */
   .stripe-placeholder {
     border: 0.5px solid var(--rule);
     border-radius: 6px;
-    padding: 1.25rem 1rem;
-    background: #fafafa;
+    padding: 1.25rem 1.5rem;
+    background: var(--warm-white);
     text-align: center;
   }
-  .stripe-placeholder .stripe-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
-  .stripe-placeholder .stripe-note { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .stripe-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .stripe-note { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
   .btn-submit {
     width: 100%;
     padding: 14px;
@@ -128,28 +173,74 @@
     transition: background 0.15s;
   }
   .btn-submit:hover { background: var(--navy-mid); }
-  .form-note { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 0.75rem; line-height: 1.5; }
-  .sidebar { display: flex; flex-direction: column; gap: 20px; }
-  .sidebar-card { background: var(--white); border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
-  .sidebar-card-header { background: var(--navy); padding: 0.85rem 1.25rem; }
-  .sidebar-card-header h3 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .form-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* ── SIDEBAR ── */
+  .signup-sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .sidebar-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .sidebar-card-header {
+    background: var(--navy);
+    padding: 0.85rem 1.25rem;
+  }
+  .sidebar-card-header h3 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+  }
   .sidebar-card-body { padding: 1.25rem; }
+
+  /* ── BENEFITS LIST ── */
   .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .benefit-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-body); line-height: 1.5; }
-  .benefit-check { width: 18px; height: 18px; border-radius: 50%; background: #e8f0e8; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-  .benefit-check svg { width: 10px; height: 10px; stroke: #2d7a2d; fill: none; stroke-width: 2.5; }
-  .tier-summary { display: flex; flex-direction: column; }
-  .tier-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; padding: 8px 0; border-bottom: 0.5px solid var(--rule); }
-  .tier-row:last-child { border-bottom: none; }
-  .t-name { color: var(--text-body); }
-  .t-note { font-size: 11px; color: var(--text-muted); display: block; }
-  .t-price { font-weight: 600; color: var(--navy); }
-  .contact-info { font-size: 13px; color: var(--text-body); line-height: 1.8; }
-  .contact-info strong { color: var(--navy); display: block; }
+  .benefit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.5;
+  }
+  .benefit-check {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #eef4ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .benefit-check svg { width: 9px; height: 9px; stroke: #2d7a2d; fill: none; stroke-width: 2.5; }
+
+  /* ── DUES TABLE ── */
+  .dues-table { width: 100%; border-collapse: collapse; }
+  .dues-table tr { border-bottom: 0.5px solid var(--rule); }
+  .dues-table tr:last-child { border-bottom: none; }
+  .dues-table td { padding: 9px 0; font-size: 13px; color: var(--text-body); vertical-align: top; }
+  .dues-table td:last-child { text-align: right; font-weight: 600; color: var(--navy); white-space: nowrap; padding-left: 8px; }
+  .dues-note { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; font-weight: 400; }
+
+  /* ── CONTACT CARD ── */
+  .contact-info { font-size: 13px; color: var(--text-body); line-height: 1.85; }
+  .contact-info strong { color: var(--navy); display: block; margin-bottom: 2px; }
   .contact-info a { color: var(--navy-light); text-decoration: none; }
-  @media (max-width: 768px) {
-    .main { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
+
+  @media (max-width: 960px) {
+    .signup-main { grid-template-columns: 1fr; }
+    .form-row-2 { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -175,19 +266,21 @@
 
 <div class="page-header">
   <div class="eyebrow">Membership Application</div>
-  <h1>Join the <em>Connecticut Society</em> of Dermatology</h1>
-  <p>For board-certified and board-eligible dermatologists practicing in Connecticut. Membership is optional — much of our site is open to all physicians.</p>
+  <h1>Connecticut Society of <em>Dermatology</em></h1>
+  <p>Membership is open to board-certified and board-eligible dermatologists practicing in Connecticut. Much of the Society's site is accessible to all physicians — membership provides access to the private member directory, direct lobbyist communication, and additional resources.</p>
 </div>
 
-<div class="main">
+<div class="signup-main">
 
+  <!-- FORM -->
   <div class="form-card">
 
+    <!-- STEP 1 -->
     <div class="form-section-title">
       <span class="step-num">1</span> Personal Information
     </div>
 
-    <div class="form-row form-group">
+    <div class="form-row-2 form-group">
       <div class="form-group">
         <label>First Name</label>
         <input type="text" placeholder="Jane">
@@ -201,7 +294,7 @@
       <label>Email Address</label>
       <input type="email" placeholder="jsmith@practice.com">
     </div>
-    <div class="form-row form-group">
+    <div class="form-row-2 form-group">
       <div class="form-group">
         <label>Office Phone</label>
         <input type="tel" placeholder="(860) 555-0100">
@@ -215,7 +308,7 @@
       <label>Practice / Institution</label>
       <input type="text" placeholder="e.g. Yale School of Medicine, Private Practice">
     </div>
-    <div class="form-row form-group">
+    <div class="form-row-2 form-group">
       <div class="form-group">
         <label>City</label>
         <input type="text" placeholder="New Haven">
@@ -225,22 +318,30 @@
         <select>
           <option value="">Select</option>
           <option selected>CT</option>
-          <option>MA</option><option>NY</option><option>RI</option><option>Other</option>
+          <option>MA</option>
+          <option>NY</option>
+          <option>RI</option>
+          <option>Other</option>
         </select>
       </div>
     </div>
 
     <hr class="form-divider">
+
+    <!-- STEP 2 -->
     <div class="form-section-title">
       <span class="step-num">2</span> Credentials &amp; Specialty
     </div>
 
-    <div class="form-row form-group">
+    <div class="form-row-2 form-group">
       <div class="form-group">
         <label>Degree</label>
         <select>
           <option value="">Select</option>
-          <option>MD</option><option>DO</option><option>MD, PhD</option><option>DO, PhD</option>
+          <option>M.D.</option>
+          <option>D.O.</option>
+          <option>M.D., Ph.D.</option>
+          <option>D.O., Ph.D.</option>
         </select>
       </div>
       <div class="form-group">
@@ -251,7 +352,7 @@
           <option value="2">2nd year</option>
           <option value="3">3rd year</option>
           <option value="4+">4th year or beyond</option>
-          <option value="senior">Senior (67+, &lt;20 hrs/wk)</option>
+          <option value="senior">Senior (age 67+, fewer than 20 hrs/week)</option>
         </select>
       </div>
     </div>
@@ -300,19 +401,21 @@
       <input type="text" placeholder="1234567890">
     </div>
     <div class="form-group">
-      <label>Bio <span class="optional">optional — shown in member directory</span></label>
-      <textarea placeholder="Brief professional bio..."></textarea>
+      <label>Professional Bio <span class="optional">optional — appears in member directory</span></label>
+      <textarea rows="3" placeholder="Brief professional biography..."></textarea>
     </div>
     <div class="form-group">
-      <label>Profile Photo <span class="optional">optional</span></label>
+      <label>Profile Photo <span class="optional">optional — appears in member directory</span></label>
       <div class="photo-upload">
         <input type="file" accept="image/*">
         <p>Click to upload headshot</p>
-        <span>JPG or PNG · Max 5MB</span>
+        <span>JPG or PNG · Maximum 5MB</span>
       </div>
     </div>
 
     <hr class="form-divider">
+
+    <!-- STEP 3 -->
     <div class="form-section-title">
       <span class="step-num">3</span> Membership Tier
     </div>
@@ -330,7 +433,7 @@
         <input type="radio" name="tier" value="y1" onchange="selectTier(this)">
         <div class="tier-info">
           <div class="tier-name">First Year in Practice</div>
-          <div class="tier-desc">Reduced rate for new practitioners</div>
+          <div class="tier-desc">Reduced rate for first-year practitioners</div>
         </div>
         <div class="tier-price">$175 / yr</div>
       </label>
@@ -354,13 +457,15 @@
         <input type="radio" name="tier" value="senior" onchange="selectTier(this)">
         <div class="tier-info">
           <div class="tier-name">Senior Member</div>
-          <div class="tier-desc">Age 67+, fewer than 20 hrs/week</div>
+          <div class="tier-desc">Age 67 or older, practicing fewer than 20 hours per week</div>
         </div>
         <div class="tier-price">$175 / yr</div>
       </label>
     </div>
 
     <hr class="form-divider">
+
+    <!-- STEP 4 -->
     <div class="form-section-title">
       <span class="step-num">4</span> Communication Preferences
     </div>
@@ -368,31 +473,33 @@
     <div class="opt-in-box">
       <input type="checkbox" id="sms-opt">
       <div class="opt-text">
-        <strong>Opt in to SMS text alerts</strong>
-        <span>Receive reminders about meetings, legislative alerts, CME deadlines, and society announcements. Message &amp; data rates may apply. Reply STOP at any time.</span>
+        <strong>SMS Text Alerts</strong>
+        <span>Receive text message reminders for upcoming meetings, legislative alerts, CME deadlines, and Society announcements. Message and data rates may apply. Reply STOP at any time to unsubscribe.</span>
       </div>
     </div>
     <div class="opt-in-box">
       <input type="checkbox" id="newsletter-opt" checked>
       <div class="opt-text">
-        <strong>Subscribe to the CTDS Newsletter</strong>
-        <span>Monthly updates on dermatology news, legislation, events, and clinical trial listings.</span>
+        <strong>CTDS Newsletter</strong>
+        <span>Quarterly newsletter with legislative updates, meeting announcements, CME information, and clinical trial listings.</span>
       </div>
     </div>
 
     <hr class="form-divider">
+
+    <!-- STEP 5 -->
     <div class="form-section-title">
-      <span class="step-num">5</span> Create Your Account
+      <span class="step-num">5</span> Account Credentials
     </div>
 
     <div class="form-group">
-      <label>Email <span class="optional">used to log in</span></label>
-      <input type="email" placeholder="Same as above or different">
+      <label>Email <span class="optional">used to sign in to the member portal</span></label>
+      <input type="email" placeholder="Same as above, or a different address">
     </div>
-    <div class="form-row form-group">
+    <div class="form-row-2 form-group">
       <div class="form-group">
         <label>Password</label>
-        <input type="password" placeholder="Min. 8 characters">
+        <input type="password" placeholder="Minimum 8 characters">
       </div>
       <div class="form-group">
         <label>Confirm Password</label>
@@ -401,35 +508,61 @@
     </div>
 
     <hr class="form-divider">
+
+    <!-- STEP 6 -->
     <div class="form-section-title">
       <span class="step-num">6</span> Payment
     </div>
 
     <div class="stripe-placeholder">
-      <div class="stripe-label">Secure Payment via Stripe</div>
-      <div class="stripe-note">Online payment processing is coming soon. After submitting your application, our Executive Director will contact you with payment instructions.</div>
+      <div class="stripe-label">Online Payment — Coming Soon</div>
+      <div class="stripe-note">Secure online payment processing via Stripe will be available shortly. Following submission of this application, the Executive Director will contact you with payment instructions.</div>
     </div>
 
-    <button class="btn-submit" onclick="handleSubmit()">Submit Membership Application</button>
-    <p class="form-note">By submitting, you confirm you are a licensed dermatologist or dermatology resident practicing in Connecticut. Membership is subject to review by the CTDS Executive Committee.</p>
+    <button class="btn-submit" onclick="handleSubmit()">Submit Application</button>
+    <p class="form-note">By submitting this application, you confirm that you are a licensed dermatologist or dermatology resident practicing in Connecticut. Applications are subject to review by the CTDS Executive Committee.</p>
 
   </div>
 
-  <div class="sidebar">
+  <!-- SIDEBAR -->
+  <div class="signup-sidebar">
 
     <div class="sidebar-card">
-      <div class="sidebar-card-header"><h3>Member Benefits</h3></div>
+      <div class="sidebar-card-header"><h3>Member Access</h3></div>
       <div class="sidebar-card-body">
         <ul class="benefit-list">
-          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Access to the private member directory</li>
-          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Direct messaging with the CTDS legislative lobbyist</li>
-          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>CME lecture library &amp; continuing education resources</li>
-          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Clinical trial listings &amp; coordinator contact info</li>
-          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>SMS &amp; email alerts for meetings &amp; legislation</li>
-          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Discounted registration at CTDS annual meetings</li>
-          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Legislative advocacy at state &amp; federal level</li>
-          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>CTDS newsletters and archived resources</li>
-          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Networking with Connecticut's dermatology community</li>
+          <li>
+            <div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+            Private member directory
+          </li>
+          <li>
+            <div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+            Direct communication with the CTDS lobbyist
+          </li>
+          <li>
+            <div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+            CME lecture library and education resources
+          </li>
+          <li>
+            <div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+            Clinical trial coordinator contact information
+          </li>
+          <li>
+            <div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+            SMS and email alerts for meetings and legislation
+          </li>
+          <li>
+            <div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+            Discounted registration at CTDS annual meetings
+          </li>
+          <li>
+            <div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+            Legislative advocacy at the state and federal level
+          </li>
+          <li>
+            <div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+            CTDS newsletters and archived resources
+          </li>
         </ul>
       </div>
     </div>
@@ -437,25 +570,48 @@
     <div class="sidebar-card">
       <div class="sidebar-card-header"><h3>Annual Dues</h3></div>
       <div class="sidebar-card-body">
-        <div class="tier-summary">
-          <div class="tier-row"><div><span class="t-name">Regular Membership</span></div><div class="t-price">$450</div></div>
-          <div class="tier-row"><div><span class="t-name">1st Year in Practice</span></div><div class="t-price">$175</div></div>
-          <div class="tier-row"><div><span class="t-name">2nd Year in Practice</span></div><div class="t-price">$260</div></div>
-          <div class="tier-row"><div><span class="t-name">3rd Year in Practice</span></div><div class="t-price">$350</div></div>
-          <div class="tier-row"><div><span class="t-name">Senior Member</span><span class="t-note">Age 67+, &lt;20 hrs/week</span></div><div class="t-price">$175</div></div>
-        </div>
+        <table class="dues-table">
+          <tr>
+            <td>Regular Membership</td>
+            <td>$450</td>
+          </tr>
+          <tr>
+            <td>
+              1st Year in Practice
+              <span class="dues-note">New practitioners</span>
+            </td>
+            <td>$175</td>
+          </tr>
+          <tr>
+            <td>2nd Year in Practice</td>
+            <td>$260</td>
+          </tr>
+          <tr>
+            <td>3rd Year in Practice</td>
+            <td>$350</td>
+          </tr>
+          <tr>
+            <td>
+              Senior Member
+              <span class="dues-note">Age 67+, &lt;20 hrs/week</span>
+            </td>
+            <td>$175</td>
+          </tr>
+        </table>
       </div>
     </div>
 
     <div class="sidebar-card">
-      <div class="sidebar-card-header"><h3>Questions?</h3></div>
+      <div class="sidebar-card-header"><h3>Questions</h3></div>
       <div class="sidebar-card-body">
         <div class="contact-info">
           <strong>Debbie Osborn</strong>
-          Executive Director, CTDS<br>
+          Executive Director<br>
+          Connecticut Society of Dermatology and Dermatologic Surgery<br><br>
           <a href="tel:8605673787">(860) 567-3787</a><br>
           <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a><br><br>
-          P.O. Box 1079, Litchfield, CT 06759
+          P.O. Box 1079<br>
+          Litchfield, CT 06759
         </div>
       </div>
     </div>
@@ -467,13 +623,14 @@
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
+    <li><a href="signup.html">Membership</a></li>
     <li><a href="events.html">Events</a></li>
     <li><a href="cme.html">CME</a></li>
     <li><a href="legislation.html">Legislation</a></li>
     <li><a href="trials.html">Clinical Trials</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <p>Connecticut Society of Dermatology &amp; Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a></p>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a> &nbsp;·&nbsp; <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></p>
   <p style="margin-top:6px;">© 2025 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
 </footer>
 
@@ -502,5 +659,6 @@
     }, 1200);
   }
 </script>
+
 </body>
 </html>
