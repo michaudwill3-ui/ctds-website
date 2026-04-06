@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Events & Meetings — CT Society of Dermatology</title>
+<title>Events & Meetings — Connecticut Society of Dermatology and Dermatologic Surgery</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
+
   /* ── FILTER BAR ── */
   .filter-bar {
     background: var(--white);
@@ -35,26 +36,26 @@
   .filter-btn:hover { color: var(--navy); }
   .filter-btn.active { color: var(--navy); border-bottom-color: var(--navy); }
 
-  /* ── EVENTS LAYOUT ── */
+  /* ── LAYOUT ── */
   .events-main {
     max-width: 1100px;
     margin: 0 auto;
     padding: 60px 2rem 80px;
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 290px;
     gap: 48px;
     align-items: start;
   }
 
-  /* ── EVENT LIST ── */
-  .event-list { display: flex; flex-direction: column; gap: 20px; }
+  /* ── EVENT ITEMS ── */
+  .event-list { display: flex; flex-direction: column; gap: 16px; }
   .event-item {
     background: var(--white);
     border: 0.5px solid var(--rule);
     border-radius: 8px;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 76px 1fr;
   }
   .event-item.national { border-left: 3px solid var(--navy-light); }
   .event-date-col {
@@ -74,23 +75,14 @@
     color: var(--parchment);
     opacity: 0.8;
   }
-  .ev-day {
-    font-size: 28px;
-    font-weight: 300;
-    color: #fff;
-    line-height: 1;
-  }
-  .ev-year {
-    font-size: 10px;
-    color: rgba(255,255,255,0.4);
-    margin-top: 2px;
-  }
-  .event-content { padding: 1.25rem 1.5rem; }
-  .event-badges { display: flex; gap: 6px; margin-bottom: 0.6rem; flex-wrap: wrap; }
+  .ev-day { font-size: 26px; font-weight: 300; color: #fff; line-height: 1; }
+  .ev-year { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 3px; }
+  .event-content { padding: 1.1rem 1.4rem; }
+  .event-badges { display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
   .badge {
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     padding: 2px 8px;
     border-radius: 2px;
@@ -98,16 +90,22 @@
   .badge-ct { background: #e8eef8; color: var(--navy); }
   .badge-national { background: #f0f4fa; color: var(--navy-light); }
   .badge-cme { background: #eef4ee; color: #2d6a2d; }
-  .ev-title { font-size: 16px; font-weight: 500; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.3; }
-  .ev-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 0.75rem; display: flex; gap: 16px; flex-wrap: wrap; }
+  .ev-title { font-size: 15px; font-weight: 500; color: var(--navy); margin-bottom: 4px; line-height: 1.3; }
+  .ev-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
   .ev-meta span { display: flex; align-items: center; gap: 4px; }
-  .ev-meta svg { width: 12px; height: 12px; stroke: var(--text-muted); fill: none; stroke-width: 1.5; }
-  .ev-desc { font-size: 13px; color: var(--text-body); line-height: 1.65; margin-bottom: 1rem; }
-  .ev-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .ev-meta svg { width: 11px; height: 11px; stroke: var(--text-muted); fill: none; stroke-width: 1.5; }
+  .ev-desc { font-size: 13px; color: var(--text-body); line-height: 1.65; margin-bottom: 0.9rem; }
   .ev-link {
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--navy);
     text-decoration: none;
@@ -115,6 +113,32 @@
     padding-bottom: 1px;
   }
   .ev-link.external { color: var(--navy-light); border-color: var(--navy-light); }
+
+  /* ── PAST MEETINGS ── */
+  .past-grid {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .past-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+  }
+  .past-year {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .past-title { font-size: 13px; font-weight: 500; color: var(--navy); line-height: 1.4; }
+  .past-note { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
 
   /* ── SIDEBAR ── */
   .events-sidebar { display: flex; flex-direction: column; gap: 20px; }
@@ -136,53 +160,42 @@
     color: rgba(255,255,255,0.8);
   }
   .sidebar-card-body { padding: 1.25rem; }
-
-  .mini-event { padding: 8px 0; border-bottom: 0.5px solid var(--rule); }
+  .mini-event {
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--rule);
+  }
   .mini-event:last-child { border-bottom: none; }
-  .mini-date { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+  .mini-date {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
   .mini-title { font-size: 13px; color: var(--navy); font-weight: 500; margin-top: 2px; line-height: 1.3; }
-
-  .org-link-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .org-link-list li a {
-    font-size: 13px;
-    color: var(--navy-light);
-    text-decoration: none;
+  .resource-link {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 0;
+    padding: 8px 0;
     border-bottom: 0.5px solid var(--rule);
+    text-decoration: none;
+    font-size: 13px;
+    color: var(--navy-light);
+    transition: color 0.15s;
   }
-  .org-link-list li:last-child a { border-bottom: none; }
-  .org-link-list li a:hover { color: var(--navy); }
-  .org-link-list .org-name-sm { font-size: 11px; color: var(--text-muted); }
+  .resource-link:last-child { border-bottom: none; }
+  .resource-link:hover { color: var(--navy); }
+  .resource-link .rl-sub { font-size: 11px; color: var(--text-muted); display: block; margin-top: 1px; }
 
-  /* ── PAST EVENTS ── */
-  .past-grid {
-    max-width: 1100px;
-    margin: 2rem auto 0;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .past-card {
-    background: var(--white);
-    border: 0.5px solid var(--rule);
-    border-radius: 8px;
-    padding: 1.1rem 1.25rem;
-  }
-  .past-year { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
-  .past-title { font-size: 13px; font-weight: 500; color: var(--navy); line-height: 1.4; }
-  .past-note { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     .events-main { grid-template-columns: 1fr; }
     .past-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 600px) {
-    .event-item { grid-template-columns: 70px 1fr; }
+    .event-item { grid-template-columns: 64px 1fr; }
     .past-grid { grid-template-columns: 1fr; }
+    .filter-btn { padding: 0.85rem 0.9rem; font-size: 11px; }
   }
 </style>
 </head>
@@ -209,7 +222,7 @@
 <div class="page-header">
   <div class="eyebrow">Calendar</div>
   <h1>Events &amp; <em>Meetings</em></h1>
-  <p>Connecticut Society meetings, national dermatology conferences, and CME opportunities — all in one place.</p>
+  <p>Connecticut Society meetings, national dermatology conferences, and CME events.</p>
 </div>
 
 <!-- FILTER BAR -->
@@ -222,7 +235,6 @@
   </div>
 </div>
 
-<!-- MAIN -->
 <div class="events-main">
 
   <!-- EVENT LIST -->
@@ -244,13 +256,17 @@
           </div>
           <div class="ev-title">CTDS Spring Membership Meeting</div>
           <div class="ev-meta">
-            <span><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Hartford, CT</span>
-            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6:00 PM</span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Hartford, CT
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              6:00 PM
+            </span>
           </div>
-          <div class="ev-desc">Annual spring gathering of the Connecticut Society of Dermatology featuring legislative updates from our lobbyist, CME presentations, society business, and networking dinner. Members and guests welcome.</div>
-          <div class="ev-actions">
-            <a href="contact.html" class="ev-link">Register →</a>
-          </div>
+          <div class="ev-desc">Annual spring gathering of the Connecticut Society of Dermatology and Dermatologic Surgery. Agenda includes legislative updates, CME presentations, and society business.</div>
+          <a href="contact.html" class="ev-link">Contact for Registration</a>
         </div>
       </div>
 
@@ -267,13 +283,17 @@
           </div>
           <div class="ev-title">AAD Summer Academy Meeting</div>
           <div class="ev-meta">
-            <span><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL</span>
-            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Multi-day</span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Chicago, IL
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Multi-day
+            </span>
           </div>
-          <div class="ev-desc">The American Academy of Dermatology Summer Academy Meeting features scientific sessions, hands-on workshops, and advocacy programming including Capitol Hill day for dermatologists across the country.</div>
-          <div class="ev-actions">
-            <a href="https://www.aad.org/member/meetings-events" target="_blank" class="ev-link external">AAD Meeting Info →</a>
-          </div>
+          <div class="ev-desc">American Academy of Dermatology summer scientific sessions, workshops, and advocacy programming including Capitol Hill day.</div>
+          <a href="https://www.aad.org/member/meetings-events" target="_blank" class="ev-link external">AAD — Meeting Information</a>
         </div>
       </div>
 
@@ -290,13 +310,17 @@
           </div>
           <div class="ev-title">ASDS Annual Meeting</div>
           <div class="ev-meta">
-            <span><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>New Orleans, LA</span>
-            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Multi-day</span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              New Orleans, LA
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Multi-day
+            </span>
           </div>
-          <div class="ev-desc">The American Society for Dermatologic Surgery annual meeting brings together leading dermatologic surgeons for scientific sessions, live demonstrations, and professional development programming.</div>
-          <div class="ev-actions">
-            <a href="https://www.asds.net/medical-professionals/annual-meeting" target="_blank" class="ev-link external">ASDS Meeting Info →</a>
-          </div>
+          <div class="ev-desc">American Society for Dermatologic Surgery annual meeting featuring scientific sessions, live procedure demonstrations, and professional development programming.</div>
+          <a href="https://www.asds.net/medical-professionals/annual-meeting" target="_blank" class="ev-link external">ASDS — Meeting Information</a>
         </div>
       </div>
 
@@ -313,13 +337,17 @@
           </div>
           <div class="ev-title">CTDS Annual Fall Meeting</div>
           <div class="ev-meta">
-            <span><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>New Haven, CT</span>
-            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Full Day</span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              New Haven, CT
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Full Day
+            </span>
           </div>
-          <div class="ev-desc">The Society's flagship annual meeting featuring full-day CME programming, keynote address, legislative year-in-review, new member welcome, and annual awards dinner. Members receive discounted registration.</div>
-          <div class="ev-actions">
-            <a href="contact.html" class="ev-link">Register →</a>
-          </div>
+          <div class="ev-desc">The Society's annual meeting with full-day CME programming, keynote address, legislative year-in-review, and annual awards dinner.</div>
+          <a href="contact.html" class="ev-link">Contact for Registration</a>
         </div>
       </div>
 
@@ -336,20 +364,24 @@
           </div>
           <div class="ev-title">AAD Annual Meeting 2026</div>
           <div class="ev-meta">
-            <span><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Washington, DC</span>
-            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Multi-day</span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Washington, DC
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Multi-day
+            </span>
           </div>
-          <div class="ev-desc">The American Academy of Dermatology Annual Meeting is the largest dermatology meeting in the world, featuring thousands of scientific sessions, exhibitions, and networking events for dermatologists worldwide.</div>
-          <div class="ev-actions">
-            <a href="https://www.aad.org/member/meetings-events/annual-meeting" target="_blank" class="ev-link external">AAD Annual Meeting →</a>
-          </div>
+          <div class="ev-desc">The American Academy of Dermatology Annual Meeting is the premier scientific conference in dermatology, bringing together physicians from across the country for scientific sessions, exhibitions, and advocacy.</div>
+          <a href="https://www.aad.org/member/meetings-events/annual-meeting" target="_blank" class="ev-link external">AAD — Annual Meeting</a>
         </div>
       </div>
 
     </div>
 
     <!-- PAST MEETINGS -->
-    <div style="margin-top:3rem;">
+    <div style="margin-top:3.5rem;">
       <div class="section-label">Archive</div>
       <div class="rule-bar"></div>
       <h2 class="section-heading">Past Meetings</h2>
@@ -365,11 +397,6 @@
           <div class="past-note">Hartford, CT</div>
         </div>
         <div class="past-card">
-          <div class="past-year">Fall 2023</div>
-          <div class="past-title">CTDS Annual Fall Meeting</div>
-          <div class="past-note">New Haven, CT</div>
-        </div>
-        <div class="past-card">
           <div class="past-year">2024</div>
           <div class="past-title">AAD Annual Meeting</div>
           <div class="past-note">San Diego, CA</div>
@@ -378,6 +405,11 @@
           <div class="past-year">2024</div>
           <div class="past-title">ASDS Annual Meeting</div>
           <div class="past-note">Washington, DC</div>
+        </div>
+        <div class="past-card">
+          <div class="past-year">Fall 2023</div>
+          <div class="past-title">CTDS Annual Fall Meeting</div>
+          <div class="past-note">New Haven, CT</div>
         </div>
         <div class="past-card">
           <div class="past-year">2023</div>
@@ -394,11 +426,11 @@
     <div class="sidebar-card">
       <div class="sidebar-card-header"><h3>Next CT Meeting</h3></div>
       <div class="sidebar-card-body">
-        <div style="font-size:28px;font-weight:300;color:var(--navy);line-height:1;">May 14</div>
+        <div style="font-size:26px;font-weight:300;color:var(--navy);line-height:1;">May 14</div>
         <div style="font-size:12px;color:var(--text-muted);margin-bottom:1rem;">2025 · Hartford, CT</div>
-        <div style="font-size:13px;font-weight:500;color:var(--navy);margin-bottom:0.4rem;">CTDS Spring Membership Meeting</div>
-        <div style="font-size:12px;color:var(--text-muted);margin-bottom:1rem;">6:00 PM · Dinner to follow</div>
-        <a href="contact.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Register Now</a>
+        <div style="font-size:13px;font-weight:500;color:var(--navy);margin-bottom:3px;">CTDS Spring Membership Meeting</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:1.1rem;">6:00 PM · Dinner to follow</div>
+        <a href="contact.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Contact for Registration</a>
       </div>
     </div>
 
@@ -407,11 +439,11 @@
       <div class="sidebar-card-body">
         <div class="mini-event">
           <div class="mini-date">Jun 7–11, 2025</div>
-          <div class="mini-title">AAD Summer Academy — Chicago</div>
+          <div class="mini-title">AAD Summer Academy · Chicago</div>
         </div>
         <div class="mini-event">
           <div class="mini-date">Sep 18–21, 2025</div>
-          <div class="mini-title">ASDS Annual — New Orleans</div>
+          <div class="mini-title">ASDS Annual Meeting · New Orleans</div>
         </div>
         <div class="mini-event">
           <div class="mini-date">Oct 2025</div>
@@ -419,26 +451,34 @@
         </div>
         <div class="mini-event">
           <div class="mini-date">Mar 6–10, 2026</div>
-          <div class="mini-title">AAD Annual — Washington, DC</div>
+          <div class="mini-title">AAD Annual Meeting · Washington, DC</div>
         </div>
       </div>
     </div>
 
     <div class="sidebar-card">
-      <div class="sidebar-card-header"><h3>Meeting Resources</h3></div>
+      <div class="sidebar-card-header"><h3>Organization Links</h3></div>
       <div class="sidebar-card-body">
-        <ul class="org-link-list">
-          <li><a href="https://www.aad.org/member/meetings-events" target="_blank"><span>AAD Meetings</span><span>→</span></a></li>
-          <li><a href="https://www.asds.net/medical-professionals/annual-meeting" target="_blank"><span>ASDS Annual Meeting</span><span>→</span></a></li>
-          <li><a href="https://www.aocd.org" target="_blank"><span>AOCD Conference</span><span>→</span></a></li>
-          <li><a href="https://www.acmssurgery.com" target="_blank"><span>ACMS — Mohs Surgery</span><span>→</span></a></li>
-          <li><a href="https://www.csms.org" target="_blank"><span>CSMS Events</span><span>→</span></a></li>
-        </ul>
+        <a href="https://www.aad.org/member/meetings-events" target="_blank" class="resource-link">
+          <div>AAD Meetings<span class="rl-sub">aad.org</span></div><span>→</span>
+        </a>
+        <a href="https://www.asds.net/medical-professionals/annual-meeting" target="_blank" class="resource-link">
+          <div>ASDS Annual Meeting<span class="rl-sub">asds.net</span></div><span>→</span>
+        </a>
+        <a href="https://www.aocd.org" target="_blank" class="resource-link">
+          <div>AOCD Conference<span class="rl-sub">aocd.org</span></div><span>→</span>
+        </a>
+        <a href="https://www.acmssurgery.com" target="_blank" class="resource-link">
+          <div>ACMS · Mohs Surgery<span class="rl-sub">acmssurgery.com</span></div><span>→</span>
+        </a>
+        <a href="https://www.csms.org" target="_blank" class="resource-link">
+          <div>Connecticut State Medical Society<span class="rl-sub">csms.org</span></div><span>→</span>
+        </a>
       </div>
     </div>
 
     <div class="sidebar-card">
-      <div class="sidebar-card-header"><h3>Questions</h3></div>
+      <div class="sidebar-card-header"><h3>Meeting Inquiries</h3></div>
       <div class="sidebar-card-body">
         <div style="font-size:13px;color:var(--text-body);line-height:1.8;">
           <strong style="color:var(--navy);display:block;">Debbie Osborn</strong>
@@ -463,7 +503,7 @@
     <li><a href="trials.html">Clinical Trials</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <p>Connecticut Society of Dermatology &amp; Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a></p>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a> &nbsp;·&nbsp; <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></p>
   <p style="margin-top:6px;">© 2025 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
 </footer>
 
@@ -472,11 +512,7 @@
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     document.querySelectorAll('.event-item').forEach(item => {
-      if (type === 'all') {
-        item.style.display = 'grid';
-      } else {
-        item.style.display = item.dataset.type.includes(type) ? 'grid' : 'none';
-      }
+      item.style.display = (type === 'all' || item.dataset.type.includes(type)) ? 'grid' : 'none';
     });
   }
 </script>
