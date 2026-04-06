@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Society — CT Society of Dermatology</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 2rem 80px;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 48px;
+    align-items: start;
+  }
+  .form-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 2.5rem;
+  }
+  .form-section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.5px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .form-divider {
+    border: none;
+    border-top: 0.5px solid var(--rule);
+    margin: 1.75rem 0;
+  }
+  .photo-upload {
+    border: 1px dashed var(--rule);
+    border-radius: 6px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    background: var(--warm-white);
+    position: relative;
+  }
+  .photo-upload:hover { border-color: var(--navy-light); background: #f0f3f8; }
+  .photo-upload input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .photo-upload p { font-size: 13px; color: var(--text-muted); }
+  .photo-upload span { font-size: 11px; color: var(--text-muted); opacity: 0.7; }
+  .tier-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.1rem; }
+  .tier-option {
+    border: 0.5px solid var(--rule);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .tier-option:hover { border-color: var(--navy-light); background: #f5f8ff; }
+  .tier-option.selected { border-color: var(--navy); background: #f0f4fa; }
+  .tier-option input[type="radio"] { width: 16px; height: 16px; accent-color: var(--navy); flex-shrink: 0; }
+  .tier-info { flex: 1; }
+  .tier-name { font-size: 13px; font-weight: 500; color: var(--navy); }
+  .tier-desc { font-size: 11px; color: var(--text-muted); }
+  .tier-price { font-size: 15px; font-weight: 600; color: var(--navy); white-space: nowrap; }
+  .opt-in-box {
+    border: 0.5px solid var(--rule);
+    border-radius: 6px;
+    padding: 1rem 1.1rem;
+    background: var(--warm-white);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .opt-in-box input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--navy); flex-shrink: 0; margin-top: 3px; }
+  .opt-text strong { display: block; font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 2px; }
+  .opt-text span { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .stripe-placeholder {
+    border: 0.5px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.25rem 1rem;
+    background: #fafafa;
+    text-align: center;
+  }
+  .stripe-placeholder .stripe-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .stripe-placeholder .stripe-note { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .btn-submit {
+    width: 100%;
+    padding: 14px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--navy);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background 0.15s;
+  }
+  .btn-submit:hover { background: var(--navy-mid); }
+  .form-note { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 0.75rem; line-height: 1.5; }
+  .sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .sidebar-card { background: var(--white); border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .sidebar-card-header { background: var(--navy); padding: 0.85rem 1.25rem; }
+  .sidebar-card-header h3 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .sidebar-card-body { padding: 1.25rem; }
+  .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .benefit-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-body); line-height: 1.5; }
+  .benefit-check { width: 18px; height: 18px; border-radius: 50%; background: #e8f0e8; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .benefit-check svg { width: 10px; height: 10px; stroke: #2d7a2d; fill: none; stroke-width: 2.5; }
+  .tier-summary { display: flex; flex-direction: column; }
+  .tier-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; padding: 8px 0; border-bottom: 0.5px solid var(--rule); }
+  .tier-row:last-child { border-bottom: none; }
+  .t-name { color: var(--text-body); }
+  .t-note { font-size: 11px; color: var(--text-muted); display: block; }
+  .t-price { font-weight: 600; color: var(--navy); }
+  .contact-info { font-size: 13px; color: var(--text-body); line-height: 1.8; }
+  .contact-info strong { color: var(--navy); display: block; }
+  .contact-info a { color: var(--navy-light); text-decoration: none; }
+  @media (max-width: 768px) {
+    .main { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-logo-main">CT Society of Dermatology</span>
+    <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="signup.html" class="active">Membership</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="cme.html">CME</a></li>
+    <li><a href="legislation.html">Legislation</a></li>
+    <li><a href="trials.html">Clinical Trials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="login.html" class="nav-cta">Member Login</a>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">Membership Application</div>
+  <h1>Join the <em>Connecticut Society</em> of Dermatology</h1>
+  <p>For board-certified and board-eligible dermatologists practicing in Connecticut. Membership is optional — much of our site is open to all physicians.</p>
+</div>
+
+<div class="main">
+
+  <div class="form-card">
+
+    <div class="form-section-title">
+      <span class="step-num">1</span> Personal Information
+    </div>
+
+    <div class="form-row form-group">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Jane">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Smith">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" placeholder="jsmith@practice.com">
+    </div>
+    <div class="form-row form-group">
+      <div class="form-group">
+        <label>Office Phone</label>
+        <input type="tel" placeholder="(860) 555-0100">
+      </div>
+      <div class="form-group">
+        <label>Mobile <span class="optional">for SMS alerts</span></label>
+        <input type="tel" placeholder="(860) 555-0101">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Practice / Institution</label>
+      <input type="text" placeholder="e.g. Yale School of Medicine, Private Practice">
+    </div>
+    <div class="form-row form-group">
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" placeholder="New Haven">
+      </div>
+      <div class="form-group">
+        <label>State</label>
+        <select>
+          <option value="">Select</option>
+          <option selected>CT</option>
+          <option>MA</option><option>NY</option><option>RI</option><option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <hr class="form-divider">
+    <div class="form-section-title">
+      <span class="step-num">2</span> Credentials &amp; Specialty
+    </div>
+
+    <div class="form-row form-group">
+      <div class="form-group">
+        <label>Degree</label>
+        <select>
+          <option value="">Select</option>
+          <option>MD</option><option>DO</option><option>MD, PhD</option><option>DO, PhD</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Year in Practice</label>
+        <select id="year-select" onchange="updateTier()">
+          <option value="">Select</option>
+          <option value="1">1st year</option>
+          <option value="2">2nd year</option>
+          <option value="3">3rd year</option>
+          <option value="4+">4th year or beyond</option>
+          <option value="senior">Senior (67+, &lt;20 hrs/wk)</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Primary Specialty</label>
+      <select>
+        <option value="">Select specialty</option>
+        <option>General Dermatology</option>
+        <option>Dermatologic Surgery</option>
+        <option>Mohs Micrographic Surgery</option>
+        <option>Cosmetic Dermatology</option>
+        <option>Pediatric Dermatology</option>
+        <option>Dermatopathology</option>
+        <option>Immunodermatology</option>
+        <option>Photomedicine</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Subspecialty <span class="optional">optional</span></label>
+      <select>
+        <option value="">Select subspecialty</option>
+        <option>Wound Care</option>
+        <option>Laser &amp; Light Therapy</option>
+        <option>Cutaneous Oncology</option>
+        <option>Inflammatory Skin Disease</option>
+        <option>Hair &amp; Nail Disorders</option>
+        <option>Genodermatoses</option>
+        <option>Contact Dermatitis</option>
+        <option>Autoimmune Blistering Disease</option>
+        <option>None / General</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Board Status</label>
+      <select>
+        <option value="">Select</option>
+        <option>Board Certified — American Board of Dermatology</option>
+        <option>Board Certified — American Osteopathic Board of Dermatology</option>
+        <option>Board Eligible</option>
+        <option>Resident / Fellow in Training</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>NPI Number <span class="optional">optional</span></label>
+      <input type="text" placeholder="1234567890">
+    </div>
+    <div class="form-group">
+      <label>Bio <span class="optional">optional — shown in member directory</span></label>
+      <textarea placeholder="Brief professional bio..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>Profile Photo <span class="optional">optional</span></label>
+      <div class="photo-upload">
+        <input type="file" accept="image/*">
+        <p>Click to upload headshot</p>
+        <span>JPG or PNG · Max 5MB</span>
+      </div>
+    </div>
+
+    <hr class="form-divider">
+    <div class="form-section-title">
+      <span class="step-num">3</span> Membership Tier
+    </div>
+
+    <div class="tier-grid">
+      <label class="tier-option selected" id="tier-regular">
+        <input type="radio" name="tier" value="regular" checked onchange="selectTier(this)">
+        <div class="tier-info">
+          <div class="tier-name">Regular Membership</div>
+          <div class="tier-desc">Active dermatologists in practice</div>
+        </div>
+        <div class="tier-price">$450 / yr</div>
+      </label>
+      <label class="tier-option" id="tier-y1">
+        <input type="radio" name="tier" value="y1" onchange="selectTier(this)">
+        <div class="tier-info">
+          <div class="tier-name">First Year in Practice</div>
+          <div class="tier-desc">Reduced rate for new practitioners</div>
+        </div>
+        <div class="tier-price">$175 / yr</div>
+      </label>
+      <label class="tier-option" id="tier-y2">
+        <input type="radio" name="tier" value="y2" onchange="selectTier(this)">
+        <div class="tier-info">
+          <div class="tier-name">Second Year in Practice</div>
+          <div class="tier-desc">Transitional rate</div>
+        </div>
+        <div class="tier-price">$260 / yr</div>
+      </label>
+      <label class="tier-option" id="tier-y3">
+        <input type="radio" name="tier" value="y3" onchange="selectTier(this)">
+        <div class="tier-info">
+          <div class="tier-name">Third Year in Practice</div>
+          <div class="tier-desc">Transitional rate</div>
+        </div>
+        <div class="tier-price">$350 / yr</div>
+      </label>
+      <label class="tier-option" id="tier-senior">
+        <input type="radio" name="tier" value="senior" onchange="selectTier(this)">
+        <div class="tier-info">
+          <div class="tier-name">Senior Member</div>
+          <div class="tier-desc">Age 67+, fewer than 20 hrs/week</div>
+        </div>
+        <div class="tier-price">$175 / yr</div>
+      </label>
+    </div>
+
+    <hr class="form-divider">
+    <div class="form-section-title">
+      <span class="step-num">4</span> Communication Preferences
+    </div>
+
+    <div class="opt-in-box">
+      <input type="checkbox" id="sms-opt">
+      <div class="opt-text">
+        <strong>Opt in to SMS text alerts</strong>
+        <span>Receive reminders about meetings, legislative alerts, CME deadlines, and society announcements. Message &amp; data rates may apply. Reply STOP at any time.</span>
+      </div>
+    </div>
+    <div class="opt-in-box">
+      <input type="checkbox" id="newsletter-opt" checked>
+      <div class="opt-text">
+        <strong>Subscribe to the CTDS Newsletter</strong>
+        <span>Monthly updates on dermatology news, legislation, events, and clinical trial listings.</span>
+      </div>
+    </div>
+
+    <hr class="form-divider">
+    <div class="form-section-title">
+      <span class="step-num">5</span> Create Your Account
+    </div>
+
+    <div class="form-group">
+      <label>Email <span class="optional">used to log in</span></label>
+      <input type="email" placeholder="Same as above or different">
+    </div>
+    <div class="form-row form-group">
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="Min. 8 characters">
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" placeholder="Repeat password">
+      </div>
+    </div>
+
+    <hr class="form-divider">
+    <div class="form-section-title">
+      <span class="step-num">6</span> Payment
+    </div>
+
+    <div class="stripe-placeholder">
+      <div class="stripe-label">Secure Payment via Stripe</div>
+      <div class="stripe-note">Online payment processing is coming soon. After submitting your application, our Executive Director will contact you with payment instructions.</div>
+    </div>
+
+    <button class="btn-submit" onclick="handleSubmit()">Submit Membership Application</button>
+    <p class="form-note">By submitting, you confirm you are a licensed dermatologist or dermatology resident practicing in Connecticut. Membership is subject to review by the CTDS Executive Committee.</p>
+
+  </div>
+
+  <div class="sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header"><h3>Member Benefits</h3></div>
+      <div class="sidebar-card-body">
+        <ul class="benefit-list">
+          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Access to the private member directory</li>
+          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Direct messaging with the CTDS legislative lobbyist</li>
+          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>CME lecture library &amp; continuing education resources</li>
+          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Clinical trial listings &amp; coordinator contact info</li>
+          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>SMS &amp; email alerts for meetings &amp; legislation</li>
+          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Discounted registration at CTDS annual meetings</li>
+          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Legislative advocacy at state &amp; federal level</li>
+          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>CTDS newsletters and archived resources</li>
+          <li><div class="benefit-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Networking with Connecticut's dermatology community</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header"><h3>Annual Dues</h3></div>
+      <div class="sidebar-card-body">
+        <div class="tier-summary">
+          <div class="tier-row"><div><span class="t-name">Regular Membership</span></div><div class="t-price">$450</div></div>
+          <div class="tier-row"><div><span class="t-name">1st Year in Practice</span></div><div class="t-price">$175</div></div>
+          <div class="tier-row"><div><span class="t-name">2nd Year in Practice</span></div><div class="t-price">$260</div></div>
+          <div class="tier-row"><div><span class="t-name">3rd Year in Practice</span></div><div class="t-price">$350</div></div>
+          <div class="tier-row"><div><span class="t-name">Senior Member</span><span class="t-note">Age 67+, &lt;20 hrs/week</span></div><div class="t-price">$175</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header"><h3>Questions?</h3></div>
+      <div class="sidebar-card-body">
+        <div class="contact-info">
+          <strong>Debbie Osborn</strong>
+          Executive Director, CTDS<br>
+          <a href="tel:8605673787">(860) 567-3787</a><br>
+          <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a><br><br>
+          P.O. Box 1079, Litchfield, CT 06759
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="cme.html">CME</a></li>
+    <li><a href="legislation.html">Legislation</a></li>
+    <li><a href="trials.html">Clinical Trials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p>Connecticut Society of Dermatology &amp; Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a></p>
+  <p style="margin-top:6px;">© 2025 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
+</footer>
+
+<script>
+  function selectTier(radio) {
+    document.querySelectorAll('.tier-option').forEach(el => el.classList.remove('selected'));
+    radio.closest('.tier-option').classList.add('selected');
+  }
+  function updateTier() {
+    const val = document.getElementById('year-select').value;
+    const map = { '1': 'y1', '2': 'y2', '3': 'y3', '4+': 'regular', 'senior': 'senior' };
+    if (map[val]) {
+      const radio = document.querySelector(`input[value="${map[val]}"]`);
+      if (radio) { radio.checked = true; selectTier(radio); }
+    }
+  }
+  function handleSubmit() {
+    const btn = document.querySelector('.btn-submit');
+    btn.textContent = 'Submitting…';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    setTimeout(() => {
+      btn.textContent = '✓ Application Submitted';
+      btn.style.background = '#2d6a4f';
+      btn.style.opacity = '1';
+    }, 1200);
+  }
+</script>
+</body>
+</html>

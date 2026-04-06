@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legislation — CT Society of Dermatology</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* ── LAYOUT ── */
+  .leg-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 2rem 80px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── TABS ── */
+  .tab-bar {
+    display: flex;
+    gap: 0;
+    border-bottom: 0.5px solid var(--rule);
+    margin-bottom: 2rem;
+  }
+  .tab-btn {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.85rem 1.5rem;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    margin-bottom: -1px;
+  }
+  .tab-btn:hover { color: var(--navy); }
+  .tab-btn.active { color: var(--navy); border-bottom-color: var(--navy); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── BILL CARDS ── */
+  .bill-list { display: flex; flex-direction: column; gap: 16px; }
+  .bill-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  .bill-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 64px;
+  }
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .status-dot.active { background: #2d7a2d; }
+  .status-dot.pending { background: #b87a00; }
+  .status-dot.passed { background: var(--navy); }
+  .status-dot.monitor { background: #888; }
+  .status-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .status-label.active { color: #2d7a2d; }
+  .status-label.pending { color: #b87a00; }
+  .status-label.passed { color: var(--navy); }
+  .status-label.monitor { color: #888; }
+  .bill-num {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .bill-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+  }
+  .bill-desc {
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+  }
+  .bill-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .bill-meta span {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .bill-meta strong { color: var(--navy); }
+
+  /* ── UPDATE ITEMS ── */
+  .update-list { display: flex; flex-direction: column; gap: 0; }
+  .update-item {
+    padding: 1.25rem 0;
+    border-bottom: 0.5px solid var(--rule);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  .update-item:last-child { border-bottom: none; }
+  .update-date {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    padding-top: 3px;
+  }
+  .update-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  .tag-ct { background: #e8eef8; color: var(--navy); }
+  .tag-federal { background: #f0f4fa; color: var(--navy-light); }
+  .tag-fda { background: #eef4ee; color: #2d6a2d; }
+  .tag-cms { background: #fef3e2; color: #8a5a00; }
+  .update-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 4px;
+    line-height: 1.35;
+  }
+  .update-body {
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.65;
+  }
+  .update-link {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--navy-light);
+    text-decoration: none;
+    border-bottom: 1px solid var(--navy-light);
+    display: inline-block;
+    margin-top: 6px;
+  }
+
+  /* ── LOBBYIST ── */
+  .lobbyist-band {
+    background: var(--navy);
+    padding: 64px 2rem;
+    border-top: 3px solid var(--parchment);
+  }
+  .lobbyist-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 60px;
+    align-items: center;
+  }
+  .lobbyist-form {
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 1.75rem;
+  }
+  .lobbyist-form label { color: rgba(255,255,255,0.7); }
+  .lobbyist-form input,
+  .lobbyist-form textarea,
+  .lobbyist-form select {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+    color: #fff;
+  }
+  .lobbyist-form input::placeholder,
+  .lobbyist-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .lobbyist-form input:focus,
+  .lobbyist-form textarea:focus {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.35);
+    box-shadow: none;
+  }
+  .form-group { margin-bottom: 1rem; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── SIDEBAR ── */
+  .leg-sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .sidebar-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .sidebar-card-header {
+    background: var(--navy);
+    padding: 0.85rem 1.25rem;
+  }
+  .sidebar-card-header h3 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+  }
+  .sidebar-card-body { padding: 1.25rem; }
+  .resource-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--rule);
+    text-decoration: none;
+    font-size: 13px;
+    color: var(--navy-light);
+    transition: color 0.15s;
+  }
+  .resource-link:last-child { border-bottom: none; }
+  .resource-link:hover { color: var(--navy); }
+  .resource-link span { font-size: 11px; color: var(--text-muted); display: block; margin-top: 1px; }
+
+  @media (max-width: 900px) {
+    .leg-main { grid-template-columns: 1fr; }
+    .lobbyist-inner { grid-template-columns: 1fr; }
+    .update-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .bill-card { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-logo-main">CT Society of Dermatology</span>
+    <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="signup.html">Membership</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="cme.html">CME</a></li>
+    <li><a href="legislation.html" class="active">Legislation</a></li>
+    <li><a href="trials.html">Clinical Trials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="login.html" class="nav-cta">Member Login</a>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">Advocacy &amp; Policy</div>
+  <h1>Laws &amp; <em>Legislation</em></h1>
+  <p>State and federal legislative updates affecting dermatology practice in Connecticut — tracked and advocated for on your behalf.</p>
+</div>
+
+<div class="leg-main">
+
+  <!-- LEFT CONTENT -->
+  <div>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('ct', this)">Connecticut</button>
+      <button class="tab-btn" onclick="switchTab('federal', this)">Federal</button>
+      <button class="tab-btn" onclick="switchTab('updates', this)">All Updates</button>
+    </div>
+
+    <!-- CT TAB -->
+    <div class="tab-panel active" id="tab-ct">
+      <div class="bill-list">
+
+        <div class="bill-card">
+          <div class="bill-status">
+            <div class="status-dot active"></div>
+            <div class="status-label active">Active</div>
+          </div>
+          <div>
+            <div class="bill-num">CT SB 1022</div>
+            <div class="bill-title">Scope of Practice — Advanced Practice Providers in Dermatology</div>
+            <div class="bill-desc">Legislation under review that would expand the scope of practice for advanced practice providers performing dermatologic procedures in Connecticut, including certain surgical and cosmetic treatments currently restricted to licensed physicians.</div>
+            <div class="bill-meta">
+              <span><strong>Status:</strong> Public Hearing — Joint Committee on Public Health</span>
+              <span><strong>Session:</strong> 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bill-card">
+          <div class="bill-status">
+            <div class="status-dot pending"></div>
+            <div class="status-label pending">Pending</div>
+          </div>
+          <div>
+            <div class="bill-num">CT HB 6784</div>
+            <div class="bill-title">Step Therapy Reform — Prior Authorization Requirements</div>
+            <div class="bill-desc">Proposed legislation to reform step therapy protocols for biologic medications in dermatology, requiring insurers to honor existing treatment regimens and streamlining prior authorization for established dermatologic biologics.</div>
+            <div class="bill-meta">
+              <span><strong>Status:</strong> Committee Review</span>
+              <span><strong>Session:</strong> 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bill-card">
+          <div class="bill-status">
+            <div class="status-dot passed"></div>
+            <div class="status-label passed">Passed</div>
+          </div>
+          <div>
+            <div class="bill-num">CT PA 24-112</div>
+            <div class="bill-title">Telehealth Continuity Act — Dermatology Provisions</div>
+            <div class="bill-desc">Signed into law in 2024, this act extended telehealth reimbursement parity for dermatology services including teledermatology consultations and store-and-forward imaging through December 2026.</div>
+            <div class="bill-meta">
+              <span><strong>Status:</strong> Signed into Law — 2024</span>
+              <span><strong>Effective:</strong> January 1, 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bill-card">
+          <div class="bill-status">
+            <div class="status-dot monitor"></div>
+            <div class="status-label monitor">Monitor</div>
+          </div>
+          <div>
+            <div class="bill-num">CT SB 892</div>
+            <div class="bill-title">Pharmacy Benefit Manager Transparency Act</div>
+            <div class="bill-desc">Legislation requiring greater transparency from pharmacy benefit managers regarding formulary decisions and drug pricing, with potential impact on dermatologic biologic and specialty drug access for Connecticut patients.</div>
+            <div class="bill-meta">
+              <span><strong>Status:</strong> Referred to Commerce Committee</span>
+              <span><strong>Session:</strong> 2025</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FEDERAL TAB -->
+    <div class="tab-panel" id="tab-federal">
+      <div class="bill-list">
+
+        <div class="bill-card">
+          <div class="bill-status">
+            <div class="status-dot active"></div>
+            <div class="status-label active">Active</div>
+          </div>
+          <div>
+            <div class="bill-num">CMS Final Rule 2025</div>
+            <div class="bill-title">Physician Fee Schedule — Dermatology Impact</div>
+            <div class="bill-desc">The 2025 CMS Physician Fee Schedule final rule includes reimbursement adjustments affecting dermatology procedure codes. The CTDS and AAD are tracking implementation and advocating for equitable reimbursement for dermatologists.</div>
+            <div class="bill-meta">
+              <span><strong>Effective:</strong> January 1, 2025</span>
+              <span><strong>Source:</strong> CMS.gov</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bill-card">
+          <div class="bill-status">
+            <div class="status-dot pending"></div>
+            <div class="status-label pending">Pending</div>
+          </div>
+          <div>
+            <div class="bill-num">FDA Guidance 2025</div>
+            <div class="bill-title">Topical Biologics &amp; Biosimilars — Updated Regulatory Framework</div>
+            <div class="bill-desc">New FDA draft guidance on interchangeability standards for topical biologics and biosimilars in dermatology, including dupilumab and IL-17 inhibitor biosimilars entering the market in 2025.</div>
+            <div class="bill-meta">
+              <span><strong>Status:</strong> Public Comment Period Open</span>
+              <span><strong>Source:</strong> FDA.gov</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bill-card">
+          <div class="bill-status">
+            <div class="status-dot active"></div>
+            <div class="status-label active">Active</div>
+          </div>
+          <div>
+            <div class="bill-num">S. 2440</div>
+            <div class="bill-title">GOLD Card Act — Prior Authorization Reform</div>
+            <div class="bill-desc">Federal legislation that would exempt physicians who meet quality benchmarks from burdensome prior authorization requirements under Medicare Advantage, with significant implications for dermatology practices nationwide.</div>
+            <div class="bill-meta">
+              <span><strong>Status:</strong> Senate Finance Committee</span>
+              <span><strong>Session:</strong> 119th Congress</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ALL UPDATES TAB -->
+    <div class="tab-panel" id="tab-updates">
+      <div class="update-list">
+
+        <div class="update-item">
+          <div class="update-date">Apr 2025</div>
+          <div>
+            <span class="update-tag tag-ct">Connecticut</span>
+            <div class="update-title">SB 1022 Public Hearing — Society Testimony Submitted</div>
+            <div class="update-body">The CTDS submitted written testimony opposing scope-of-practice expansion for non-physician providers performing dermatologic surgical procedures. Testimony emphasized patient safety and the complexity of dermatologic diagnosis and treatment.</div>
+          </div>
+        </div>
+
+        <div class="update-item">
+          <div class="update-date">Mar 2025</div>
+          <div>
+            <span class="update-tag tag-federal">Federal</span>
+            <div class="update-title">AAD Advocacy Day — CT Delegation Participates</div>
+            <div class="update-body">Connecticut dermatologists joined AAD's annual advocacy day in Washington, meeting with congressional delegations to discuss prior authorization reform, scope of practice, and Medicare reimbursement.</div>
+            <a href="https://www.aad.org/member/advocacy" target="_blank" class="update-link">AAD Advocacy Resources →</a>
+          </div>
+        </div>
+
+        <div class="update-item">
+          <div class="update-date">Jan 2025</div>
+          <div>
+            <span class="update-tag tag-cms">CMS</span>
+            <div class="update-title">2025 Physician Fee Schedule Takes Effect</div>
+            <div class="update-body">The 2025 CMS Physician Fee Schedule final rule went into effect January 1. Dermatology-specific code adjustments include changes to E&M visit coding, Mohs surgery reimbursement, and phototherapy procedure valuations.</div>
+            <a href="https://www.cms.gov" target="_blank" class="update-link">CMS Final Rule →</a>
+          </div>
+        </div>
+
+        <div class="update-item">
+          <div class="update-date">Dec 2024</div>
+          <div>
+            <span class="update-tag tag-fda">FDA</span>
+            <div class="update-title">FDA Approves New IL-13 Inhibitor for Atopic Dermatitis</div>
+            <div class="update-body">The FDA approved a new interleukin-13 inhibitor biologic for moderate-to-severe atopic dermatitis in adults, expanding the therapeutic toolkit available to Connecticut dermatologists.</div>
+          </div>
+        </div>
+
+        <div class="update-item">
+          <div class="update-date">Nov 2024</div>
+          <div>
+            <span class="update-tag tag-ct">Connecticut</span>
+            <div class="update-title">Telehealth Parity Extended Through 2026</div>
+            <div class="update-body">CT PA 24-112 extended telehealth reimbursement parity for dermatology services including teledermatology and store-and-forward imaging consultations through December 31, 2026.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="leg-sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header"><h3>Legislative Status Key</h3></div>
+      <div class="sidebar-card-body">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;">
+            <div class="status-dot active"></div><span style="color:#2d7a2d;font-weight:500;">Active</span><span style="color:var(--text-muted);font-size:12px;">— Currently in committee or floor</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;">
+            <div class="status-dot pending"></div><span style="color:#b87a00;font-weight:500;">Pending</span><span style="color:var(--text-muted);font-size:12px;">— Introduced, awaiting action</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;">
+            <div class="status-dot passed"></div><span style="color:var(--navy);font-weight:500;">Passed</span><span style="color:var(--text-muted);font-size:12px;">— Signed into law</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;">
+            <div class="status-dot monitor"></div><span style="color:#888;font-weight:500;">Monitor</span><span style="color:var(--text-muted);font-size:12px;">— Tracking, no action yet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header"><h3>Advocacy Resources</h3></div>
+      <div class="sidebar-card-body">
+        <a href="https://www.aad.org/member/advocacy" target="_blank" class="resource-link">
+          <div><div>AAD Advocacy Center</div><span>aad.org</span></div><span>→</span>
+        </a>
+        <a href="https://www.cga.ct.gov" target="_blank" class="resource-link">
+          <div><div>CT General Assembly</div><span>cga.ct.gov</span></div><span>→</span>
+        </a>
+        <a href="https://www.cms.gov" target="_blank" class="resource-link">
+          <div><div>CMS — Medicare &amp; Medicaid</div><span>cms.gov</span></div><span>→</span>
+        </a>
+        <a href="https://www.fda.gov/drugs" target="_blank" class="resource-link">
+          <div><div>FDA — Drug Information</div><span>fda.gov</span></div><span>→</span>
+        </a>
+        <a href="https://www.csms.org" target="_blank" class="resource-link">
+          <div><div>CT State Medical Society</div><span>csms.org</span></div><span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header"><h3>Legislative Committee</h3></div>
+      <div class="sidebar-card-body">
+        <div style="font-size:13px;color:var(--text-body);line-height:1.8;">
+          <strong style="color:var(--navy);display:block;margin-bottom:6px;">Members</strong>
+          Donna Aiudi, MD<br>
+          Mark Goldstein, MD<br>
+          Howard Rogers, MD<br>
+          <br>
+          <strong style="color:var(--navy);display:block;margin-bottom:4px;">Questions?</strong>
+          <a href="mailto:debbieosborn36@yahoo.com" style="color:var(--navy-light);">debbieosborn36@yahoo.com</a><br>
+          <a href="tel:8605673787" style="color:var(--navy-light);">(860) 567-3787</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LOBBYIST SECTION -->
+<div class="lobbyist-band">
+  <div class="lobbyist-inner">
+    <div>
+      <div class="section-label light">Direct Access</div>
+      <div class="rule-bar light"></div>
+      <h2 class="section-heading light">Message Your <em style="font-family:var(--serif);font-style:italic;">Lobbyist</em></h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:1.5rem;">CTDS members have direct access to the Society's legislative lobbyist. Use this form to raise issues, ask questions about pending legislation, or request advocacy on a specific matter affecting your practice.</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;">This form is available to all physicians. Member login provides direct email access to the lobbyist for time-sensitive matters.</p>
+      <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);border-radius:6px;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;">Response Time</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.65);">Messages are reviewed within 2 business days. For urgent legislative matters, contact Debbie Osborn directly at (860) 567-3787.</div>
+      </div>
+    </div>
+    <div class="lobbyist-form">
+      <div class="form-row-2 form-group">
+        <div>
+          <label>First Name</label>
+          <input type="text" placeholder="Jane">
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="jsmith@practice.com">
+      </div>
+      <div class="form-group">
+        <label>Topic</label>
+        <select>
+          <option value="">Select a topic</option>
+          <option>Scope of Practice</option>
+          <option>Prior Authorization / Step Therapy</option>
+          <option>Telehealth Policy</option>
+          <option>Medicare / Medicaid Reimbursement</option>
+          <option>FDA Regulatory Matter</option>
+          <option>State Legislation</option>
+          <option>Federal Legislation</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Message</label>
+        <textarea rows="5" placeholder="Describe the issue or question you'd like to raise with our lobbyist..."></textarea>
+      </div>
+      <button class="btn btn-parchment" style="width:100%;text-align:center;" onclick="submitLobbyist(this)">Send Message</button>
+      <p style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:0.75rem;">Your information is kept confidential and shared only with the CTDS legislative team.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="signup.html">Membership</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="cme.html">CME</a></li>
+    <li><a href="legislation.html">Legislation</a></li>
+    <li><a href="trials.html">Clinical Trials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p>Connecticut Society of Dermatology &amp; Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a></p>
+  <p style="margin-top:6px;">© 2025 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
+</footer>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+  function submitLobbyist(btn) {
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = '✓ Message Sent';
+      btn.style.background = '#c8e6c9';
+      btn.style.color = '#1b5e20';
+    }, 1200);
+  }
+</script>
+
+</body>
+</html>
