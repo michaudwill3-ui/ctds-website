@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CME & Education — CT Society of Dermatology</title>
+<title>CME & Education — Connecticut Society of Dermatology and Dermatologic Surgery</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
+
   /* ── LAYOUT ── */
   .cme-main {
     max-width: 1100px;
     margin: 0 auto;
     padding: 60px 2rem 80px;
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 290px;
     gap: 48px;
     align-items: start;
   }
@@ -20,7 +21,6 @@
   /* ── TABS ── */
   .tab-bar {
     display: flex;
-    gap: 0;
     border-bottom: 0.5px solid var(--rule);
     margin-bottom: 2rem;
   }
@@ -44,11 +44,11 @@
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
-  /* ── LECTURE CARDS ── */
+  /* ── LECTURE GRID ── */
   .lecture-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
   }
   .lecture-card {
     background: var(--white);
@@ -60,48 +60,48 @@
   }
   .lecture-thumb {
     background: var(--navy);
-    height: 100px;
+    height: 96px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
   }
-  .lecture-thumb.alt1 { background: #0f2d5a; }
-  .lecture-thumb.alt2 { background: #12356b; }
-  .lecture-thumb.alt3 { background: #0a1f44; }
+  .lecture-thumb.t2 { background: #0f2d5a; }
+  .lecture-thumb.t3 { background: #12356b; }
+  .lecture-thumb.t4 { background: #0a1f44; }
   .play-btn {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: background 0.15s;
   }
-  .play-btn:hover { background: rgba(255,255,255,0.25); }
-  .play-btn svg { width: 16px; height: 16px; fill: #fff; margin-left: 2px; }
+  .play-btn:hover { background: rgba(255,255,255,0.2); }
+  .play-btn svg { width: 14px; height: 14px; fill: #fff; margin-left: 2px; }
   .lecture-duration {
     position: absolute;
     bottom: 8px;
     right: 10px;
     font-size: 10px;
     font-weight: 600;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.5);
     letter-spacing: 0.04em;
   }
-  .lecture-type-tag {
+  .lecture-source-tag {
     position: absolute;
     top: 8px;
     left: 10px;
     font-size: 9px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
-    background: rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.75);
     padding: 2px 7px;
     border-radius: 2px;
   }
@@ -114,7 +114,7 @@
   .lecture-category {
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-muted);
     margin-bottom: 4px;
@@ -132,11 +132,13 @@
     color: var(--text-muted);
     margin-bottom: 0.75rem;
   }
-  .lecture-meta {
+  .lecture-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 0.5px solid var(--rule);
   }
   .cme-credits {
     font-size: 11px;
@@ -157,12 +159,12 @@
   }
 
   /* ── NEWSLETTER LIST ── */
-  .newsletter-list { display: flex; flex-direction: column; gap: 12px; }
+  .newsletter-list { display: flex; flex-direction: column; gap: 10px; }
   .newsletter-item {
     background: var(--white);
     border: 0.5px solid var(--rule);
     border-radius: 8px;
-    padding: 1.1rem 1.5rem;
+    padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
     gap: 1.25rem;
@@ -173,50 +175,37 @@
     padding: 0.5rem 0.75rem;
     text-align: center;
     flex-shrink: 0;
-    min-width: 64px;
+    min-width: 60px;
   }
   .nl-month {
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--parchment);
     opacity: 0.8;
   }
-  .nl-year {
-    font-size: 16px;
-    font-weight: 300;
-    color: #fff;
-    line-height: 1.1;
-  }
+  .nl-year { font-size: 15px; font-weight: 300; color: #fff; line-height: 1.1; }
   .newsletter-info { flex: 1; }
-  .newsletter-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--navy);
-    margin-bottom: 3px;
-  }
-  .newsletter-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
+  .newsletter-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
+  .newsletter-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
   .newsletter-link {
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--navy);
     text-decoration: none;
     border-bottom: 1px solid var(--navy);
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   /* ── ORG EDUCATION CARDS ── */
   .org-edu-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
   }
   .org-edu-card {
     background: var(--white);
@@ -227,33 +216,35 @@
     display: block;
     transition: border-color 0.15s;
   }
-  .org-edu-card:hover { border-color: var(--navy); }
+  .org-edu-card:hover { border-color: var(--navy-light); }
   .org-edu-abbr {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 300;
     color: var(--navy);
     margin-bottom: 4px;
+    letter-spacing: -0.01em;
   }
   .org-edu-name {
     font-size: 12px;
     font-weight: 500;
     color: var(--navy);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     line-height: 1.4;
   }
   .org-edu-desc {
     font-size: 12px;
     color: var(--text-muted);
-    line-height: 1.55;
+    line-height: 1.6;
     margin-bottom: 0.75rem;
   }
   .org-edu-link {
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--navy-light);
     border-bottom: 1px solid var(--navy-light);
+    text-decoration: none;
   }
 
   /* ── SIDEBAR ── */
@@ -279,24 +270,18 @@
   .deadline-item {
     padding: 8px 0;
     border-bottom: 0.5px solid var(--rule);
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
   }
   .deadline-item:last-child { border-bottom: none; }
   .deadline-date {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--text-muted);
-    letter-spacing: 0.04em;
+    margin-bottom: 2px;
   }
-  .deadline-title {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--navy);
-    line-height: 1.3;
-  }
-  .deadline-note { font-size: 11px; color: var(--text-muted); }
+  .deadline-title { font-size: 13px; font-weight: 500; color: var(--navy); line-height: 1.3; }
+  .deadline-note { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
   .resource-link {
     display: flex;
     justify-content: space-between;
@@ -306,67 +291,64 @@
     text-decoration: none;
     font-size: 13px;
     color: var(--navy-light);
+    transition: color 0.15s;
   }
   .resource-link:last-child { border-bottom: none; }
   .resource-link:hover { color: var(--navy); }
-  .resource-link span { font-size: 11px; color: var(--text-muted); display: block; }
+  .resource-link .rl-sub { font-size: 11px; color: var(--text-muted); display: block; margin-top: 1px; }
 
-  /* ── CREDITS BAND ── */
-  .credits-band {
+  /* ── CERTIFICATION BAND ── */
+  .cert-band {
     background: var(--navy);
-    padding: 64px 2rem;
+    padding: 72px 2rem;
     border-top: 3px solid var(--parchment);
   }
-  .credits-inner {
+  .cert-inner {
     max-width: 1100px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 32px;
   }
-  .credit-card {
-    background: rgba(255,255,255,0.06);
-    border: 0.5px solid rgba(255,255,255,0.12);
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 2.5rem;
+  }
+  .cert-card {
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.1);
     border-radius: 8px;
     padding: 1.5rem;
   }
-  .credit-org {
-    font-size: 11px;
+  .cert-org {
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--parchment);
-    opacity: 0.7;
-    margin-bottom: 0.5rem;
+    opacity: 0.65;
+    margin-bottom: 6px;
   }
-  .credit-title {
-    font-size: 15px;
-    font-weight: 500;
-    color: #fff;
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-  .credit-desc {
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  .credit-link {
+  .cert-title { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 6px; line-height: 1.3; }
+  .cert-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.65; margin-bottom: 1rem; }
+  .cert-link {
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--parchment);
     text-decoration: none;
-    border-bottom: 1px solid rgba(232,224,208,0.4);
+    border-bottom: 1px solid rgba(232,224,208,0.35);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     .cme-main { grid-template-columns: 1fr; }
     .lecture-grid { grid-template-columns: 1fr; }
     .org-edu-grid { grid-template-columns: 1fr; }
-    .credits-inner { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .newsletter-item { flex-wrap: wrap; gap: 0.75rem; }
+    .tab-btn { padding: 0.85rem 0.9rem; font-size: 11px; }
   }
 </style>
 </head>
@@ -393,20 +375,19 @@
 <div class="page-header">
   <div class="eyebrow">Education</div>
   <h1>Continuing Medical <em>Education</em></h1>
-  <p>Lectures, CME resources, newsletters, and board certification tools — everything Connecticut dermatologists need for lifelong learning.</p>
+  <p>Lectures, CME resources, newsletters, and board certification tools for Connecticut dermatologists.</p>
 </div>
 
 <div class="cme-main">
 
-  <!-- LEFT CONTENT -->
   <div>
     <div class="tab-bar">
       <button class="tab-btn active" onclick="switchTab('lectures', this)">Lectures</button>
       <button class="tab-btn" onclick="switchTab('newsletters', this)">Newsletters</button>
-      <button class="tab-btn" onclick="switchTab('orgs', this)">Org Resources</button>
+      <button class="tab-btn" onclick="switchTab('orgs', this)">Organization Resources</button>
     </div>
 
-    <!-- LECTURES TAB -->
+    <!-- LECTURES -->
     <div class="tab-panel active" id="tab-lectures">
       <div class="section-label">Library</div>
       <div class="rule-bar"></div>
@@ -414,7 +395,7 @@
 
         <div class="lecture-card">
           <div class="lecture-thumb">
-            <div class="lecture-type-tag">CME Accredited</div>
+            <div class="lecture-source-tag">CME Accredited</div>
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
@@ -422,18 +403,18 @@
           </div>
           <div class="lecture-body">
             <div class="lecture-category">Biologics</div>
-            <div class="lecture-title">IL-17 vs IL-23 Inhibitors: Choosing the Right Biologic for Psoriasis</div>
-            <div class="lecture-speaker">Omar Ibrahimi, MD — Education Chair, CTDS</div>
-            <div class="lecture-meta">
+            <div class="lecture-title">IL-17 vs IL-23 Inhibitors: Selecting the Right Biologic for Psoriasis</div>
+            <div class="lecture-speaker">Omar Ibrahimi, M.D. — Education Chair, CTDS</div>
+            <div class="lecture-footer">
               <span class="cme-credits">1.0 CME Credit</span>
-              <a href="#" class="lecture-link">Watch →</a>
+              <a href="#" class="lecture-link">Watch</a>
             </div>
           </div>
         </div>
 
         <div class="lecture-card">
-          <div class="lecture-thumb alt1">
-            <div class="lecture-type-tag">CME Accredited</div>
+          <div class="lecture-thumb t2">
+            <div class="lecture-source-tag">ACMS Lecture</div>
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
@@ -441,18 +422,18 @@
           </div>
           <div class="lecture-body">
             <div class="lecture-category">Surgical Technique</div>
-            <div class="lecture-title">Advances in Mohs Micrographic Surgery: Reconstruction & Outcomes</div>
+            <div class="lecture-title">Advances in Mohs Micrographic Surgery: Reconstruction and Outcomes</div>
             <div class="lecture-speaker">ACMS Faculty Lecture Series</div>
-            <div class="lecture-meta">
+            <div class="lecture-footer">
               <span class="cme-credits">1.5 CME Credits</span>
-              <a href="https://www.acmssurgery.com" target="_blank" class="lecture-link">Watch →</a>
+              <a href="https://www.acmssurgery.com" target="_blank" class="lecture-link">Watch</a>
             </div>
           </div>
         </div>
 
         <div class="lecture-card">
-          <div class="lecture-thumb alt2">
-            <div class="lecture-type-tag">AAD Lecture</div>
+          <div class="lecture-thumb t3">
+            <div class="lecture-source-tag">AAD Lecture</div>
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
@@ -460,18 +441,18 @@
           </div>
           <div class="lecture-body">
             <div class="lecture-category">Atopic Dermatitis</div>
-            <div class="lecture-title">JAK Inhibitors in Atopic Dermatitis: Safety Monitoring & Long-Term Use</div>
+            <div class="lecture-title">JAK Inhibitors in Atopic Dermatitis: Safety Monitoring and Long-Term Use</div>
             <div class="lecture-speaker">AAD Annual Meeting 2024 — Recording</div>
-            <div class="lecture-meta">
+            <div class="lecture-footer">
               <span class="cme-credits">0.5 CME Credits</span>
-              <a href="https://www.aad.org/member/education" target="_blank" class="lecture-link">Watch →</a>
+              <a href="https://www.aad.org/member/education" target="_blank" class="lecture-link">Watch</a>
             </div>
           </div>
         </div>
 
         <div class="lecture-card">
-          <div class="lecture-thumb alt3">
-            <div class="lecture-type-tag">CTDS Meeting</div>
+          <div class="lecture-thumb t4">
+            <div class="lecture-source-tag">CTDS Meeting</div>
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
@@ -480,17 +461,17 @@
           <div class="lecture-body">
             <div class="lecture-category">Dermatopathology</div>
             <div class="lecture-title">Melanocytic Lesion Diagnosis: A Case-Based Approach to Difficult Presentations</div>
-            <div class="lecture-speaker">CTDS Fall Meeting 2024 — Keynote</div>
-            <div class="lecture-meta">
+            <div class="lecture-speaker">CTDS Annual Fall Meeting 2024 — Keynote</div>
+            <div class="lecture-footer">
               <span class="cme-credits">1.0 CME Credit</span>
-              <a href="#" class="lecture-link">Watch →</a>
+              <a href="#" class="lecture-link">Watch</a>
             </div>
           </div>
         </div>
 
         <div class="lecture-card">
           <div class="lecture-thumb">
-            <div class="lecture-type-tag">ASDS Lecture</div>
+            <div class="lecture-source-tag">ASDS Lecture</div>
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
@@ -498,41 +479,41 @@
           </div>
           <div class="lecture-body">
             <div class="lecture-category">Cosmetic Dermatology</div>
-            <div class="lecture-title">Laser & Energy-Based Device Selection: Evidence-Based Practice Update</div>
+            <div class="lecture-title">Laser and Energy-Based Device Selection: Evidence-Based Practice Update</div>
             <div class="lecture-speaker">ASDS Annual Meeting 2024</div>
-            <div class="lecture-meta">
+            <div class="lecture-footer">
               <span class="cme-credits">1.0 CME Credit</span>
-              <a href="https://www.asds.net/medical-professionals/education" target="_blank" class="lecture-link">Watch →</a>
+              <a href="https://www.asds.net/medical-professionals/education" target="_blank" class="lecture-link">Watch</a>
             </div>
           </div>
         </div>
 
         <div class="lecture-card">
-          <div class="lecture-thumb alt1">
-            <div class="lecture-type-tag">CME Accredited</div>
+          <div class="lecture-thumb t2">
+            <div class="lecture-source-tag">CME Accredited</div>
             <div class="play-btn">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
             <span class="lecture-duration">29 min</span>
           </div>
           <div class="lecture-body">
-            <div class="lecture-category">Pediatric Derm</div>
-            <div class="lecture-title">Recognizing Genodermatoses in Pediatric Patients: Early Diagnosis Pearls</div>
-            <div class="lecture-speaker">Keith Choate, MD — Yale School of Medicine</div>
-            <div class="lecture-meta">
+            <div class="lecture-category">Pediatric Dermatology</div>
+            <div class="lecture-title">Recognizing Genodermatoses in Pediatric Patients: Early Diagnosis</div>
+            <div class="lecture-speaker">Keith Choate, M.D. — Yale School of Medicine</div>
+            <div class="lecture-footer">
               <span class="cme-credits">0.5 CME Credits</span>
-              <a href="#" class="lecture-link">Watch →</a>
+              <a href="#" class="lecture-link">Watch</a>
             </div>
           </div>
         </div>
 
       </div>
-      <div style="margin-top:1.5rem;text-align:center;">
-        <a href="https://www.aad.org/member/education" target="_blank" class="btn btn-primary">View Full AAD Lecture Library →</a>
+      <div style="margin-top:1.5rem;">
+        <a href="https://www.aad.org/member/education" target="_blank" class="btn btn-primary">Full AAD Lecture Library</a>
       </div>
     </div>
 
-    <!-- NEWSLETTERS TAB -->
+    <!-- NEWSLETTERS -->
     <div class="tab-panel" id="tab-newsletters">
       <div class="section-label">Archive</div>
       <div class="rule-bar"></div>
@@ -545,9 +526,9 @@
           </div>
           <div class="newsletter-info">
             <div class="newsletter-title">CTDS Newsletter — Spring 2025</div>
-            <div class="newsletter-desc">Legislative session update · SB 1022 scope of practice hearing · Spring meeting preview · New clinical trial listings · AAD advocacy recap</div>
+            <div class="newsletter-desc">Legislative session update · SB 1022 scope of practice hearing · Spring meeting preview · Clinical trial listings · AAD advocacy recap</div>
           </div>
-          <a href="#" class="newsletter-link">Read →</a>
+          <a href="#" class="newsletter-link">Read</a>
         </div>
 
         <div class="newsletter-item">
@@ -557,9 +538,9 @@
           </div>
           <div class="newsletter-info">
             <div class="newsletter-title">CTDS Newsletter — Winter 2025</div>
-            <div class="newsletter-desc">2025 CMS fee schedule summary · New biologic approvals · Annual meeting recap · Member spotlight · Upcoming CME deadlines</div>
+            <div class="newsletter-desc">2025 CMS fee schedule summary · New biologic approvals · Annual meeting recap · Upcoming CME deadlines</div>
           </div>
-          <a href="#" class="newsletter-link">Read →</a>
+          <a href="#" class="newsletter-link">Read</a>
         </div>
 
         <div class="newsletter-item">
@@ -569,9 +550,9 @@
           </div>
           <div class="newsletter-info">
             <div class="newsletter-title">CTDS Newsletter — Fall 2024</div>
-            <div class="newsletter-desc">Fall meeting highlights · Election cycle legislative preview · FDA biosimilar guidance · New resident welcome · AAD annual meeting preview</div>
+            <div class="newsletter-desc">Annual meeting highlights · Legislative preview · FDA biosimilar guidance · New resident welcome</div>
           </div>
-          <a href="#" class="newsletter-link">Read →</a>
+          <a href="#" class="newsletter-link">Read</a>
         </div>
 
         <div class="newsletter-item">
@@ -581,9 +562,9 @@
           </div>
           <div class="newsletter-info">
             <div class="newsletter-title">CTDS Newsletter — Summer 2024</div>
-            <div class="newsletter-desc">Telehealth parity update · AAD Summer Academy recap · Clinical trial updates · Lobbyist mid-year report · Member news</div>
+            <div class="newsletter-desc">Telehealth parity update · AAD Summer Academy recap · Clinical trial updates · Lobbyist mid-year report</div>
           </div>
-          <a href="#" class="newsletter-link">Read →</a>
+          <a href="#" class="newsletter-link">Read</a>
         </div>
 
         <div class="newsletter-item">
@@ -593,9 +574,9 @@
           </div>
           <div class="newsletter-info">
             <div class="newsletter-title">CTDS Newsletter — Spring 2024</div>
-            <div class="newsletter-desc">Spring meeting preview · Step therapy reform bill update · New CME lecture library launch · Board election results</div>
+            <div class="newsletter-desc">Spring meeting preview · Step therapy reform update · CME lecture library launch · Board election results</div>
           </div>
-          <a href="#" class="newsletter-link">Read →</a>
+          <a href="#" class="newsletter-link">Read</a>
         </div>
 
         <div class="newsletter-item">
@@ -605,15 +586,15 @@
           </div>
           <div class="newsletter-info">
             <div class="newsletter-title">CTDS Newsletter — Winter 2024</div>
-            <div class="newsletter-desc">2024 legislative priorities · CMS 2024 fee schedule · ASDS annual meeting dates · Member directory update notice</div>
+            <div class="newsletter-desc">2024 legislative priorities · CMS fee schedule · ASDS meeting dates · Member directory update</div>
           </div>
-          <a href="#" class="newsletter-link">Read →</a>
+          <a href="#" class="newsletter-link">Read</a>
         </div>
 
       </div>
     </div>
 
-    <!-- ORG RESOURCES TAB -->
+    <!-- ORG RESOURCES -->
     <div class="tab-panel" id="tab-orgs">
       <div class="section-label">Partner Organizations</div>
       <div class="rule-bar"></div>
@@ -623,42 +604,42 @@
           <div class="org-edu-abbr">AAD</div>
           <div class="org-edu-name">American Academy of Dermatology — Education Center</div>
           <div class="org-edu-desc">Comprehensive CME library, online modules, self-assessment tools, and the AAD Basic Dermatology Curriculum. Accredited for AMA PRA Category 1 Credit.</div>
-          <span class="org-edu-link">aad.org/member/education →</span>
+          <span class="org-edu-link">aad.org/member/education</span>
         </a>
 
         <a href="https://www.abderm.org" target="_blank" class="org-edu-card">
           <div class="org-edu-abbr">ABD</div>
           <div class="org-edu-name">American Board of Dermatology</div>
-          <div class="org-edu-desc">Board certification, Maintenance of Certification (MOC), and recertification resources. Includes the Dermatology In-Service Examination (DISE) for residents.</div>
-          <span class="org-edu-link">abderm.org →</span>
+          <div class="org-edu-desc">Board certification, Maintenance of Certification, and the Dermatology In-Service Examination for residents and fellows in training.</div>
+          <span class="org-edu-link">abderm.org</span>
         </a>
 
         <a href="https://www.aocd.org" target="_blank" class="org-edu-card">
           <div class="org-edu-abbr">AOCD</div>
           <div class="org-edu-name">American Osteopathic College of Dermatology</div>
-          <div class="org-edu-desc">CME resources and board certification for osteopathic dermatologists. Annual conference, webinars, and the AOBD recertification program.</div>
-          <span class="org-edu-link">aocd.org →</span>
+          <div class="org-edu-desc">CME resources and board certification for osteopathic dermatologists. Annual conference, webinars, and AOBD recertification programming.</div>
+          <span class="org-edu-link">aocd.org</span>
         </a>
 
         <a href="https://www.asds.net/medical-professionals/education" target="_blank" class="org-edu-card">
           <div class="org-edu-abbr">ASDS</div>
           <div class="org-edu-name">American Society for Dermatologic Surgery — Education</div>
           <div class="org-edu-desc">Procedural training, surgical technique videos, and CME content focused on dermatologic surgery, cosmetic procedures, and skin cancer treatment.</div>
-          <span class="org-edu-link">asds.net/education →</span>
+          <span class="org-edu-link">asds.net/education</span>
         </a>
 
         <a href="https://www.acmssurgery.com/education" target="_blank" class="org-edu-card">
           <div class="org-edu-abbr">ACMS</div>
           <div class="org-edu-name">American College of Mohs Surgery — Education</div>
           <div class="org-edu-desc">Mohs surgery training resources, fellowship program information, and surgical CME content from the leading organization for Mohs micrographic surgeons.</div>
-          <span class="org-edu-link">acmssurgery.com →</span>
+          <span class="org-edu-link">acmssurgery.com</span>
         </a>
 
         <a href="https://medicine.yale.edu/dermatology/" target="_blank" class="org-edu-card">
           <div class="org-edu-abbr">Yale</div>
-          <div class="org-edu-name">Yale Dermatology — Department of Dermatology</div>
-          <div class="org-edu-desc">Grand rounds, research seminars, and educational programs from Yale School of Medicine's Department of Dermatology, chaired by Keith Choate, MD.</div>
-          <span class="org-edu-link">medicine.yale.edu/dermatology →</span>
+          <div class="org-edu-name">Yale School of Medicine — Department of Dermatology</div>
+          <div class="org-edu-desc">Grand rounds, research seminars, and educational programs from Yale's Department of Dermatology, chaired by Keith Choate, M.D.</div>
+          <span class="org-edu-link">medicine.yale.edu/dermatology</span>
         </a>
 
       </div>
@@ -672,24 +653,24 @@
       <div class="sidebar-card-header"><h3>CME Deadlines</h3></div>
       <div class="sidebar-card-body">
         <div class="deadline-item">
-          <span class="deadline-date">Dec 31, 2025</span>
-          <span class="deadline-title">ABD MOC — Part II Self-Assessment</span>
-          <span class="deadline-note">American Board of Dermatology</span>
+          <div class="deadline-date">Dec 31, 2025</div>
+          <div class="deadline-title">ABD MOC — Part II Self-Assessment</div>
+          <div class="deadline-note">American Board of Dermatology</div>
         </div>
         <div class="deadline-item">
-          <span class="deadline-date">Dec 31, 2025</span>
-          <span class="deadline-title">CT Medical License CME Requirement</span>
-          <span class="deadline-note">50 credits per 2-year cycle</span>
+          <div class="deadline-date">Dec 31, 2025</div>
+          <div class="deadline-title">CT Medical License CME Requirement</div>
+          <div class="deadline-note">50 credits per 2-year renewal cycle</div>
         </div>
         <div class="deadline-item">
-          <span class="deadline-date">Mar 1, 2026</span>
-          <span class="deadline-title">ABD MOC — Part IV Practice Assessment</span>
-          <span class="deadline-note">American Board of Dermatology</span>
+          <div class="deadline-date">Mar 1, 2026</div>
+          <div class="deadline-title">ABD MOC — Part IV Practice Assessment</div>
+          <div class="deadline-note">American Board of Dermatology</div>
         </div>
         <div class="deadline-item">
-          <span class="deadline-date">Ongoing</span>
-          <span class="deadline-title">AOBD Recertification Credits</span>
-          <span class="deadline-note">American Osteopathic Board of Derm</span>
+          <div class="deadline-date">Ongoing</div>
+          <div class="deadline-title">AOBD Recertification Credits</div>
+          <div class="deadline-note">American Osteopathic Board of Dermatology</div>
         </div>
       </div>
     </div>
@@ -698,22 +679,22 @@
       <div class="sidebar-card-header"><h3>Quick Links</h3></div>
       <div class="sidebar-card-body">
         <a href="https://www.aad.org/member/education" target="_blank" class="resource-link">
-          <div>AAD Education Center<span>CME library &amp; modules</span></div><span>→</span>
+          <div>AAD Education Center<span class="rl-sub">CME library &amp; modules</span></div><span>→</span>
         </a>
         <a href="https://www.abderm.org" target="_blank" class="resource-link">
-          <div>ABD — Board Certification<span>MOC &amp; recertification</span></div><span>→</span>
+          <div>American Board of Dermatology<span class="rl-sub">Certification &amp; MOC</span></div><span>→</span>
         </a>
         <a href="https://www.aocd.org" target="_blank" class="resource-link">
-          <div>AOCD Resources<span>Osteopathic derm CME</span></div><span>→</span>
+          <div>AOCD Resources<span class="rl-sub">Osteopathic dermatology CME</span></div><span>→</span>
         </a>
         <a href="https://www.asds.net/medical-professionals/education" target="_blank" class="resource-link">
-          <div>ASDS Education<span>Surgical CME</span></div><span>→</span>
+          <div>ASDS Education<span class="rl-sub">Surgical CME</span></div><span>→</span>
         </a>
         <a href="https://www.acmssurgery.com" target="_blank" class="resource-link">
-          <div>ACMS — Mohs Surgery<span>Fellowship &amp; training</span></div><span>→</span>
+          <div>ACMS — Mohs Surgery<span class="rl-sub">Fellowship &amp; training</span></div><span>→</span>
         </a>
         <a href="https://medicine.yale.edu/dermatology/" target="_blank" class="resource-link">
-          <div>Yale Dermatology<span>Grand rounds &amp; seminars</span></div><span>→</span>
+          <div>Yale Dermatology<span class="rl-sub">Grand rounds &amp; seminars</span></div><span>→</span>
         </a>
       </div>
     </div>
@@ -721,10 +702,11 @@
     <div class="sidebar-card">
       <div class="sidebar-card-header"><h3>Education Chair</h3></div>
       <div class="sidebar-card-body">
-        <div style="font-size:13px;color:var(--text-body);line-height:1.8;">
-          <strong style="color:var(--navy);display:block;">Omar Ibrahimi, MD</strong>
-          Education Chair, CTDS<br><br>
-          Questions about CME or lectures? Contact the Education Chair or Executive Director.<br><br>
+        <div style="font-size:13px;color:var(--text-body);line-height:1.85;">
+          <strong style="color:var(--navy);display:block;">Omar Ibrahimi, M.D.</strong>
+          Education Chair<br>
+          Connecticut Society of Dermatology and Dermatologic Surgery<br><br>
+          Questions regarding CME programming or the lecture library may be directed to the Executive Director.<br><br>
           <a href="mailto:debbieosborn36@yahoo.com" style="color:var(--navy-light);">debbieosborn36@yahoo.com</a><br>
           <a href="tel:8605673787" style="color:var(--navy-light);">(860) 567-3787</a>
         </div>
@@ -734,32 +716,32 @@
   </div>
 </div>
 
-<!-- BOARD CERTIFICATION BAND -->
-<div class="credits-band">
-  <div style="max-width:1100px;margin:0 auto 2.5rem;">
+<!-- BOARD CERTIFICATION -->
+<div class="cert-band">
+  <div class="cert-inner">
     <div class="section-label light">Certification</div>
     <div class="rule-bar light"></div>
-    <h2 class="section-heading light">Board Certification &amp; MOC Resources</h2>
-    <p style="font-size:14px;color:rgba(255,255,255,0.5);max-width:540px;">Direct links to certification and maintenance of certification programs for Connecticut dermatologists.</p>
-  </div>
-  <div class="credits-inner">
-    <div class="credit-card">
-      <div class="credit-org">ABD</div>
-      <div class="credit-title">American Board of Dermatology</div>
-      <div class="credit-desc">Initial certification, Maintenance of Certification (MOC), and the Dermatology In-Service Examination for residents and fellows.</div>
-      <a href="https://www.abderm.org" target="_blank" class="credit-link">abderm.org →</a>
-    </div>
-    <div class="credit-card">
-      <div class="credit-org">AOBD</div>
-      <div class="credit-title">American Osteopathic Board of Dermatology</div>
-      <div class="credit-desc">Board certification and recertification for osteopathic dermatologists through the American Osteopathic College of Dermatology.</div>
-      <a href="https://www.aocd.org" target="_blank" class="credit-link">aocd.org →</a>
-    </div>
-    <div class="credit-card">
-      <div class="credit-org">CT DPH</div>
-      <div class="credit-title">CT Medical License — CME Requirements</div>
-      <div class="credit-desc">Connecticut requires 50 CME credits per biennial renewal cycle for licensed physicians, including at least 5 hours in risk management.</div>
-      <a href="https://portal.ct.gov/DPH/Practitioner-Licensing--Investigations/Physician/Physician-Licensure" target="_blank" class="credit-link">CT DPH Licensing →</a>
+    <h2 class="section-heading light">Board Certification &amp; Licensure</h2>
+    <p style="font-size:14px;color:rgba(255,255,255,0.45);max-width:560px;">Certification and maintenance of certification resources for Connecticut dermatologists.</p>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-org">ABD</div>
+        <div class="cert-title">American Board of Dermatology</div>
+        <div class="cert-desc">Initial certification, Maintenance of Certification, and the Dermatology In-Service Examination for residents and fellows.</div>
+        <a href="https://www.abderm.org" target="_blank" class="cert-link">abderm.org</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-org">AOBD</div>
+        <div class="cert-title">American Osteopathic Board of Dermatology</div>
+        <div class="cert-desc">Board certification and recertification for osteopathic dermatologists through the American Osteopathic College of Dermatology.</div>
+        <a href="https://www.aocd.org" target="_blank" class="cert-link">aocd.org</a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-org">CT DPH</div>
+        <div class="cert-title">Connecticut Medical License — CME Requirements</div>
+        <div class="cert-desc">Connecticut requires 50 CME credits per biennial renewal cycle for licensed physicians, including at least 5 hours in risk management.</div>
+        <a href="https://portal.ct.gov/DPH/Practitioner-Licensing--Investigations/Physician/Physician-Licensure" target="_blank" class="cert-link">CT DPH Physician Licensure</a>
+      </div>
     </div>
   </div>
 </div>
@@ -775,7 +757,7 @@
     <li><a href="trials.html">Clinical Trials</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <p>Connecticut Society of Dermatology &amp; Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a></p>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a> &nbsp;·&nbsp; <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></p>
   <p style="margin-top:6px;">© 2025 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
 </footer>
 
