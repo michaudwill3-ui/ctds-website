@@ -15,7 +15,6 @@
     display: flex;
     align-items: center;
     border-bottom: 0.5px solid #d4c9b5;
-    position: relative;
   }
   .ticker-label {
     background: var(--navy);
@@ -39,7 +38,7 @@
   }
   .ticker-track {
     display: flex;
-    animation: ticker 50s linear infinite;
+    animation: ticker 55s linear infinite;
     white-space: nowrap;
   }
   .ticker-track:hover { animation-play-state: paused; }
@@ -47,9 +46,8 @@
     font-size: 12px;
     color: var(--navy);
     padding: 0 2.5rem;
-    font-weight: 400;
   }
-  .ticker-dot { color: var(--text-muted); padding: 0 0.5rem; }
+  .ticker-dot { color: #b0a898; padding: 0 0.25rem; }
   @keyframes ticker {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -58,32 +56,29 @@
   /* ── HERO ── */
   .hero {
     background: var(--navy);
-    padding: 90px 2.5rem 80px;
-  }
-  .hero-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 60px;
-    align-items: center;
+    padding: 100px 2.5rem 96px;
+    text-align: center;
+    border-bottom: 3px solid var(--parchment);
   }
   .hero-eyebrow {
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--parchment);
-    opacity: 0.8;
-    margin-bottom: 1.25rem;
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
   }
   .hero h1 {
-    font-size: 40px;
+    font-size: 48px;
     font-weight: 300;
     color: #fff;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.25rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .hero h1 em {
     font-family: var(--serif);
@@ -91,57 +86,56 @@
     font-weight: 400;
   }
   .hero-sub {
-    font-size: 15px;
-    color: rgba(255,255,255,0.55);
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
     font-weight: 300;
     line-height: 1.75;
-    max-width: 500px;
-    margin-bottom: 2rem;
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
   }
   .hero-actions {
     display: flex;
     gap: 14px;
+    justify-content: center;
     flex-wrap: wrap;
   }
-  .hero-aside {
-    border: 0.5px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
-    padding: 1.75rem;
-    background: rgba(255,255,255,0.04);
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--white);
+    border-bottom: 0.5px solid var(--rule);
   }
-  .hero-aside-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--parchment);
-    opacity: 0.6;
-    margin-bottom: 1rem;
+  .stats-bar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
-  .hero-stat {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 0;
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  .stat-item {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-right: 0.5px solid var(--rule);
   }
-  .hero-stat:first-of-type { padding-top: 0; }
-  .hero-stat:last-child { padding-bottom: 0; border-bottom: none; }
-  .hero-stat-val {
+  .stat-item:last-child { border-right: none; }
+  .stat-val {
     font-size: 22px;
     font-weight: 300;
-    color: #fff;
+    color: var(--navy);
     line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
+    letter-spacing: -0.01em;
   }
-  .hero-stat-label {
-    font-size: 12px;
-    color: rgba(255,255,255,0.45);
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 400;
     line-height: 1.4;
   }
 
   /* ── QUICK LINKS ── */
   .quick-links {
-    background: var(--white);
+    background: var(--warm-white);
     border-bottom: 0.5px solid var(--rule);
   }
   .quick-links-inner {
@@ -163,12 +157,12 @@
     gap: 8px;
   }
   .quick-link:last-child { border-right: none; }
-  .quick-link:hover { background: var(--warm-white); }
+  .quick-link:hover { background: #edeae4; }
   .quick-link-icon {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: var(--warm-white);
+    background: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,7 +184,7 @@
     padding: 0 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 72px;
+    gap: 80px;
     align-items: start;
   }
   .mission-text p {
@@ -210,7 +204,7 @@
     margin-top: 9px;
   }
   .values-list strong { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
-  .values-list span { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .values-list span { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
   /* ── EVENTS ── */
   .events-grid {
@@ -219,7 +213,7 @@
     padding: 0 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 16px;
   }
   .event-card {
     background: var(--white);
@@ -236,11 +230,43 @@
   }
   .event-month { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--parchment); opacity: 0.8; }
   .event-day { font-size: 22px; font-weight: 300; color: #fff; line-height: 1; }
-  .event-body { padding: 1.25rem; }
-  .event-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.4; }
-  .event-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .event-body { padding: 1.1rem 1.25rem; }
+  .event-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 3px; line-height: 1.4; }
+  .event-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 0.6rem; }
   .event-desc { font-size: 13px; color: var(--text-body); line-height: 1.6; margin-bottom: 0.75rem; }
   .event-link { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--navy); }
+
+  /* ── DUES & BENEFITS ── */
+  .membership-band {
+    background: var(--warm-white);
+    border-top: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 80px 2rem;
+  }
+  .membership-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .dues-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+  .dues-table tr { border-bottom: 0.5px solid var(--rule); }
+  .dues-table tr:last-child { border-bottom: none; }
+  .dues-table td { padding: 10px 0; font-size: 13px; color: var(--text-body); vertical-align: top; }
+  .dues-table td:last-child { text-align: right; font-weight: 600; color: var(--navy); white-space: nowrap; padding-left: 8px; }
+  .dues-note { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; font-weight: 400; }
+  .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 1.5rem; }
+  .benefit-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--text-body); line-height: 1.5; }
+  .benefit-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--navy);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
 
   /* ── ORGS ── */
   .orgs-grid {
@@ -249,57 +275,37 @@
     padding: 0 2rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
+    gap: 12px;
   }
   .org-card {
     border: 0.5px solid var(--rule);
     border-radius: 8px;
-    padding: 1.25rem;
+    padding: 1.1rem 1.25rem;
     text-decoration: none;
     background: var(--white);
     transition: border-color 0.15s;
     display: block;
   }
   .org-card:hover { border-color: var(--navy-light); }
-  .org-abbr { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
-  .org-name { font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-bottom: 0.75rem; }
+  .org-abbr { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+  .org-name { font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-bottom: 0.6rem; }
   .org-arrow { font-size: 11px; color: var(--navy-light); display: block; }
 
-  /* ── MEMBERSHIP INFO BAND ── */
-  .membership-band {
-    background: var(--warm-white);
-    border-top: 0.5px solid var(--rule);
-    border-bottom: 0.5px solid var(--rule);
-    padding: 72px 2rem;
-  }
-  .membership-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 72px;
-    align-items: start;
-  }
-  .dues-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
-  .dues-table tr { border-bottom: 0.5px solid var(--rule); }
-  .dues-table tr:last-child { border-bottom: none; }
-  .dues-table td { padding: 10px 0; font-size: 13px; color: var(--text-body); }
-  .dues-table td:last-child { text-align: right; font-weight: 600; color: var(--navy); }
-  .dues-table .dues-note { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; font-weight: 400; }
-
   @media (max-width: 960px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-aside { display: none; }
+    .hero h1 { font-size: 34px; }
+    .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
     .quick-links-inner { grid-template-columns: repeat(3, 1fr); }
     .quick-link:nth-child(3) { border-right: none; }
-    .mission-grid { grid-template-columns: 1fr; gap: 40px; }
+    .mission-grid { grid-template-columns: 1fr; gap: 48px; }
     .events-grid { grid-template-columns: 1fr; }
+    .membership-inner { grid-template-columns: 1fr; gap: 48px; }
     .orgs-grid { grid-template-columns: repeat(2, 1fr); }
-    .membership-inner { grid-template-columns: 1fr; gap: 40px; }
   }
   @media (max-width: 600px) {
-    .hero h1 { font-size: 30px; }
-    .orgs-grid { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 72px 1.5rem 64px; }
+    .hero h1 { font-size: 28px; }
+    .stats-bar-inner { grid-template-columns: 1fr 1fr; }
     .quick-links-inner { grid-template-columns: repeat(3, 1fr); }
   }
 </style>
@@ -359,34 +365,33 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">Connecticut · Est. 1968</div>
-      <h1>Excellence in <em>Dermatology,</em><br>Rooted in Connecticut</h1>
-      <p class="hero-sub">The Connecticut Society of Dermatology and Dermatologic Surgery serves the state's dermatologists through advocacy, education, and professional community.</p>
-      <div class="hero-actions">
-        <a href="signup.html" class="btn btn-parchment">Membership Information</a>
-        <a href="events.html" class="btn btn-outline">Upcoming Events</a>
-      </div>
+  <div class="hero-eyebrow">Connecticut · Est. 1968</div>
+  <h1>Excellence in <em>Dermatology,</em><br>Rooted in Connecticut</h1>
+  <p class="hero-sub">The Connecticut Society of Dermatology and Dermatologic Surgery serves the state's physicians through legislative advocacy, continuing education, and professional community.</p>
+  <div class="hero-actions">
+    <a href="signup.html" class="btn btn-parchment">Membership Information</a>
+    <a href="events.html" class="btn btn-outline">Upcoming Events</a>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <div class="stat-val">Est. 1968</div>
+      <div class="stat-label">Serving Connecticut dermatologists</div>
     </div>
-    <div class="hero-aside">
-      <div class="hero-aside-label">Society Overview</div>
-      <div class="hero-stat">
-        <span class="hero-stat-val">Est. 1968</span>
-        <span class="hero-stat-label">Serving Connecticut dermatologists</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-val">State &amp; Federal</span>
-        <span class="hero-stat-label">Legislative advocacy on behalf of members</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-val">CME &amp; Research</span>
-        <span class="hero-stat-label">Continuing education and clinical trial access</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-val">$175 – $450</span>
-        <span class="hero-stat-label">Annual dues, tiered by years in practice</span>
-      </div>
+    <div class="stat-item">
+      <div class="stat-val">State &amp; Federal</div>
+      <div class="stat-label">Legislative advocacy on behalf of members</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">CME &amp; Research</div>
+      <div class="stat-label">Continuing education and clinical trial access</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">$175 – $450</div>
+      <div class="stat-label">Annual dues, tiered by years in practice</div>
     </div>
   </div>
 </div>
@@ -436,9 +441,9 @@
       <h2 class="section-heading">Promoting Quality &amp; Excellence in Dermatologic Care</h2>
       <div class="mission-text">
         <p>The Connecticut Society of Dermatology and Dermatologic Surgery was established to advance the practice of dermatology in Connecticut through education, research, and advocacy at the state and federal level.</p>
-        <p>The Society connects its members to national organizations, legislative processes, continuing medical education, and the broader professional community of dermatologists practicing in the state.</p>
-        <a href="about.html" class="btn btn-primary" style="margin-top:0.5rem;display:inline-block;">About the Society</a>
+        <p>The Society connects its members to national organizations, legislative processes, continuing medical education, and the broader professional community of dermatologists practicing across the state.</p>
       </div>
+      <a href="about.html" class="btn btn-primary" style="margin-top:1rem;display:inline-block;">About the Society</a>
     </div>
     <div>
       <div class="section-label">Values</div>
@@ -516,7 +521,57 @@
   </div>
 </section>
 
-<!-- PARTNER ORGANIZATIONS -->
+<!-- MEMBERSHIP -->
+<div class="membership-band">
+  <div class="membership-inner">
+    <div>
+      <div class="section-label">Annual Dues</div>
+      <div class="rule-bar"></div>
+      <h2 class="section-heading">Membership</h2>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Membership is open to board-certified and board-eligible dermatologists practicing in Connecticut. Dues are tiered by years in practice.</p>
+      <table class="dues-table">
+        <tr>
+          <td>Regular Membership</td>
+          <td>$450 / year</td>
+        </tr>
+        <tr>
+          <td>First Year in Practice<span class="dues-note">New practitioners</span></td>
+          <td>$175 / year</td>
+        </tr>
+        <tr>
+          <td>Second Year in Practice</td>
+          <td>$260 / year</td>
+        </tr>
+        <tr>
+          <td>Third Year in Practice</td>
+          <td>$350 / year</td>
+        </tr>
+        <tr>
+          <td>Senior Member<span class="dues-note">Age 67 or older, fewer than 20 hours per week</span></td>
+          <td>$175 / year</td>
+        </tr>
+      </table>
+      <a href="signup.html" class="btn btn-primary" style="margin-top:1.5rem;display:inline-block;">Membership Application</a>
+    </div>
+    <div>
+      <div class="section-label">Member Access</div>
+      <div class="rule-bar"></div>
+      <h2 class="section-heading">Society Benefits</h2>
+      <ul class="benefit-list">
+        <li><div class="benefit-dot"></div>Access to the private member directory</li>
+        <li><div class="benefit-dot"></div>Direct communication with the CTDS legislative lobbyist</li>
+        <li><div class="benefit-dot"></div>CME lecture library and continuing education resources</li>
+        <li><div class="benefit-dot"></div>Clinical trial listings and coordinator contact information</li>
+        <li><div class="benefit-dot"></div>SMS and email alerts for meetings and legislative updates</li>
+        <li><div class="benefit-dot"></div>Discounted registration at CTDS annual meetings</li>
+        <li><div class="benefit-dot"></div>Legislative advocacy at the state and federal level</li>
+        <li><div class="benefit-dot"></div>CTDS newsletters and archived society resources</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- AFFILIATES -->
 <section class="section">
   <div class="container">
     <div class="section-label">Affiliates</div>
@@ -567,62 +622,6 @@
     </a>
   </div>
 </section>
-
-<!-- MEMBERSHIP -->
-<div class="membership-band">
-  <div class="membership-inner">
-    <div>
-      <div class="section-label">Membership</div>
-      <div class="rule-bar"></div>
-      <h2 class="section-heading">Annual Dues</h2>
-      <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:0.5rem;">Membership in the Connecticut Society of Dermatology and Dermatologic Surgery is open to board-certified and board-eligible dermatologists practicing in Connecticut. Dues are tiered by years in practice.</p>
-      <table class="dues-table">
-        <tr>
-          <td>Regular Membership</td>
-          <td>$450 / year</td>
-        </tr>
-        <tr>
-          <td>
-            First Year in Practice
-            <span class="dues-note">New practitioners</span>
-          </td>
-          <td>$175 / year</td>
-        </tr>
-        <tr>
-          <td>Second Year in Practice</td>
-          <td>$260 / year</td>
-        </tr>
-        <tr>
-          <td>Third Year in Practice</td>
-          <td>$350 / year</td>
-        </tr>
-        <tr>
-          <td>
-            Senior Member
-            <span class="dues-note">Age 67 or older, practicing fewer than 20 hours per week</span>
-          </td>
-          <td>$175 / year</td>
-        </tr>
-      </table>
-    </div>
-    <div>
-      <div class="section-label">Member Access</div>
-      <div class="rule-bar"></div>
-      <h2 class="section-heading">Society Benefits</h2>
-      <ul class="values-list" style="margin-top:0.5rem;">
-        <li><div class="values-dot"></div><div><span>Access to the private member directory</span></div></li>
-        <li><div class="values-dot"></div><div><span>Direct communication with the CTDS legislative lobbyist</span></div></li>
-        <li><div class="values-dot"></div><div><span>CME lecture library and continuing education resources</span></div></li>
-        <li><div class="values-dot"></div><div><span>Clinical trial listings and coordinator contact information</span></div></li>
-        <li><div class="values-dot"></div><div><span>SMS and email alerts for meetings and legislative updates</span></div></li>
-        <li><div class="values-dot"></div><div><span>Discounted registration at CTDS annual meetings</span></div></li>
-        <li><div class="values-dot"></div><div><span>Legislative advocacy at the state and federal level</span></div></li>
-        <li><div class="values-dot"></div><div><span>CTDS newsletters and archived society resources</span></div></li>
-      </ul>
-      <a href="signup.html" class="btn btn-primary" style="margin-top:1.5rem;display:inline-block;">Membership Information</a>
-    </div>
-  </div>
-</div>
 
 <footer>
   <ul class="footer-links">
