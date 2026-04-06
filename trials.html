@@ -3,21 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clinical Trials — CT Society of Dermatology</title>
+<title>Clinical Trials — Connecticut Society of Dermatology and Dermatologic Surgery</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-  /* ── LAYOUT ── */
-  .trials-main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 60px 2rem 80px;
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 48px;
-    align-items: start;
-  }
 
-  /* ── FILTER ── */
+  /* ── FILTER BAR ── */
   .filter-bar {
     background: var(--white);
     border-bottom: 0.5px solid var(--rule);
@@ -27,7 +17,6 @@
     max-width: 1100px;
     margin: 0 auto;
     display: flex;
-    gap: 0;
   }
   .filter-btn {
     font-family: var(--sans);
@@ -45,6 +34,17 @@
   }
   .filter-btn:hover { color: var(--navy); }
   .filter-btn.active { color: var(--navy); border-bottom-color: var(--navy); }
+
+  /* ── LAYOUT ── */
+  .trials-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 2rem 80px;
+    display: grid;
+    grid-template-columns: 1fr 290px;
+    gap: 48px;
+    align-items: start;
+  }
 
   /* ── TRIAL CARDS ── */
   .trial-list { display: flex; flex-direction: column; gap: 20px; }
@@ -66,7 +66,7 @@
   .trial-badge {
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     padding: 2px 8px;
     border-radius: 2px;
@@ -76,7 +76,7 @@
   .badge-condition { background: #f8f4ee; color: #7a4a00; }
   .badge-closed { background: #f4f4f4; color: #888; }
   .trial-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     color: var(--navy);
     line-height: 1.35;
@@ -85,8 +85,7 @@
     font-size: 11px;
     color: var(--text-muted);
     white-space: nowrap;
-    margin-top: 4px;
-    text-align: right;
+    flex-shrink: 0;
   }
   .trial-card-body { padding: 1.25rem 1.5rem; }
   .trial-desc {
@@ -98,7 +97,7 @@
   .trial-details {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 1.25rem;
     padding: 1rem;
     background: var(--warm-white);
@@ -109,65 +108,49 @@
   .detail-label {
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--text-muted);
   }
-  .detail-val {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--navy);
-  }
+  .detail-val { font-size: 13px; font-weight: 500; color: var(--navy); }
 
   /* ── COORDINATOR BOX ── */
   .coordinator-box {
     background: var(--navy);
     border-radius: 6px;
-    padding: 1.1rem 1.25rem;
+    padding: 1rem 1.25rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr auto;
     gap: 1rem;
     align-items: center;
   }
-  .coord-section { display: flex; flex-direction: column; gap: 3px; }
+  .coord-section { display: flex; flex-direction: column; gap: 2px; }
   .coord-label {
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.4);
   }
-  .coord-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: #fff;
-  }
-  .coord-contact {
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-  }
-  .coord-contact a {
-    color: var(--parchment);
-    text-decoration: none;
-  }
+  .coord-name { font-size: 13px; font-weight: 500; color: #fff; }
+  .coord-contact { font-size: 12px; color: rgba(255,255,255,0.55); }
+  .coord-contact a { color: var(--parchment); text-decoration: none; }
   .coord-contact a:hover { color: #fff; }
-  .coord-enroll {
-    text-align: right;
-  }
   .btn-enroll {
     display: inline-block;
     font-family: var(--sans);
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--navy);
     background: var(--parchment);
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 2px;
     border: none;
     cursor: pointer;
     text-decoration: none;
+    white-space: nowrap;
     transition: background 0.15s;
   }
   .btn-enroll:hover { background: #d4c9b5; }
@@ -177,16 +160,13 @@
     background: var(--warm-white);
     border-top: 0.5px solid var(--rule);
     border-bottom: 0.5px solid var(--rule);
-    padding: 64px 2rem;
+    padding: 72px 2rem;
   }
-  .enroll-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+  .enroll-inner { max-width: 1100px; margin: 0 auto; }
   .steps-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 16px;
     margin-top: 2.5rem;
   }
   .step-card {
@@ -196,63 +176,76 @@
     padding: 1.25rem;
   }
   .step-num-large {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 300;
     color: var(--navy);
-    opacity: 0.2;
+    opacity: 0.18;
     line-height: 1;
     margin-bottom: 0.75rem;
   }
-  .step-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 0.4rem;
-  }
-  .step-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
+  .step-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .step-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
 
-  /* ── ENROLL FORM ── */
-  .enroll-form-band {
+  /* ── REFERRAL FORM ── */
+  .referral-band {
     background: var(--navy);
-    padding: 64px 2rem;
+    padding: 72px 2rem;
     border-top: 3px solid var(--parchment);
   }
-  .enroll-form-inner {
+  .referral-inner {
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 420px;
-    gap: 60px;
+    grid-template-columns: 1fr 400px;
+    gap: 64px;
     align-items: start;
   }
-  .enroll-form {
-    background: rgba(255,255,255,0.06);
+  .referral-form {
+    background: rgba(255,255,255,0.05);
     border: 0.5px solid rgba(255,255,255,0.12);
     border-radius: 8px;
     padding: 1.75rem;
   }
-  .enroll-form label { color: rgba(255,255,255,0.7); }
-  .enroll-form input,
-  .enroll-form textarea,
-  .enroll-form select {
-    background: rgba(255,255,255,0.08);
+  .referral-form label { color: rgba(255,255,255,0.65); }
+  .referral-form input,
+  .referral-form textarea,
+  .referral-form select {
+    background: rgba(255,255,255,0.07);
     border-color: rgba(255,255,255,0.15);
     color: #fff;
   }
-  .enroll-form input::placeholder,
-  .enroll-form textarea::placeholder { color: rgba(255,255,255,0.3); }
-  .enroll-form input:focus,
-  .enroll-form textarea:focus {
-    background: rgba(255,255,255,0.12);
-    border-color: rgba(255,255,255,0.35);
+  .referral-form input::placeholder,
+  .referral-form textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .referral-form input:focus,
+  .referral-form textarea:focus,
+  .referral-form select:focus {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.3);
     box-shadow: none;
   }
+  .referral-form select option { background: var(--navy); color: #fff; }
   .form-group { margin-bottom: 1rem; }
   .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .phi-notice {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .phi-notice-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 3px;
+  }
+  .phi-notice-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.55;
+  }
 
   /* ── SIDEBAR ── */
   .trials-sidebar { display: flex; flex-direction: column; gap: 20px; }
@@ -274,21 +267,37 @@
     color: rgba(255,255,255,0.8);
   }
   .sidebar-card-body { padding: 1.25rem; }
-  .quick-contact { display: flex; flex-direction: column; gap: 12px; }
-  .qc-item { padding-bottom: 12px; border-bottom: 0.5px solid var(--rule); }
-  .qc-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .qc-role {
+  .enrolling-item {
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .enrolling-item:last-child { border-bottom: none; }
+  .enrolling-condition {
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--text-muted);
     margin-bottom: 2px;
   }
-  .qc-name { font-size: 13px; font-weight: 500; color: var(--navy); }
-  .qc-contact { font-size: 12px; color: var(--text-muted); }
-  .qc-contact a { color: var(--navy-light); text-decoration: none; }
-
+  .enrolling-title { font-size: 13px; font-weight: 500; color: var(--navy); line-height: 1.3; }
+  .enrolling-site { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .contact-item {
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .contact-item:last-child { border-bottom: none; }
+  .contact-role {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+  .contact-name { font-size: 13px; font-weight: 500; color: var(--navy); }
+  .contact-detail { font-size: 12px; color: var(--text-muted); }
+  .contact-detail a { color: var(--navy-light); text-decoration: none; }
   .resource-link {
     display: flex;
     justify-content: space-between;
@@ -298,23 +307,25 @@
     text-decoration: none;
     font-size: 13px;
     color: var(--navy-light);
+    transition: color 0.15s;
   }
   .resource-link:last-child { border-bottom: none; }
   .resource-link:hover { color: var(--navy); }
-  .resource-link span { font-size: 11px; color: var(--text-muted); display: block; }
+  .resource-link .rl-sub { font-size: 11px; color: var(--text-muted); display: block; margin-top: 1px; }
 
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     .trials-main { grid-template-columns: 1fr; }
     .trial-details { grid-template-columns: 1fr 1fr; }
     .coordinator-box { grid-template-columns: 1fr; }
-    .coord-enroll { text-align: left; }
     .steps-grid { grid-template-columns: 1fr 1fr; }
-    .enroll-form-inner { grid-template-columns: 1fr; }
+    .referral-inner { grid-template-columns: 1fr; gap: 40px; }
+    .form-row-2 { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
+    .trial-card-header { flex-direction: column; }
     .trial-details { grid-template-columns: 1fr; }
     .steps-grid { grid-template-columns: 1fr; }
-    .trial-card-header { flex-direction: column; }
+    .filter-btn { padding: 0.85rem 0.9rem; font-size: 11px; }
   }
 </style>
 </head>
@@ -341,10 +352,10 @@
 <div class="page-header">
   <div class="eyebrow">Research</div>
   <h1>Clinical <em>Trials</em></h1>
-  <p>Active dermatology clinical trials enrolling patients in Connecticut — coordinator contacts, eligibility, and enrollment information for physicians.</p>
+  <p>Active dermatology clinical trials enrolling patients in Connecticut — coordinator contacts, eligibility criteria, and referral information for physicians.</p>
 </div>
 
-<!-- FILTER BAR -->
+<!-- FILTER -->
 <div class="filter-bar">
   <div class="filter-inner">
     <button class="filter-btn active" onclick="filterTrials('all', this)">All Trials</button>
@@ -357,7 +368,6 @@
 
 <div class="trials-main">
 
-  <!-- TRIAL LIST -->
   <div>
     <div class="section-label">Active Trials</div>
     <div class="rule-bar"></div>
@@ -377,7 +387,7 @@
           <div class="trial-id">NCT05xxxxxx</div>
         </div>
         <div class="trial-card-body">
-          <div class="trial-desc">A randomized, double-blind, placebo-controlled Phase III study evaluating the efficacy and safety of a novel IL-31 receptor antagonist in adults with moderate-to-severe atopic dermatitis who have had an inadequate response to topical therapies. Study duration is 52 weeks with optional open-label extension.</div>
+          <div class="trial-desc">A randomized, double-blind, placebo-controlled Phase III study evaluating the efficacy and safety of a novel IL-31 receptor antagonist in adults with moderate-to-severe atopic dermatitis who have had an inadequate response to topical therapies. Study duration is 52 weeks with an optional open-label extension period.</div>
           <div class="trial-details">
             <div class="trial-detail-item">
               <span class="detail-label">Sponsor</span>
@@ -388,7 +398,7 @@
               <span class="detail-val">Yale Dermatology, New Haven</span>
             </div>
             <div class="trial-detail-item">
-              <span class="detail-label">Enrollment Target</span>
+              <span class="detail-label">Target Enrollment</span>
               <span class="detail-val">40 Patients</span>
             </div>
             <div class="trial-detail-item">
@@ -401,26 +411,23 @@
             </div>
             <div class="trial-detail-item">
               <span class="detail-label">Compensation</span>
-              <span class="detail-val">Yes — study provided</span>
+              <span class="detail-val">Study provided</span>
             </div>
           </div>
           <div class="coordinator-box">
             <div class="coord-section">
               <span class="coord-label">Principal Investigator</span>
-              <span class="coord-name">Keith Choate, MD</span>
+              <span class="coord-name">Keith Choate, M.D.</span>
               <span class="coord-contact">Yale Dept. of Dermatology</span>
             </div>
             <div class="coord-section">
               <span class="coord-label">Study Coordinator</span>
-              <span class="coord-name">Coordinator Name</span>
+              <span class="coord-name">Contact for Details</span>
               <span class="coord-contact">
-                <a href="tel:2035550100">(203) 555-0100</a><br>
                 <a href="mailto:trials@yaledermatology.edu">trials@yaledermatology.edu</a>
               </span>
             </div>
-            <div class="coord-enroll">
-              <a href="#enroll-form" class="btn-enroll">Enroll a Patient →</a>
-            </div>
+            <a href="#referral-form" class="btn-enroll">Refer a Patient</a>
           </div>
         </div>
       </div>
@@ -450,7 +457,7 @@
               <span class="detail-val">UConn Dermatology, Farmington</span>
             </div>
             <div class="trial-detail-item">
-              <span class="detail-label">Enrollment Target</span>
+              <span class="detail-label">Target Enrollment</span>
               <span class="detail-val">25 Patients</span>
             </div>
             <div class="trial-detail-item">
@@ -463,26 +470,23 @@
             </div>
             <div class="trial-detail-item">
               <span class="detail-label">Compensation</span>
-              <span class="detail-val">Yes — study provided</span>
+              <span class="detail-val">Study provided</span>
             </div>
           </div>
           <div class="coordinator-box">
             <div class="coord-section">
               <span class="coord-label">Principal Investigator</span>
-              <span class="coord-name">Investigator Name, MD</span>
+              <span class="coord-name">To be confirmed</span>
               <span class="coord-contact">UConn Dept. of Dermatology</span>
             </div>
             <div class="coord-section">
               <span class="coord-label">Study Coordinator</span>
-              <span class="coord-name">Coordinator Name</span>
+              <span class="coord-name">Contact for Details</span>
               <span class="coord-contact">
-                <a href="tel:8605550200">(860) 555-0200</a><br>
                 <a href="mailto:research@uconndermatology.edu">research@uconndermatology.edu</a>
               </span>
             </div>
-            <div class="coord-enroll">
-              <a href="#enroll-form" class="btn-enroll">Enroll a Patient →</a>
-            </div>
+            <a href="#referral-form" class="btn-enroll">Refer a Patient</a>
           </div>
         </div>
       </div>
@@ -501,7 +505,7 @@
           <div class="trial-id">NCT06xxxxxx</div>
         </div>
         <div class="trial-card-body">
-          <div class="trial-desc">A multicenter Phase III trial evaluating adjuvant PD-1 checkpoint inhibitor therapy versus observation in patients with high-risk cutaneous squamous cell carcinoma following complete Mohs micrographic surgical excision. Eligibility includes tumor diameter greater than 2cm, perineural invasion, or deep tissue involvement.</div>
+          <div class="trial-desc">A multicenter Phase III trial evaluating adjuvant PD-1 checkpoint inhibitor therapy versus observation in patients with high-risk cutaneous squamous cell carcinoma following complete Mohs micrographic surgical excision. Eligibility includes tumor diameter greater than 2 cm, perineural invasion, or deep tissue involvement.</div>
           <div class="trial-details">
             <div class="trial-detail-item">
               <span class="detail-label">Sponsor</span>
@@ -512,7 +516,7 @@
               <span class="detail-val">Yale Cancer Center, New Haven</span>
             </div>
             <div class="trial-detail-item">
-              <span class="detail-label">Enrollment Target</span>
+              <span class="detail-label">Target Enrollment</span>
               <span class="detail-val">Multicenter — 300</span>
             </div>
             <div class="trial-detail-item">
@@ -531,20 +535,17 @@
           <div class="coordinator-box">
             <div class="coord-section">
               <span class="coord-label">Principal Investigator</span>
-              <span class="coord-name">Matthew Vesely, MD</span>
+              <span class="coord-name">Matthew Vesely, M.D.</span>
               <span class="coord-contact">Yale Cancer Center</span>
             </div>
             <div class="coord-section">
               <span class="coord-label">Study Coordinator</span>
-              <span class="coord-name">Coordinator Name</span>
+              <span class="coord-name">Contact for Details</span>
               <span class="coord-contact">
-                <a href="tel:2035550300">(203) 555-0300</a><br>
                 <a href="mailto:research@yalecancer.edu">research@yalecancer.edu</a>
               </span>
             </div>
-            <div class="coord-enroll">
-              <a href="#enroll-form" class="btn-enroll">Enroll a Patient →</a>
-            </div>
+            <a href="#referral-form" class="btn-enroll">Refer a Patient</a>
           </div>
         </div>
       </div>
@@ -563,7 +564,7 @@
           <div class="trial-id">NCT03xxxxxx</div>
         </div>
         <div class="trial-card-body">
-          <div class="trial-desc">Enrollment is now closed for this Phase II study of a topical JAK1/2 inhibitor in pediatric patients ages 6–17 with mild-to-moderate atopic dermatitis. Results expected Q3 2025. Contact the coordinator for information about future related studies.</div>
+          <div class="trial-desc">Enrollment is now closed for this Phase II study of a topical JAK1/2 inhibitor in pediatric patients ages 6–17 with mild-to-moderate atopic dermatitis. Results are expected Q3 2025. Contact the coordinator for information about related future studies.</div>
           <div class="trial-details">
             <div class="trial-detail-item">
               <span class="detail-label">Status</span>
@@ -581,19 +582,17 @@
           <div class="coordinator-box">
             <div class="coord-section">
               <span class="coord-label">Principal Investigator</span>
-              <span class="coord-name">Keith Choate, MD</span>
+              <span class="coord-name">Keith Choate, M.D.</span>
               <span class="coord-contact">Yale Dept. of Dermatology</span>
             </div>
             <div class="coord-section">
-              <span class="coord-label">Questions</span>
-              <span class="coord-name">Future Studies</span>
+              <span class="coord-label">Future Studies</span>
+              <span class="coord-name">Inquiries Welcome</span>
               <span class="coord-contact">
                 <a href="mailto:trials@yaledermatology.edu">trials@yaledermatology.edu</a>
               </span>
             </div>
-            <div class="coord-enroll">
-              <span style="font-size:12px;color:rgba(255,255,255,0.4);">Enrollment closed</span>
-            </div>
+            <span style="font-size:12px;color:rgba(255,255,255,0.35);">Enrollment closed</span>
           </div>
         </div>
       </div>
@@ -605,24 +604,22 @@
   <div class="trials-sidebar">
 
     <div class="sidebar-card">
-      <div class="sidebar-card-header"><h3>Enrolling Now</h3></div>
+      <div class="sidebar-card-header"><h3>Currently Enrolling</h3></div>
       <div class="sidebar-card-body">
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="padding-bottom:10px;border-bottom:0.5px solid var(--rule);">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;">Atopic Dermatitis</div>
-            <div style="font-size:13px;font-weight:500;color:var(--navy);line-height:1.3;">IL-31 Inhibitor Phase III</div>
-            <div style="font-size:12px;color:var(--text-muted);">Yale · Adults 18–75</div>
-          </div>
-          <div style="padding-bottom:10px;border-bottom:0.5px solid var(--rule);">
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;">Psoriasis</div>
-            <div style="font-size:13px;font-weight:500;color:var(--navy);line-height:1.3;">TYK2 Inhibitor Extension</div>
-            <div style="font-size:12px;color:var(--text-muted);">UConn · Adults 18+</div>
-          </div>
-          <div>
-            <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;">Oncology</div>
-            <div style="font-size:13px;font-weight:500;color:var(--navy);line-height:1.3;">PD-1 Inhibitor Post-Mohs</div>
-            <div style="font-size:12px;color:var(--text-muted);">Yale Cancer Center · Adults 18+</div>
-          </div>
+        <div class="enrolling-item">
+          <div class="enrolling-condition">Atopic Dermatitis</div>
+          <div class="enrolling-title">IL-31 Inhibitor — Phase III</div>
+          <div class="enrolling-site">Yale Dermatology · Adults 18–75</div>
+        </div>
+        <div class="enrolling-item">
+          <div class="enrolling-condition">Psoriasis</div>
+          <div class="enrolling-title">TYK2 Inhibitor Extension — Phase II</div>
+          <div class="enrolling-site">UConn Dermatology · Adults 18+</div>
+        </div>
+        <div class="enrolling-item">
+          <div class="enrolling-condition">Cutaneous Oncology</div>
+          <div class="enrolling-title">PD-1 Inhibitor Post-Mohs — Phase III</div>
+          <div class="enrolling-site">Yale Cancer Center · Adults 18+</div>
         </div>
       </div>
     </div>
@@ -630,43 +627,45 @@
     <div class="sidebar-card">
       <div class="sidebar-card-header"><h3>Key Contacts</h3></div>
       <div class="sidebar-card-body">
-        <div class="quick-contact">
-          <div class="qc-item">
-            <div class="qc-role">Yale — Dept. Chair</div>
-            <div class="qc-name">Keith Choate, MD</div>
-            <div class="qc-contact"><a href="https://medicine.yale.edu/dermatology/" target="_blank">Yale Dermatology →</a></div>
+        <div class="contact-item">
+          <div class="contact-role">Yale — Chair, Dept. of Dermatology</div>
+          <div class="contact-name">Keith Choate, M.D.</div>
+          <div class="contact-detail">
+            <a href="https://medicine.yale.edu/dermatology/" target="_blank">Yale Dermatology →</a>
           </div>
-          <div class="qc-item">
-            <div class="qc-role">CTDS Executive Director</div>
-            <div class="qc-name">Debbie Osborn</div>
-            <div class="qc-contact">
-              <a href="tel:8605673787">(860) 567-3787</a><br>
-              <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a>
-            </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-role">CTDS Executive Director</div>
+          <div class="contact-name">Debbie Osborn</div>
+          <div class="contact-detail">
+            <a href="tel:8605673787">(860) 567-3787</a><br>
+            <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a>
           </div>
-          <div class="qc-item">
-            <div class="qc-role">General Trial Inquiries</div>
-            <div class="qc-name">ClinicalTrials.gov</div>
-            <div class="qc-contact"><a href="https://clinicaltrials.gov" target="_blank">Search all active trials →</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-role">National Trial Registry</div>
+          <div class="contact-name">ClinicalTrials.gov</div>
+          <div class="contact-detail">
+            <a href="https://clinicaltrials.gov" target="_blank">Search all active trials →</a>
           </div>
         </div>
       </div>
     </div>
 
     <div class="sidebar-card">
-      <div class="sidebar-card-header"><h3>Trial Resources</h3></div>
+      <div class="sidebar-card-header"><h3>Research Resources</h3></div>
       <div class="sidebar-card-body">
         <a href="https://clinicaltrials.gov" target="_blank" class="resource-link">
-          <div>ClinicalTrials.gov<span>National trial registry</span></div><span>→</span>
+          <div>ClinicalTrials.gov<span class="rl-sub">National trial registry</span></div><span>→</span>
         </a>
         <a href="https://www.aad.org/member/research" target="_blank" class="resource-link">
-          <div>AAD Research Resources<span>aad.org</span></div><span>→</span>
+          <div>AAD Research Resources<span class="rl-sub">aad.org</span></div><span>→</span>
         </a>
         <a href="https://www.niams.nih.gov" target="_blank" class="resource-link">
-          <div>NIAMS — NIH<span>Skin disease research</span></div><span>→</span>
+          <div>NIAMS — NIH<span class="rl-sub">Skin disease research</span></div><span>→</span>
         </a>
         <a href="https://medicine.yale.edu/dermatology/" target="_blank" class="resource-link">
-          <div>Yale Dermatology<span>Research programs</span></div><span>→</span>
+          <div>Yale Dermatology<span class="rl-sub">Research programs</span></div><span>→</span>
         </a>
       </div>
     </div>
@@ -679,8 +678,8 @@
   <div class="enroll-inner">
     <div class="section-label">Process</div>
     <div class="rule-bar"></div>
-    <h2 class="section-heading">How to Enroll a Patient</h2>
-    <p style="font-size:14px;color:var(--text-muted);max-width:580px;">Referring a patient to a clinical trial is straightforward. Follow these steps or use the inquiry form below to connect directly with the study coordinator.</p>
+    <h2 class="section-heading">How to Refer a Patient</h2>
+    <p style="font-size:14px;color:var(--text-muted);max-width:580px;">Referring a patient to a clinical trial is straightforward. Follow these steps or use the referral form below to connect directly with the study coordinator.</p>
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-num-large">01</div>
@@ -690,52 +689,59 @@
       <div class="step-card">
         <div class="step-num-large">02</div>
         <div class="step-title">Contact the Coordinator</div>
-        <div class="step-desc">Call or email the study coordinator listed on the trial card. They will conduct a pre-screening conversation with you or your patient.</div>
+        <div class="step-desc">Call or email the study coordinator listed on the trial. They will conduct a pre-screening discussion with you or your patient.</div>
       </div>
       <div class="step-card">
         <div class="step-num-large">03</div>
-        <div class="step-title">Submit the Inquiry Form</div>
-        <div class="step-desc">Use the form below to send a referral inquiry. Include patient demographics, diagnosis, and current treatment status — no PHI required.</div>
+        <div class="step-title">Submit a Referral</div>
+        <div class="step-desc">Use the form below to submit a referral inquiry. Include a general patient description — no PHI required at this stage.</div>
       </div>
       <div class="step-card">
         <div class="step-num-large">04</div>
         <div class="step-title">Coordinate Consent</div>
-        <div class="step-desc">The trial site will handle informed consent, baseline assessments, and scheduling. You will receive updates on your patient's enrollment status.</div>
+        <div class="step-desc">The trial site handles informed consent, baseline assessments, and scheduling. You will receive updates on your patient's enrollment status.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ENROLL FORM -->
-<div class="enroll-form-band" id="enroll-form">
-  <div class="enroll-form-inner">
+<!-- REFERRAL FORM -->
+<div class="referral-band" id="referral-form">
+  <div class="referral-inner">
     <div>
       <div class="section-label light">Patient Referral</div>
       <div class="rule-bar light"></div>
-      <h2 class="section-heading light">Submit an <em style="font-family:var(--serif);font-style:italic;">Enrollment Inquiry</em></h2>
-      <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:1.5rem;">Use this form to express interest in enrolling a patient in one of our active trials. Do not include patient identifying information — a coordinator will contact you to discuss eligibility and next steps.</p>
-      <div style="padding:1rem 1.25rem;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);border-radius:6px;">
-        <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;">Privacy Note</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;">Do not submit any protected health information (PHI) in this form. Coordinator will contact you via secure channel to discuss patient specifics.</div>
+      <h2 class="section-heading light">Submit a <em style="font-family:var(--serif);font-style:italic;">Referral Inquiry</em></h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:1.5rem;">Use this form to express interest in referring a patient to one of the Society's active trials. A coordinator will follow up to discuss eligibility and next steps.</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;margin-bottom:1.5rem;">Do not include patient-identifying information in this form. All PHI should be shared only through secure, HIPAA-compliant channels with the study coordinator directly.</p>
+      <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.8;">
+        <strong style="color:rgba(255,255,255,0.65);display:block;margin-bottom:4px;">General Inquiries</strong>
+        Debbie Osborn — Executive Director<br>
+        <a href="tel:8605673787" style="color:var(--parchment);">(860) 567-3787</a><br>
+        <a href="mailto:debbieosborn36@yahoo.com" style="color:var(--parchment);">debbieosborn36@yahoo.com</a>
       </div>
     </div>
-    <div class="enroll-form">
+    <div class="referral-form">
+      <div class="phi-notice">
+        <div class="phi-notice-label">Privacy Notice</div>
+        <div class="phi-notice-text">Do not submit protected health information (PHI) in this form. A coordinator will contact you via secure channel to discuss patient specifics.</div>
+      </div>
       <div class="form-row-2 form-group">
         <div>
-          <label>Your First Name</label>
+          <label>First Name</label>
           <input type="text" placeholder="Jane">
         </div>
         <div>
-          <label>Your Last Name</label>
-          <input type="text" placeholder="Smith, MD">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith, M.D.">
         </div>
       </div>
       <div class="form-group">
-        <label>Your Email</label>
+        <label>Email</label>
         <input type="email" placeholder="jsmith@practice.com">
       </div>
       <div class="form-group">
-        <label>Your Phone</label>
+        <label>Phone</label>
         <input type="tel" placeholder="(860) 555-0100">
       </div>
       <div class="form-group">
@@ -745,19 +751,19 @@
           <option>IL-31 Inhibitor — Atopic Dermatitis Phase III (Yale)</option>
           <option>TYK2 Inhibitor Extension — Psoriasis Phase II (UConn)</option>
           <option>PD-1 Inhibitor Post-Mohs — SCC Phase III (Yale Cancer Center)</option>
-          <option>Not sure — please advise</option>
+          <option>Not certain — please advise</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Patient Profile <span style="font-weight:400;text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.4);font-size:11px;">no PHI — general description only</span></label>
-        <textarea rows="4" placeholder="e.g. Adult patient, moderate-to-severe AD, failed dupilumab, no significant comorbidities..."></textarea>
+        <label>Patient Description <span style="font-weight:400;text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.35);font-size:11px;">general only — no PHI</span></label>
+        <textarea rows="4" placeholder="e.g. Adult patient, moderate-to-severe AD, inadequate response to dupilumab, no significant comorbidities..."></textarea>
       </div>
       <div class="form-group">
-        <label>Additional Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.4);font-size:11px;">optional</span></label>
-        <textarea rows="3" placeholder="Any questions for the coordinator..."></textarea>
+        <label>Additional Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.35);font-size:11px;">optional</span></label>
+        <textarea rows="3" placeholder="Questions for the coordinator..."></textarea>
       </div>
-      <button class="btn btn-parchment" style="width:100%;text-align:center;" onclick="submitEnroll(this)">Submit Referral Inquiry</button>
-      <p style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:0.75rem;">A study coordinator will respond within 2 business days.</p>
+      <button class="btn btn-parchment" style="width:100%;text-align:center;" onclick="submitReferral(this)">Submit Referral Inquiry</button>
+      <p style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:0.75rem;">A study coordinator will respond within two business days.</p>
     </div>
   </div>
 </div>
@@ -773,7 +779,7 @@
     <li><a href="trials.html">Clinical Trials</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <p>Connecticut Society of Dermatology &amp; Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a></p>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a> &nbsp;·&nbsp; <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></p>
   <p style="margin-top:6px;">© 2025 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
 </footer>
 
@@ -782,18 +788,14 @@
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     document.querySelectorAll('.trial-card').forEach(card => {
-      if (type === 'all') {
-        card.style.display = 'block';
-      } else {
-        card.style.display = card.dataset.type.includes(type) ? 'block' : 'none';
-      }
+      card.style.display = (type === 'all' || card.dataset.type.includes(type)) ? 'block' : 'none';
     });
   }
-  function submitEnroll(btn) {
+  function submitReferral(btn) {
     btn.textContent = 'Submitting…';
     btn.disabled = true;
     setTimeout(() => {
-      btn.textContent = '✓ Inquiry Submitted';
+      btn.textContent = '✓ Referral Submitted';
       btn.style.background = '#c8e6c9';
       btn.style.color = '#1b5e20';
     }, 1200);
