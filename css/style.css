@@ -109,7 +109,7 @@ nav {
 .page-header h1 {
   font-family: var(--serif);
   font-size: 44px;
-  font-weight: 700;
+  font-weight: 400;
   font-style: italic;
   color: #fff;
   letter-spacing: -0.01em;
@@ -119,7 +119,7 @@ nav {
 .page-header h1 em {
   font-family: var(--serif);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
 }
 .page-header p {
   font-family: var(--sans);
@@ -170,7 +170,7 @@ h2.section-heading.light { color: #fff; }
 h2.section-heading em {
   font-family: var(--serif);
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .rule-bar {

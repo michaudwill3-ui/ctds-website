@@ -61,6 +61,7 @@
     border-bottom: 3px solid var(--parchment);
   }
   .hero-eyebrow {
+    font-family: var(--sans);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.18em;
@@ -68,24 +69,28 @@
     color: var(--parchment);
     opacity: 0.7;
     margin-bottom: 1.5rem;
+    display: block;
   }
   .hero h1 {
-    font-size: 48px;
-    font-weight: 300;
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 400;
+    font-style: italic;
     color: #fff;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
     margin-bottom: 1.5rem;
-    max-width: 720px;
+    max-width: 740px;
     margin-left: auto;
     margin-right: auto;
   }
   .hero h1 em {
     font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
+    font-style: normal;
+    font-weight: 700;
   }
   .hero-sub {
+    font-family: var(--sans);
     font-size: 16px;
     color: rgba(255,255,255,0.5);
     font-weight: 300;
@@ -119,14 +124,16 @@
   }
   .stat-item:last-child { border-right: none; }
   .stat-val {
-    font-size: 22px;
-    font-weight: 300;
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
     color: var(--navy);
     line-height: 1;
-    margin-bottom: 5px;
-    letter-spacing: -0.01em;
+    margin-bottom: 6px;
   }
   .stat-label {
+    font-family: var(--sans);
     font-size: 11px;
     color: var(--text-muted);
     font-weight: 400;
@@ -170,6 +177,7 @@
   }
   .quick-link-icon svg { width: 15px; height: 15px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
   .quick-link span {
+    font-family: var(--sans);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -203,7 +211,13 @@
     flex-shrink: 0;
     margin-top: 9px;
   }
-  .values-list strong { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .values-list strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
   .values-list span { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
   /* ── EVENTS ── */
@@ -228,15 +242,30 @@
     align-items: baseline;
     gap: 8px;
   }
-  .event-month { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--parchment); opacity: 0.8; }
+  .event-month {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    opacity: 0.8;
+  }
   .event-day { font-size: 22px; font-weight: 300; color: #fff; line-height: 1; }
   .event-body { padding: 1.1rem 1.25rem; }
   .event-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 3px; line-height: 1.4; }
   .event-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 0.6rem; }
   .event-desc { font-size: 13px; color: var(--text-body); line-height: 1.6; margin-bottom: 0.75rem; }
-  .event-link { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--navy); }
+  .event-link {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--navy);
+  }
 
-  /* ── DUES & BENEFITS ── */
+  /* ── MEMBERSHIP BAND ── */
   .membership-band {
     background: var(--warm-white);
     border-top: 0.5px solid var(--rule);
@@ -254,11 +283,35 @@
   .dues-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
   .dues-table tr { border-bottom: 0.5px solid var(--rule); }
   .dues-table tr:last-child { border-bottom: none; }
-  .dues-table td { padding: 10px 0; font-size: 13px; color: var(--text-body); vertical-align: top; }
-  .dues-table td:last-child { text-align: right; font-weight: 600; color: var(--navy); white-space: nowrap; padding-left: 8px; }
-  .dues-note { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; font-weight: 400; }
+  .dues-table td {
+    padding: 10px 0;
+    font-size: 13px;
+    color: var(--text-body);
+    vertical-align: top;
+  }
+  .dues-table td:last-child {
+    text-align: right;
+    font-weight: 600;
+    color: var(--navy);
+    white-space: nowrap;
+    padding-left: 8px;
+  }
+  .dues-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 2px;
+    font-weight: 400;
+  }
   .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 1.5rem; }
-  .benefit-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--text-body); line-height: 1.5; }
+  .benefit-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.5;
+  }
   .benefit-dot {
     width: 5px;
     height: 5px;
@@ -291,10 +344,13 @@
   .org-name { font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-bottom: 0.6rem; }
   .org-arrow { font-size: 11px; color: var(--navy-light); display: block; }
 
+  /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
-    .hero h1 { font-size: 34px; }
+    .hero h1 { font-size: 36px; }
     .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
     .stat-item:nth-child(2) { border-right: none; }
+    .stat-item:nth-child(3) { border-top: 0.5px solid var(--rule); }
+    .stat-item:nth-child(4) { border-top: 0.5px solid var(--rule); border-right: none; }
     .quick-links-inner { grid-template-columns: repeat(3, 1fr); }
     .quick-link:nth-child(3) { border-right: none; }
     .mission-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -307,6 +363,7 @@
     .hero h1 { font-size: 28px; }
     .stats-bar-inner { grid-template-columns: 1fr 1fr; }
     .quick-links-inner { grid-template-columns: repeat(3, 1fr); }
+    .orgs-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -365,8 +422,8 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">Connecticut · Est. 1968</div>
-  <h1>Excellence in Dermatology,<br>Rooted in Connecticut</h1>
+  <span class="hero-eyebrow">Connecticut · Est. 1968</span>
+  <h1><em>Excellence in Dermatology,</em><br>Rooted in Connecticut</h1>
   <p class="hero-sub">The Connecticut Society of Dermatology and Dermatologic Surgery serves the state's physicians through legislative advocacy, continuing education, and professional community.</p>
   <div class="hero-actions">
     <a href="signup.html" class="btn btn-parchment">Membership Information</a>
@@ -535,7 +592,10 @@
           <td>$450 / year</td>
         </tr>
         <tr>
-          <td>First Year in Practice<span class="dues-note">New practitioners</span></td>
+          <td>
+            First Year in Practice
+            <span class="dues-note">New practitioners</span>
+          </td>
           <td>$175 / year</td>
         </tr>
         <tr>
@@ -547,7 +607,10 @@
           <td>$350 / year</td>
         </tr>
         <tr>
-          <td>Senior Member<span class="dues-note">Age 67 or older, fewer than 20 hours per week</span></td>
+          <td>
+            Senior Member
+            <span class="dues-note">Age 67 or older, fewer than 20 hours per week</span>
+          </td>
           <td>$175 / year</td>
         </tr>
       </table>
