@@ -3,32 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — CT Society of Dermatology</title>
+<title>Contact — Connecticut Society of Dermatology and Dermatologic Surgery</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
+
   /* ── LAYOUT ── */
   .contact-main {
     max-width: 1100px;
     margin: 0 auto;
     padding: 60px 2rem 80px;
     display: grid;
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: 1fr 320px;
     gap: 48px;
     align-items: start;
   }
 
-  /* ── CONTACT FORM ── */
+  /* ── FORM ── */
   .form-card {
     background: var(--white);
     border: 0.5px solid var(--rule);
     border-radius: 8px;
     padding: 2.5rem;
-  }
-  .form-group { margin-bottom: 1.1rem; }
-  .form-row-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
   }
   .form-section-title {
     font-size: 11px;
@@ -40,34 +35,16 @@
     padding-bottom: 0.6rem;
     border-bottom: 0.5px solid var(--rule);
   }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
   .form-divider {
     border: none;
     border-top: 0.5px solid var(--rule);
     margin: 1.75rem 0;
-  }
-  .btn-submit {
-    width: 100%;
-    padding: 14px;
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #fff;
-    background: var(--navy);
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    transition: background 0.15s;
-  }
-  .btn-submit:hover { background: var(--navy-mid); }
-  .form-note {
-    font-size: 11px;
-    color: var(--text-muted);
-    text-align: center;
-    margin-top: 0.75rem;
-    line-height: 1.5;
   }
 
   /* ── TOPIC SELECTOR ── */
@@ -80,7 +57,7 @@
   .topic-option {
     border: 0.5px solid var(--rule);
     border-radius: 6px;
-    padding: 0.7rem 0.9rem;
+    padding: 0.65rem 0.9rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -90,12 +67,36 @@
     color: var(--text-body);
   }
   .topic-option:hover { border-color: var(--navy-light); background: #f5f8ff; }
-  .topic-option.selected { border-color: var(--navy); background: #f0f4fa; color: var(--navy); }
+  .topic-option.selected { border-color: var(--navy); background: #f0f4fa; color: var(--navy); font-weight: 500; }
   .topic-option input[type="radio"] {
     width: 14px;
     height: 14px;
     accent-color: var(--navy);
     flex-shrink: 0;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 13px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--navy);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-submit:hover { background: var(--navy-mid); }
+  .form-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.75rem;
+    line-height: 1.5;
   }
 
   /* ── SIDEBAR ── */
@@ -118,15 +119,82 @@
     color: rgba(255,255,255,0.8);
   }
   .sidebar-card-body { padding: 1.25rem; }
-
-  /* ── PERSON CARDS ── */
-  .person-card {
-    padding: 1rem 0;
+  .contact-row {
+    padding: 9px 0;
     border-bottom: 0.5px solid var(--rule);
+    font-size: 13px;
   }
-  .person-card:last-child { border-bottom: none; padding-bottom: 0; }
-  .person-card:first-child { padding-top: 0; }
-  .person-role {
+  .contact-row:last-child { border-bottom: none; }
+  .contact-row-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+  .contact-row-val { color: var(--navy); font-weight: 500; line-height: 1.5; }
+  .contact-row-val a { color: var(--navy-light); text-decoration: none; }
+  .contact-row-val a:hover { color: var(--navy); }
+
+  /* ── SPECIFIC INQUIRIES ── */
+  .inquiry-list { display: flex; flex-direction: column; }
+  .inquiry-item {
+    padding: 9px 0;
+    border-bottom: 0.5px solid var(--rule);
+    font-size: 13px;
+  }
+  .inquiry-item:last-child { border-bottom: none; }
+  .inquiry-topic {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+  .inquiry-name { font-weight: 500; color: var(--navy); }
+  .inquiry-note { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+  .inquiry-note a { color: var(--navy-light); text-decoration: none; }
+
+  /* ── KEY CONTACTS BAND ── */
+  .contacts-band {
+    background: var(--warm-white);
+    border-top: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 72px 2rem;
+  }
+  .contacts-inner { max-width: 1100px; margin: 0 auto; }
+  .contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 2.5rem;
+  }
+  .contact-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  .contact-card.primary { border-color: var(--navy); }
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--parchment);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .cc-role {
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -134,155 +202,82 @@
     color: var(--text-muted);
     margin-bottom: 3px;
   }
-  .person-name {
-    font-size: 14px;
+  .cc-name {
+    font-size: 15px;
     font-weight: 500;
     color: var(--navy);
-    margin-bottom: 4px;
-  }
-  .person-contact {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.8;
-  }
-  .person-contact a { color: var(--navy-light); text-decoration: none; }
-  .person-contact a:hover { color: var(--navy); }
-
-  /* ── ADDRESS CARD ── */
-  .address-block {
-    font-size: 13px;
-    color: var(--text-body);
-    line-height: 2;
-  }
-  .address-block strong { color: var(--navy); display: block; margin-bottom: 4px; }
-  .address-block a { color: var(--navy-light); text-decoration: none; }
-
-  /* ── PEOPLE BAND ── */
-  .people-band {
-    background: var(--warm-white);
-    border-top: 0.5px solid var(--rule);
-    border-bottom: 0.5px solid var(--rule);
-    padding: 64px 2rem;
-  }
-  .people-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .people-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 2.5rem;
-  }
-  .people-card {
-    background: var(--white);
-    border: 0.5px solid var(--rule);
-    border-radius: 8px;
-    padding: 1.5rem;
-  }
-  .people-card.featured {
-    border-color: var(--navy);
-    border-width: 1px;
-  }
-  .avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--navy);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--serif);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--parchment);
-    margin-bottom: 1rem;
-    letter-spacing: 0.02em;
-  }
-  .pc-role {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-  }
-  .pc-name {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--navy);
-    margin-bottom: 4px;
+    margin-bottom: 3px;
     line-height: 1.3;
   }
-  .pc-affiliation {
+  .cc-affiliation {
     font-size: 12px;
     color: var(--text-muted);
     margin-bottom: 1rem;
     line-height: 1.4;
   }
-  .pc-contact {
+  .cc-contact {
     font-size: 12px;
     color: var(--text-muted);
-    line-height: 1.8;
+    line-height: 1.85;
     border-top: 0.5px solid var(--rule);
     padding-top: 0.75rem;
-    margin-top: 0.25rem;
   }
-  .pc-contact a { color: var(--navy-light); text-decoration: none; }
+  .cc-contact a { color: var(--navy-light); text-decoration: none; }
+  .cc-contact a:hover { color: var(--navy); }
 
-  /* ── MAP PLACEHOLDER ── */
-  .map-section {
+  /* ── OFFICE BAND ── */
+  .office-band {
     background: var(--navy);
     padding: 64px 2rem;
+    border-top: 3px solid var(--parchment);
   }
-  .map-inner {
+  .office-inner {
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
+    gap: 64px;
+    align-items: start;
   }
-  .map-placeholder {
-    background: rgba(255,255,255,0.05);
-    border: 0.5px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
-    height: 240px;
+  .office-detail-list { display: flex; flex-direction: column; gap: 20px; margin-top: 2rem; }
+  .office-detail {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+    gap: 3px;
   }
-  .map-placeholder svg { width: 36px; height: 36px; stroke: rgba(255,255,255,0.3); fill: none; stroke-width: 1.5; }
-  .map-placeholder p { font-size: 13px; color: rgba(255,255,255,0.4); text-align: center; line-height: 1.6; }
-  .office-details { display: flex; flex-direction: column; gap: 20px; }
-  .office-item { display: flex; flex-direction: column; gap: 3px; }
-  .office-label {
+  .office-detail-label {
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.35);
   }
-  .office-val {
+  .office-detail-val {
     font-size: 14px;
     color: #fff;
-    font-weight: 400;
-    line-height: 1.5;
+    font-weight: 300;
+    line-height: 1.6;
   }
-  .office-val a { color: var(--parchment); text-decoration: none; }
-  .office-val a:hover { color: #fff; }
+  .office-detail-val a { color: var(--parchment); text-decoration: none; }
+  .office-detail-val a:hover { color: #fff; }
+  .office-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.8;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+  }
 
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     .contact-main { grid-template-columns: 1fr; }
     .topic-grid { grid-template-columns: 1fr; }
-    .people-grid { grid-template-columns: 1fr 1fr; }
-    .map-inner { grid-template-columns: 1fr; }
+    .contacts-grid { grid-template-columns: 1fr 1fr; }
+    .office-inner { grid-template-columns: 1fr; gap: 40px; }
     .form-row-2 { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
-    .people-grid { grid-template-columns: 1fr; }
+    .contacts-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -309,15 +304,14 @@
 <div class="page-header">
   <div class="eyebrow">Get in Touch</div>
   <h1>Contact <em>the Society</em></h1>
-  <p>Questions about membership, events, legislation, or clinical trials? We're here to help.</p>
+  <p>Questions about membership, events, legislation, or clinical trials may be directed to the Executive Director or submitted using the form below.</p>
 </div>
 
-<!-- MAIN -->
 <div class="contact-main">
 
   <!-- FORM -->
   <div class="form-card">
-    <div class="form-section-title">Send Us a Message</div>
+    <div class="form-section-title">Send a Message</div>
 
     <div class="form-row-2 form-group">
       <div class="form-group">
@@ -326,7 +320,7 @@
       </div>
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" placeholder="Smith, MD">
+        <input type="text" placeholder="Smith, M.D.">
       </div>
     </div>
 
@@ -341,7 +335,7 @@
     </div>
 
     <hr class="form-divider">
-    <div class="form-section-title">What can we help with?</div>
+    <div class="form-section-title">Topic</div>
 
     <div class="topic-grid">
       <label class="topic-option selected" onclick="selectTopic(this)">
@@ -378,23 +372,30 @@
     </div>
 
     <button class="btn-submit" onclick="submitContact(this)">Send Message</button>
-    <p class="form-note">We aim to respond to all inquiries within 2 business days. For urgent matters, call (860) 567-3787.</p>
+    <p class="form-note">We aim to respond to all inquiries within two business days. For urgent matters, contact Debbie Osborn directly at (860) 567-3787.</p>
   </div>
 
   <!-- SIDEBAR -->
   <div class="contact-sidebar">
 
     <div class="sidebar-card">
-      <div class="sidebar-card-header"><h3>Primary Contact</h3></div>
+      <div class="sidebar-card-header"><h3>Executive Director</h3></div>
       <div class="sidebar-card-body">
-        <div class="person-card">
-          <div class="person-role">Executive Director</div>
-          <div class="person-name">Debbie Osborn</div>
-          <div class="person-contact">
-            <a href="tel:8605673787">(860) 567-3787</a><br>
-            Fax: (860) 567-4174<br>
-            <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a>
-          </div>
+        <div class="contact-row">
+          <div class="contact-row-label">Name</div>
+          <div class="contact-row-val">Debbie Osborn</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-label">Phone</div>
+          <div class="contact-row-val"><a href="tel:8605673787">(860) 567-3787</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-label">Fax</div>
+          <div class="contact-row-val">(860) 567-4174</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-label">Email</div>
+          <div class="contact-row-val"><a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></div>
         </div>
       </div>
     </div>
@@ -402,11 +403,12 @@
     <div class="sidebar-card">
       <div class="sidebar-card-header"><h3>Mailing Address</h3></div>
       <div class="sidebar-card-body">
-        <div class="address-block">
-          <strong>CT Society of Dermatology</strong>
+        <div style="font-size:13px;color:var(--text-body);line-height:2;">
+          Connecticut Society of Dermatology<br>
+          and Dermatologic Surgery<br>
           P.O. Box 1079<br>
           Litchfield, CT 06759<br><br>
-          <a href="tel:8605673787">(860) 567-3787</a><br>
+          <a href="tel:8605673787" style="color:var(--navy-light);">(860) 567-3787</a><br>
           Fax: (860) 567-4174
         </div>
       </div>
@@ -415,32 +417,26 @@
     <div class="sidebar-card">
       <div class="sidebar-card-header"><h3>Specific Inquiries</h3></div>
       <div class="sidebar-card-body">
-        <div class="person-card">
-          <div class="person-role">Membership</div>
-          <div class="person-name">Debbie Osborn</div>
-          <div class="person-contact">
-            <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a>
+        <div class="inquiry-list">
+          <div class="inquiry-item">
+            <div class="inquiry-topic">Membership</div>
+            <div class="inquiry-name">Debbie Osborn</div>
+            <div class="inquiry-note"><a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></div>
           </div>
-        </div>
-        <div class="person-card">
-          <div class="person-role">Education &amp; CME</div>
-          <div class="person-name">Omar Ibrahimi, MD</div>
-          <div class="person-contact">
-            Contact via Executive Director
+          <div class="inquiry-item">
+            <div class="inquiry-topic">CME &amp; Education</div>
+            <div class="inquiry-name">Omar Ibrahimi, M.D.</div>
+            <div class="inquiry-note">Via Executive Director</div>
           </div>
-        </div>
-        <div class="person-card">
-          <div class="person-role">Legislation &amp; Lobbyist</div>
-          <div class="person-name">Legislative Committee</div>
-          <div class="person-contact">
-            <a href="legislation.html">Message via Legislation page →</a>
+          <div class="inquiry-item">
+            <div class="inquiry-topic">Legislation &amp; Lobbyist</div>
+            <div class="inquiry-name">Legislative Committee</div>
+            <div class="inquiry-note"><a href="legislation.html">Via Legislation page</a></div>
           </div>
-        </div>
-        <div class="person-card">
-          <div class="person-role">Clinical Trials</div>
-          <div class="person-name">Trial Coordinators</div>
-          <div class="person-contact">
-            <a href="trials.html">Contact via Clinical Trials page →</a>
+          <div class="inquiry-item">
+            <div class="inquiry-topic">Clinical Trials</div>
+            <div class="inquiry-name">Study Coordinators</div>
+            <div class="inquiry-note"><a href="trials.html">Via Clinical Trials page</a></div>
           </div>
         </div>
       </div>
@@ -449,75 +445,75 @@
   </div>
 </div>
 
-<!-- KEY PEOPLE -->
-<div class="people-band">
-  <div class="people-inner">
+<!-- KEY CONTACTS -->
+<div class="contacts-band">
+  <div class="contacts-inner">
     <div class="section-label">Leadership</div>
     <div class="rule-bar"></div>
     <h2 class="section-heading">Key Contacts</h2>
-    <div class="people-grid">
+    <div class="contacts-grid">
 
-      <div class="people-card featured">
+      <div class="contact-card primary">
         <div class="avatar">DO</div>
-        <div class="pc-role">Executive Director</div>
-        <div class="pc-name">Debbie Osborn</div>
-        <div class="pc-affiliation">CT Society of Dermatology &amp; Dermatologic Surgery</div>
-        <div class="pc-contact">
+        <div class="cc-role">Executive Director</div>
+        <div class="cc-name">Debbie Osborn</div>
+        <div class="cc-affiliation">Connecticut Society of Dermatology and Dermatologic Surgery</div>
+        <div class="cc-contact">
           <a href="tel:8605673787">(860) 567-3787</a><br>
           <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a><br>
           P.O. Box 1079, Litchfield, CT 06759
         </div>
       </div>
 
-      <div class="people-card">
+      <div class="contact-card">
+        <div class="avatar">DA</div>
+        <div class="cc-role">President</div>
+        <div class="cc-name">Donna Aiudi, M.D.</div>
+        <div class="cc-affiliation">President, CTDS<br>Legislative Committee Member</div>
+        <div class="cc-contact">
+          Contact via Executive Director<br>
+          <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a>
+        </div>
+      </div>
+
+      <div class="contact-card">
         <div class="avatar">KC</div>
-        <div class="pc-role">Yale Dept. Chair — Dermatology</div>
-        <div class="pc-name">Keith Choate, MD</div>
-        <div class="pc-affiliation">Yale School of Medicine<br>Department of Dermatology</div>
-        <div class="pc-contact">
+        <div class="cc-role">Yale — Chair, Dept. of Dermatology</div>
+        <div class="cc-name">Keith Choate, M.D.</div>
+        <div class="cc-affiliation">Yale School of Medicine<br>Department of Dermatology</div>
+        <div class="cc-contact">
           <a href="https://medicine.yale.edu/dermatology/" target="_blank">Yale Dermatology →</a>
         </div>
       </div>
 
-      <div class="people-card">
+      <div class="contact-card">
         <div class="avatar">PK</div>
-        <div class="pc-role">Immediate Past President</div>
-        <div class="pc-name">Phil Kerr, MD</div>
-        <div class="pc-affiliation">AAD Advisory Board Representative<br>CSMS Alternate Delegate</div>
-        <div class="pc-contact">
+        <div class="cc-role">Immediate Past President</div>
+        <div class="cc-name">Phil Kerr, M.D.</div>
+        <div class="cc-affiliation">AAD Advisory Board Representative<br>CSMS Alternate Delegate</div>
+        <div class="cc-contact">
           Contact via Executive Director<br>
           <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a>
         </div>
       </div>
 
-      <div class="people-card">
-        <div class="avatar">DA</div>
-        <div class="pc-role">President</div>
-        <div class="pc-name">Donna Aiudi, MD</div>
-        <div class="pc-affiliation">President, CTDS<br>Legislative Committee Member</div>
-        <div class="pc-contact">
-          Contact via Executive Director<br>
-          <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a>
-        </div>
-      </div>
-
-      <div class="people-card">
+      <div class="contact-card">
         <div class="avatar">OI</div>
-        <div class="pc-role">Education Chair</div>
-        <div class="pc-name">Omar Ibrahimi, MD</div>
-        <div class="pc-affiliation">Education Chair, CTDS<br>CME &amp; Lecture Programming</div>
-        <div class="pc-contact">
+        <div class="cc-role">Education Chair</div>
+        <div class="cc-name">Omar Ibrahimi, M.D.</div>
+        <div class="cc-affiliation">Education Chair, CTDS<br>CME &amp; Lecture Programming</div>
+        <div class="cc-contact">
           Contact via Executive Director<br>
           <a href="cme.html">CME Resources →</a>
         </div>
       </div>
 
-      <div class="people-card">
+      <div class="contact-card">
         <div class="avatar">HR</div>
-        <div class="pc-role">CAC &amp; CSMS Representative</div>
-        <div class="pc-name">Howard Rogers, MD</div>
-        <div class="pc-affiliation">CAC Representative<br>CSMS Delegate</div>
-        <div class="pc-contact">
+        <div class="cc-role">CAC &amp; CSMS Representative</div>
+        <div class="cc-name">Howard Rogers, M.D.</div>
+        <div class="cc-affiliation">CAC Representative<br>CSMS Delegate</div>
+        <div class="cc-contact">
           Contact via Executive Director<br>
           <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a>
         </div>
@@ -527,36 +523,44 @@
   </div>
 </div>
 
-<!-- LOCATION -->
-<div class="map-section">
-  <div class="map-inner">
-    <div class="map-placeholder">
-      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <p>Litchfield, Connecticut<br>
-      <span style="font-size:12px;color:rgba(255,255,255,0.3);">P.O. Box 1079 · Litchfield, CT 06759</span></p>
-    </div>
-    <div class="office-details">
+<!-- OFFICE -->
+<div class="office-band">
+  <div class="office-inner">
+    <div>
       <div class="section-label light">Society Office</div>
       <div class="rule-bar light"></div>
-      <div class="office-item">
-        <span class="office-label">Mailing Address</span>
-        <span class="office-val">P.O. Box 1079<br>Litchfield, CT 06759</span>
+      <h2 class="section-heading light">Office Information</h2>
+      <div class="office-detail-list">
+        <div class="office-detail">
+          <span class="office-detail-label">Mailing Address</span>
+          <span class="office-detail-val">P.O. Box 1079<br>Litchfield, CT 06759</span>
+        </div>
+        <div class="office-detail">
+          <span class="office-detail-label">Phone</span>
+          <span class="office-detail-val"><a href="tel:8605673787">(860) 567-3787</a></span>
+        </div>
+        <div class="office-detail">
+          <span class="office-detail-label">Fax</span>
+          <span class="office-detail-val">(860) 567-4174</span>
+        </div>
+        <div class="office-detail">
+          <span class="office-detail-label">Email</span>
+          <span class="office-detail-val"><a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></span>
+        </div>
+        <div class="office-detail">
+          <span class="office-detail-label">Executive Director</span>
+          <span class="office-detail-val">Debbie Osborn</span>
+        </div>
       </div>
-      <div class="office-item">
-        <span class="office-label">Phone</span>
-        <span class="office-val"><a href="tel:8605673787">(860) 567-3787</a></span>
-      </div>
-      <div class="office-item">
-        <span class="office-label">Fax</span>
-        <span class="office-val">(860) 567-4174</span>
-      </div>
-      <div class="office-item">
-        <span class="office-label">Email</span>
-        <span class="office-val"><a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></span>
-      </div>
-      <div class="office-item">
-        <span class="office-label">Executive Director</span>
-        <span class="office-val">Debbie Osborn</span>
+    </div>
+    <div>
+      <div class="section-label light">Response Times</div>
+      <div class="rule-bar light"></div>
+      <div class="office-note">
+        General inquiries are responded to within two business days.<br><br>
+        For time-sensitive legislative matters, use the lobbyist contact form on the <a href="legislation.html" style="color:var(--parchment);">Legislation page</a>.<br><br>
+        For clinical trial referrals, use the referral form on the <a href="trials.html" style="color:var(--parchment);">Clinical Trials page</a>.<br><br>
+        For membership questions, contact Debbie Osborn directly at <a href="tel:8605673787" style="color:var(--parchment);">(860) 567-3787</a>.
       </div>
     </div>
   </div>
@@ -573,7 +577,7 @@
     <li><a href="trials.html">Clinical Trials</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <p>Connecticut Society of Dermatology &amp; Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a></p>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a> &nbsp;·&nbsp; <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></p>
   <p style="margin-top:6px;">© 2025 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
 </footer>
 
