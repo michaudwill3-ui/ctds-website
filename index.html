@@ -32,21 +32,14 @@
     position: relative;
     z-index: 2;
   }
-  .ticker-overflow {
-    overflow: hidden;
-    flex: 1;
-  }
+  .ticker-overflow { overflow: hidden; flex: 1; }
   .ticker-track {
     display: flex;
     animation: ticker 55s linear infinite;
     white-space: nowrap;
   }
   .ticker-track:hover { animation-play-state: paused; }
-  .ticker-item {
-    font-size: 12px;
-    color: var(--navy);
-    padding: 0 2.5rem;
-  }
+  .ticker-item { font-size: 12px; color: var(--navy); padding: 0 2.5rem; }
   .ticker-dot { color: #b0a898; padding: 0 0.25rem; }
   @keyframes ticker {
     0% { transform: translateX(0); }
@@ -114,7 +107,7 @@
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .stat-item {
     padding: 1.5rem 1rem;
@@ -174,13 +167,7 @@
     justify-content: center;
     border: 0.5px solid var(--rule);
   }
-  .quick-link-icon svg {
-    width: 15px;
-    height: 15px;
-    stroke: var(--navy);
-    fill: none;
-    stroke-width: 1.5;
-  }
+  .quick-link-icon svg { width: 15px; height: 15px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
   .quick-link span {
     font-family: var(--sans);
     font-size: 11px;
@@ -206,12 +193,7 @@
     line-height: 1.85;
     margin-bottom: 1.1rem;
   }
-  .values-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
+  .values-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
   .values-list li { display: flex; gap: 14px; align-items: flex-start; }
   .values-dot {
     width: 5px;
@@ -221,18 +203,8 @@
     flex-shrink: 0;
     margin-top: 9px;
   }
-  .values-list strong {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 2px;
-  }
-  .values-list span {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.65;
-  }
+  .values-list strong { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .values-list span { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
   /* ── EVENTS ── */
   .events-grid {
@@ -243,61 +215,15 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
-  .event-card {
-    background: var(--white);
-    border: 0.5px solid var(--rule);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .event-date-bar {
-    background: var(--navy);
-    padding: 0.75rem 1.25rem;
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  }
-  .event-month {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--parchment);
-    opacity: 0.8;
-  }
-  .event-day {
-    font-size: 22px;
-    font-weight: 300;
-    color: #fff;
-    line-height: 1;
-  }
+  .event-card { background: var(--white); border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .event-date-bar { background: var(--navy); padding: 0.75rem 1.25rem; display: flex; align-items: baseline; gap: 8px; }
+  .event-month { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--parchment); opacity: 0.8; }
+  .event-day { font-size: 22px; font-weight: 300; color: #fff; line-height: 1; }
   .event-body { padding: 1.1rem 1.25rem; }
-  .event-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--navy);
-    margin-bottom: 3px;
-    line-height: 1.4;
-  }
-  .event-meta {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 0.6rem;
-  }
-  .event-desc {
-    font-size: 13px;
-    color: var(--text-body);
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
-  }
-  .event-link {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--navy);
-    text-decoration: none;
-    border-bottom: 1px solid var(--navy);
-  }
+  .event-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 3px; line-height: 1.4; }
+  .event-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 0.6rem; }
+  .event-desc { font-size: 13px; color: var(--text-body); line-height: 1.6; margin-bottom: 0.75rem; }
+  .event-link { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--navy); }
 
   /* ── MEMBERSHIP BAND ── */
   .membership-band {
@@ -314,56 +240,15 @@
     gap: 80px;
     align-items: start;
   }
-  .dues-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-  }
+  .dues-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
   .dues-table tr { border-bottom: 0.5px solid var(--rule); }
   .dues-table tr:last-child { border-bottom: none; }
-  .dues-table td {
-    padding: 10px 0;
-    font-size: 13px;
-    color: var(--text-body);
-    vertical-align: top;
-  }
-  .dues-table td:last-child {
-    text-align: right;
-    font-weight: 600;
-    color: var(--navy);
-    white-space: nowrap;
-    padding-left: 8px;
-  }
-  .dues-note {
-    font-size: 11px;
-    color: var(--text-muted);
-    display: block;
-    margin-top: 2px;
-    font-weight: 400;
-  }
-  .benefit-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 1.5rem;
-  }
-  .benefit-list li {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    font-size: 13px;
-    color: var(--text-body);
-    line-height: 1.5;
-  }
-  .benefit-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--navy);
-    flex-shrink: 0;
-    margin-top: 7px;
-  }
+  .dues-table td { padding: 10px 0; font-size: 13px; color: var(--text-body); vertical-align: top; }
+  .dues-table td:last-child { text-align: right; font-weight: 600; color: var(--navy); white-space: nowrap; padding-left: 8px; }
+  .dues-note { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; font-weight: 400; }
+  .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 1.5rem; }
+  .benefit-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--text-body); line-height: 1.5; }
+  .benefit-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--navy); flex-shrink: 0; margin-top: 7px; }
 
   /* ── ORGS ── */
   .orgs-grid {
@@ -374,54 +259,45 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
   }
-  .org-card {
-    border: 0.5px solid var(--rule);
-    border-radius: 8px;
-    padding: 1.1rem 1.25rem;
-    text-decoration: none;
-    background: var(--white);
-    transition: border-color 0.15s;
-    display: block;
-  }
+  .org-card { border: 0.5px solid var(--rule); border-radius: 8px; padding: 1.1rem 1.25rem; text-decoration: none; background: var(--white); transition: border-color 0.15s; display: block; }
   .org-card:hover { border-color: var(--navy-light); }
-  .org-abbr {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 3px;
-  }
-  .org-name {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.4;
-    margin-bottom: 0.6rem;
-  }
-  .org-arrow {
-    font-size: 11px;
-    color: var(--navy-light);
-    display: block;
-  }
+  .org-abbr { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+  .org-name { font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-bottom: 0.6rem; }
+  .org-arrow { font-size: 11px; color: var(--navy-light); display: block; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
-    .hero h1 { font-size: 36px; }
-    .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
-    .stat-item:nth-child(2) { border-right: none; }
-    .stat-item:nth-child(3) { border-top: 0.5px solid var(--rule); }
-    .stat-item:nth-child(4) { border-top: 0.5px solid var(--rule); border-right: none; }
+    .hero h1 { font-size: 38px; }
+    .stats-bar-inner { grid-template-columns: repeat(3, 1fr); }
     .quick-links-inner { grid-template-columns: repeat(3, 1fr); }
     .quick-link:nth-child(3) { border-right: none; }
     .mission-grid { grid-template-columns: 1fr; gap: 48px; }
-    .events-grid { grid-template-columns: 1fr; }
+    .events-grid { grid-template-columns: 1fr 1fr; }
     .membership-inner { grid-template-columns: 1fr; gap: 48px; }
     .orgs-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 600px) {
-    .hero { padding: 72px 1.5rem 64px; }
-    .hero h1 { font-size: 28px; }
-    .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 640px) {
+    .hero { padding: 56px 1.25rem 52px; }
+    .hero-eyebrow { font-size: 10px; }
+    .hero h1 { font-size: 28px; letter-spacing: -0.01em; }
+    .hero-sub { font-size: 14px; margin-bottom: 2rem; }
+    .hero-actions { flex-direction: column; align-items: center; gap: 10px; }
+    .hero-actions .btn { width: 100%; max-width: 300px; text-align: center; }
+    .stats-bar-inner { grid-template-columns: 1fr 1fr 1fr; }
+    .stat-item { padding: 1rem 0.5rem; }
+    .stat-val { font-size: 14px; }
+    .stat-label { font-size: 9px; }
     .quick-links-inner { grid-template-columns: repeat(3, 1fr); }
+    .quick-link { padding: 1rem 0.5rem; gap: 6px; }
+    .quick-link span { font-size: 9px; letter-spacing: 0.04em; }
+    .quick-link-icon { width: 28px; height: 28px; }
+    .quick-link-icon svg { width: 12px; height: 12px; }
+    .events-grid { grid-template-columns: 1fr; }
     .orgs-grid { grid-template-columns: 1fr 1fr; }
+    .mission-grid { padding: 0 1.25rem; }
+    .events-grid { padding: 0 1.25rem; }
+    .orgs-grid { padding: 0 1.25rem; }
+    .membership-band { padding: 56px 1.25rem; }
   }
 </style>
 </head>
@@ -452,27 +328,23 @@
     <div class="ticker-track">
       <span class="ticker-item">AAD Annual Meeting 2026 — March 6–10, Washington, DC</span>
       <span class="ticker-dot">·</span>
-      <span class="ticker-item">CT SB 1022 — Scope of practice legislation under review</span>
+      <span class="ticker-item">Regional Scientific Meeting &amp; Skin Expo — Aqua Turf Club</span>
       <span class="ticker-dot">·</span>
-      <span class="ticker-item">New FDA guidance on topical biologics for atopic dermatitis</span>
+      <span class="ticker-item">2026 Legislative Priorities — now available</span>
       <span class="ticker-dot">·</span>
-      <span class="ticker-item">CTDS Spring Meeting — Registration open</span>
+      <span class="ticker-item">Contact Debbie Osborn to register for upcoming meetings</span>
       <span class="ticker-dot">·</span>
-      <span class="ticker-item">CMS 2025 Physician Fee Schedule — final rule in effect</span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">Phase III atopic dermatitis trial enrolling at Yale Dermatology</span>
+      <span class="ticker-item">Doctor's Day at the Capitol — Legislative Office Building, Hartford</span>
       <span class="ticker-dot">·</span>
       <span class="ticker-item">AAD Annual Meeting 2026 — March 6–10, Washington, DC</span>
       <span class="ticker-dot">·</span>
-      <span class="ticker-item">CT SB 1022 — Scope of practice legislation under review</span>
+      <span class="ticker-item">Regional Scientific Meeting &amp; Skin Expo — Aqua Turf Club</span>
       <span class="ticker-dot">·</span>
-      <span class="ticker-item">New FDA guidance on topical biologics for atopic dermatitis</span>
+      <span class="ticker-item">2026 Legislative Priorities — now available</span>
       <span class="ticker-dot">·</span>
-      <span class="ticker-item">CTDS Spring Meeting — Registration open</span>
+      <span class="ticker-item">Contact Debbie Osborn to register for upcoming meetings</span>
       <span class="ticker-dot">·</span>
-      <span class="ticker-item">CMS 2025 Physician Fee Schedule — final rule in effect</span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">Phase III atopic dermatitis trial enrolling at Yale Dermatology</span>
+      <span class="ticker-item">Doctor's Day at the Capitol — Legislative Office Building, Hartford</span>
       <span class="ticker-dot">·</span>
     </div>
   </div>
@@ -480,7 +352,7 @@
 
 <!-- HERO -->
 <div class="hero">
-  <span class="hero-eyebrow">Connecticut · Est. 1968</span>
+  <span class="hero-eyebrow">The Professional  Society for Connecticut Dermatologists</span>
   <h1>Excellence in <em>Dermatology,</em><br>Rooted in <em>Connecticut</em></h1>
   <p class="hero-sub">The Connecticut Society of Dermatology and Dermatologic Surgery serves the state's physicians through legislative advocacy, continuing education, and professional community.</p>
   <div class="hero-actions">
@@ -492,10 +364,6 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-bar-inner">
-    <div class="stat-item">
-      <div class="stat-val">Est. 1968</div>
-      <div class="stat-label">Serving Connecticut dermatologists</div>
-    </div>
     <div class="stat-item">
       <div class="stat-val">State &amp; Federal</div>
       <div class="stat-label">Legislative advocacy on behalf of members</div>
@@ -566,23 +434,23 @@
       <ul class="values-list">
         <li>
           <div class="values-dot"></div>
-          <div><strong>Patients First</strong><span>Compassion and the highest-quality dermatologic care are central to everything the Society represents.</span></div>
+          <div><strong>Patients First</strong><span>Compassion, caring and listening are at the heart of delivering the highest-quality dermatologic care in Connecticut.</span></div>
         </li>
         <li>
           <div class="values-dot"></div>
-          <div><strong>Professionalism</strong><span>Adherence to the clinical and ethical standards of the AMA and American Academy of Dermatology.</span></div>
+          <div><strong>Professionalism</strong><span>Adhering to an uncompromising code of clinical and ethical standards set forth by the AMA and American Academy of Dermatology.</span></div>
         </li>
         <li>
           <div class="values-dot"></div>
-          <div><strong>Collaboration</strong><span>Coordinated partnerships with specialty organizations at the state and national level.</span></div>
+          <div><strong>Collaboration</strong><span>Working together with other medical specialty organizations with mutual respect, collegiality and transparency.</span></div>
         </li>
         <li>
           <div class="values-dot"></div>
-          <div><strong>Lifelong Learning</strong><span>Continuous professional development through self-assessment, CME, and ongoing education.</span></div>
+          <div><strong>Lifelong Learning</strong><span>Pursuing knowledge and continuous improvement through self-assessment and ongoing evaluation.</span></div>
         </li>
         <li>
           <div class="values-dot"></div>
-          <div><strong>Social Responsibility</strong><span>Community leadership and a dedication to public health in Connecticut and beyond.</span></div>
+          <div><strong>Social Responsibility</strong><span>Community leadership, volunteerism and stewardship in service of public health in Connecticut and beyond.</span></div>
         </li>
       </ul>
     </div>
@@ -594,43 +462,40 @@
   <div class="container">
     <div class="section-label">Calendar</div>
     <div class="rule-bar"></div>
-    <h2 class="section-heading">Upcoming Events &amp; Meetings</h2>
+    <h2 class="section-heading">Meetings &amp; Events</h2>
   </div>
   <div class="events-grid">
     <div class="event-card">
       <div class="event-date-bar">
-        <span class="event-month">May</span>
-        <span class="event-day">14</span>
+        <span class="event-month">Upcoming</span>
       </div>
       <div class="event-body">
-        <div class="event-title">CTDS Spring Membership Meeting</div>
-        <div class="event-meta">Hartford, CT &nbsp;·&nbsp; 6:00 PM</div>
-        <div class="event-desc">Annual spring gathering with legislative updates, CME presentations, and society business.</div>
-        <a href="events.html" class="event-link">View Details</a>
+        <div class="event-title">Regional Scientific Meeting &amp; Skin Expo</div>
+        <div class="event-meta">Aqua Turf Club, Connecticut</div>
+        <div class="event-desc">The Society's signature scientific meeting and skin expo. Contact Debbie Osborn for registration, exhibitor, and sponsor information.</div>
+        <a href="mailto:debbieosborn36@yahoo.com" class="event-link">Contact to Register</a>
       </div>
     </div>
     <div class="event-card">
       <div class="event-date-bar">
-        <span class="event-month">Jun</span>
-        <span class="event-day">7</span>
+        <span class="event-month">Annual</span>
       </div>
       <div class="event-body">
-        <div class="event-title">AAD Summer Academy Meeting</div>
-        <div class="event-meta">Chicago, IL &nbsp;·&nbsp; National</div>
-        <div class="event-desc">American Academy of Dermatology summer scientific sessions and advocacy programming.</div>
+        <div class="event-title">Doctor's Day at the Capitol</div>
+        <div class="event-meta">Legislative Office Building, 300 Capitol Ave, Hartford, CT</div>
+        <div class="event-desc">Connecticut dermatologists meet with state legislators on medical issues affecting dermatology practice in Connecticut.</div>
+        <a href="legislation.html" class="event-link">Legislation &amp; Advocacy</a>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-date-bar">
+        <span class="event-month">National</span>
+      </div>
+      <div class="event-body">
+        <div class="event-title">AAD Annual Meeting 2026</div>
+        <div class="event-meta">March 6–10, 2026 · Washington, DC</div>
+        <div class="event-desc">The American Academy of Dermatology Annual Meeting — the premier national conference for dermatologists.</div>
         <a href="https://www.aad.org/member/meetings-events" target="_blank" class="event-link">AAD Website</a>
-      </div>
-    </div>
-    <div class="event-card">
-      <div class="event-date-bar">
-        <span class="event-month">Oct</span>
-        <span class="event-day">22</span>
-      </div>
-      <div class="event-body">
-        <div class="event-title">CTDS Annual Fall Meeting</div>
-        <div class="event-meta">New Haven, CT &nbsp;·&nbsp; Full Day</div>
-        <div class="event-desc">The Society's annual meeting with full-day CME programming, keynote address, and awards dinner.</div>
-        <a href="events.html" class="event-link">View Details</a>
       </div>
     </div>
   </div>
@@ -678,7 +543,7 @@
         <li><div class="benefit-dot"></div>CME lecture library and continuing education resources</li>
         <li><div class="benefit-dot"></div>Clinical trial listings and coordinator contact information</li>
         <li><div class="benefit-dot"></div>SMS and email alerts for meetings and legislative updates</li>
-        <li><div class="benefit-dot"></div>Discounted registration at CTDS annual meetings</li>
+        <li><div class="benefit-dot"></div>Discounted registration at CTDS meetings</li>
         <li><div class="benefit-dot"></div>Legislative advocacy at the state and federal level</li>
         <li><div class="benefit-dot"></div>CTDS newsletters and archived society resources</li>
       </ul>
@@ -692,7 +557,7 @@
     <div class="section-label">Affiliates</div>
     <div class="rule-bar"></div>
     <h2 class="section-heading">National &amp; State Organizations</h2>
-    <p style="font-size:14px;color:var(--text-muted);max-width:560px;margin-top:0.25rem;">The Society maintains active relationships with national dermatology organizations, providing members with access to resources, meetings, and advocacy at every level.</p>
+    <p style="font-size:14px;color:var(--text-muted);max-width:560px;margin-top:0.25rem;">The Society maintains active relationships with national dermatology organizations, providing members access to resources, meetings, and advocacy at every level.</p>
   </div>
   <div class="orgs-grid">
     <a href="https://www.aad.org" target="_blank" class="org-card">
@@ -705,32 +570,12 @@
       <div class="org-name">American Society for Dermatologic Surgery</div>
       <span class="org-arrow">asds.net →</span>
     </a>
-    <a href="https://www.abderm.org" target="_blank" class="org-card">
-      <div class="org-abbr">ABD</div>
-      <div class="org-name">American Board of Dermatology</div>
-      <span class="org-arrow">abderm.org →</span>
-    </a>
-    <a href="https://www.aocd.org" target="_blank" class="org-card">
-      <div class="org-abbr">AOCD</div>
-      <div class="org-name">American Osteopathic College of Dermatology</div>
-      <span class="org-arrow">aocd.org →</span>
-    </a>
-    <a href="https://www.acmssurgery.com" target="_blank" class="org-card">
-      <div class="org-abbr">ACMS</div>
-      <div class="org-name">American College of Mohs Surgery</div>
-      <span class="org-arrow">acmssurgery.com →</span>
-    </a>
     <a href="https://www.csms.org" target="_blank" class="org-card">
       <div class="org-abbr">CSMS</div>
       <div class="org-name">Connecticut State Medical Society</div>
       <span class="org-arrow">csms.org →</span>
     </a>
-    <a href="https://medicine.yale.edu/dermatology/" target="_blank" class="org-card">
-      <div class="org-abbr">Yale</div>
-      <div class="org-name">Yale School of Medicine — Dermatology</div>
-      <span class="org-arrow">medicine.yale.edu →</span>
-    </a>
-    <a href="https://www.cancer.org" target="_blank" class="org-card">
+    <a href="http://www.cancer.org" target="_blank" class="org-card">
       <div class="org-abbr">ACS</div>
       <div class="org-name">American Cancer Society — Skin Cancer</div>
       <span class="org-arrow">cancer.org →</span>
