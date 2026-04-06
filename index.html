@@ -3,114 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CT Society of Dermatology & Dermatologic Surgery</title>
+<title>Connecticut Society of Dermatology and Dermatologic Surgery</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-  /* ── HERO ── */
-  .hero {
-    background: var(--navy);
-    padding: 100px 2.5rem 90px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 45%;
-    height: 100%;
-    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.03) 100%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 60px;
-    align-items: center;
-  }
-  .hero-eyebrow {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--parchment);
-    opacity: 0.8;
-    margin-bottom: 1.25rem;
-  }
-  .hero h1 {
-    font-size: 42px;
-    font-weight: 300;
-    color: #fff;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.25rem;
-  }
-  .hero h1 em {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-  }
-  .hero-sub {
-    font-size: 16px;
-    color: rgba(255,255,255,0.6);
-    font-weight: 300;
-    line-height: 1.7;
-    max-width: 480px;
-    margin-bottom: 2rem;
-  }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-  .hero-rule {
-    width: 1px;
-    background: rgba(255,255,255,0.12);
-    align-self: stretch;
-    display: none;
-  }
-  .hero-aside {
-    border: 0.5px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
-    padding: 1.75rem;
-    background: rgba(255,255,255,0.04);
-  }
-  .hero-aside-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--parchment);
-    opacity: 0.7;
-    margin-bottom: 1rem;
-  }
-  .hero-stat {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.25rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 0.5px solid rgba(255,255,255,0.1);
-  }
-  .hero-stat:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .hero-stat-val {
-    font-size: 26px;
-    font-weight: 300;
-    color: #fff;
-    line-height: 1;
-    margin-bottom: 3px;
-  }
-  .hero-stat-label {
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-  }
 
   /* ── TICKER ── */
   .ticker {
     background: var(--parchment);
-    padding: 0;
     overflow: hidden;
     height: 40px;
     display: flex;
     align-items: center;
     border-bottom: 0.5px solid #d4c9b5;
+    position: relative;
   }
   .ticker-label {
     background: var(--navy);
@@ -125,10 +30,16 @@
     align-items: center;
     white-space: nowrap;
     flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .ticker-overflow {
+    overflow: hidden;
+    flex: 1;
   }
   .ticker-track {
     display: flex;
-    animation: ticker 40s linear infinite;
+    animation: ticker 50s linear infinite;
     white-space: nowrap;
   }
   .ticker-track:hover { animation-play-state: paused; }
@@ -138,13 +49,94 @@
     padding: 0 2.5rem;
     font-weight: 400;
   }
-  .ticker-dot {
-    color: var(--text-muted);
-    padding: 0 0.5rem;
-  }
+  .ticker-dot { color: var(--text-muted); padding: 0 0.5rem; }
   @keyframes ticker {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 90px 2.5rem 80px;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    opacity: 0.8;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-size: 40px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 500px;
+    margin-bottom: 2rem;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .hero-aside {
+    border: 0.5px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 1.75rem;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero-aside-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  }
+  .hero-stat:first-of-type { padding-top: 0; }
+  .hero-stat:last-child { padding-bottom: 0; border-bottom: none; }
+  .hero-stat-val {
+    font-size: 22px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
   }
 
   /* ── QUICK LINKS ── */
@@ -160,7 +152,7 @@
     grid-template-columns: repeat(5, 1fr);
   }
   .quick-link {
-    padding: 1.5rem 1rem;
+    padding: 1.4rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,8 +165,8 @@
   .quick-link:last-child { border-right: none; }
   .quick-link:hover { background: var(--warm-white); }
   .quick-link-icon {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background: var(--warm-white);
     display: flex;
@@ -182,7 +174,7 @@
     justify-content: center;
     border: 0.5px solid var(--rule);
   }
-  .quick-link-icon svg { width: 16px; height: 16px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
+  .quick-link-icon svg { width: 15px; height: 15px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
   .quick-link span {
     font-size: 11px;
     font-weight: 600;
@@ -198,24 +190,24 @@
     padding: 0 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    gap: 72px;
     align-items: start;
   }
   .mission-text p {
     font-size: 15px;
     color: var(--text-body);
-    line-height: 1.8;
-    margin-bottom: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.1rem;
   }
-  .values-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 0.5rem; }
+  .values-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
   .values-list li { display: flex; gap: 14px; align-items: flex-start; }
   .values-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: var(--navy);
     flex-shrink: 0;
-    margin-top: 8px;
+    margin-top: 9px;
   }
   .values-list strong { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
   .values-list span { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
@@ -223,12 +215,11 @@
   /* ── EVENTS ── */
   .events-grid {
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 2.5rem auto 0;
     padding: 0 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    margin-top: 2.5rem;
   }
   .event-card {
     background: var(--white);
@@ -243,23 +234,12 @@
     align-items: baseline;
     gap: 8px;
   }
-  .event-month {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--parchment);
-    opacity: 0.8;
-  }
-  .event-day {
-    font-size: 22px;
-    font-weight: 300;
-    color: #fff;
-    line-height: 1;
-  }
+  .event-month { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--parchment); opacity: 0.8; }
+  .event-day { font-size: 22px; font-weight: 300; color: #fff; line-height: 1; }
   .event-body { padding: 1.25rem; }
   .event-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.4; }
   .event-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .event-desc { font-size: 13px; color: var(--text-body); line-height: 1.6; margin-bottom: 0.75rem; }
   .event-link { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--navy); }
 
   /* ── ORGS ── */
@@ -269,7 +249,7 @@
     padding: 0 2rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 14px;
   }
   .org-card {
     border: 0.5px solid var(--rule);
@@ -280,40 +260,47 @@
     transition: border-color 0.15s;
     display: block;
   }
-  .org-card:hover { border-color: var(--navy); }
-  .org-abbr {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 4px;
-  }
-  .org-name { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
-  .org-arrow { font-size: 11px; color: var(--navy); margin-top: 0.75rem; display: block; }
+  .org-card:hover { border-color: var(--navy-light); }
+  .org-abbr { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .org-name { font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-bottom: 0.75rem; }
+  .org-arrow { font-size: 11px; color: var(--navy-light); display: block; }
 
-  /* ── CTA BAND ── */
-  .cta-band {
-    background: var(--navy);
-    padding: 64px 2rem;
-    text-align: center;
-    border-top: 3px solid var(--parchment);
+  /* ── MEMBERSHIP INFO BAND ── */
+  .membership-band {
+    background: var(--warm-white);
+    border-top: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 72px 2rem;
   }
-  .cta-band h2 {
-    font-size: 28px;
-    font-weight: 300;
-    color: #fff;
-    margin-bottom: 0.75rem;
+  .membership-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
   }
-  .cta-band h2 em { font-family: var(--serif); font-style: italic; }
-  .cta-band p { font-size: 15px; color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
-  .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .dues-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+  .dues-table tr { border-bottom: 0.5px solid var(--rule); }
+  .dues-table tr:last-child { border-bottom: none; }
+  .dues-table td { padding: 10px 0; font-size: 13px; color: var(--text-body); }
+  .dues-table td:last-child { text-align: right; font-weight: 600; color: var(--navy); }
+  .dues-table .dues-note { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; font-weight: 400; }
 
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     .hero-inner { grid-template-columns: 1fr; }
     .hero-aside { display: none; }
     .quick-links-inner { grid-template-columns: repeat(3, 1fr); }
+    .quick-link:nth-child(3) { border-right: none; }
     .mission-grid { grid-template-columns: 1fr; gap: 40px; }
     .events-grid { grid-template-columns: 1fr; }
     .orgs-grid { grid-template-columns: repeat(2, 1fr); }
+    .membership-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 30px; }
+    .orgs-grid { grid-template-columns: 1fr 1fr; }
+    .quick-links-inner { grid-template-columns: repeat(3, 1fr); }
   }
 </style>
 </head>
@@ -340,32 +327,33 @@
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-label">Updates</div>
-  <div class="ticker-track">
-    <span class="ticker-item">AAD Annual Meeting 2025 — March 7–11, Orlando, FL</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">CT SB 1022 — Scope of practice legislation under review</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">New FDA guidance on topical biologics for atopic dermatitis</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">CTDS Spring Meeting — Registration now open</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">CMS 2025 Physician Fee Schedule final rule published</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">Clinical Trial: Phase III atopic dermatitis study enrolling now</span>
-    <span class="ticker-dot">·</span>
-    <!-- duplicate for seamless loop -->
-    <span class="ticker-item">AAD Annual Meeting 2025 — March 7–11, Orlando, FL</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">CT SB 1022 — Scope of practice legislation under review</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">New FDA guidance on topical biologics for atopic dermatitis</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">CTDS Spring Meeting — Registration now open</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">CMS 2025 Physician Fee Schedule final rule published</span>
-    <span class="ticker-dot">·</span>
-    <span class="ticker-item">Clinical Trial: Phase III atopic dermatitis study enrolling now</span>
-    <span class="ticker-dot">·</span>
+  <div class="ticker-overflow">
+    <div class="ticker-track">
+      <span class="ticker-item">AAD Annual Meeting 2026 — March 6–10, Washington, DC</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">CT SB 1022 — Scope of practice legislation under review</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">New FDA guidance on topical biologics for atopic dermatitis</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">CTDS Spring Meeting — Registration open</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">CMS 2025 Physician Fee Schedule — final rule in effect</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">Phase III atopic dermatitis trial enrolling at Yale Dermatology</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">AAD Annual Meeting 2026 — March 6–10, Washington, DC</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">CT SB 1022 — Scope of practice legislation under review</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">New FDA guidance on topical biologics for atopic dermatitis</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">CTDS Spring Meeting — Registration open</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">CMS 2025 Physician Fee Schedule — final rule in effect</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">Phase III atopic dermatitis trial enrolling at Yale Dermatology</span>
+      <span class="ticker-dot">·</span>
+    </div>
   </div>
 </div>
 
@@ -375,29 +363,29 @@
     <div>
       <div class="hero-eyebrow">Connecticut · Est. 1968</div>
       <h1>Excellence in <em>Dermatology,</em><br>Rooted in Connecticut</h1>
-      <p class="hero-sub">The professional society for Connecticut's dermatologists — advancing patient care, legislative advocacy, and lifelong learning across the state and nation.</p>
+      <p class="hero-sub">The Connecticut Society of Dermatology and Dermatologic Surgery serves the state's dermatologists through advocacy, education, and professional community.</p>
       <div class="hero-actions">
-        <a href="signup.html" class="btn btn-parchment">Join the Society</a>
+        <a href="signup.html" class="btn btn-parchment">Membership Information</a>
         <a href="events.html" class="btn btn-outline">Upcoming Events</a>
       </div>
     </div>
     <div class="hero-aside">
-      <div class="hero-aside-label">At a Glance</div>
+      <div class="hero-aside-label">Society Overview</div>
       <div class="hero-stat">
         <span class="hero-stat-val">Est. 1968</span>
         <span class="hero-stat-label">Serving Connecticut dermatologists</span>
       </div>
       <div class="hero-stat">
         <span class="hero-stat-val">State &amp; Federal</span>
-        <span class="hero-stat-label">Legislative advocacy on your behalf</span>
+        <span class="hero-stat-label">Legislative advocacy on behalf of members</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-val">CME + Trials</span>
-        <span class="hero-stat-label">Education &amp; clinical research access</span>
+        <span class="hero-stat-val">CME &amp; Research</span>
+        <span class="hero-stat-label">Continuing education and clinical trial access</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-val">$175–$450</span>
-        <span class="hero-stat-label">Annual dues — tiered by career stage</span>
+        <span class="hero-stat-val">$175 – $450</span>
+        <span class="hero-stat-label">Annual dues, tiered by years in practice</span>
       </div>
     </div>
   </div>
@@ -434,7 +422,7 @@
       <div class="quick-link-icon">
         <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </div>
-      <span>Join</span>
+      <span>Membership</span>
     </a>
   </div>
 </div>
@@ -443,38 +431,38 @@
 <section class="section">
   <div class="mission-grid">
     <div>
-      <div class="section-label">Our Mission</div>
+      <div class="section-label">Mission</div>
       <div class="rule-bar"></div>
       <h2 class="section-heading">Promoting Quality &amp; Excellence in Dermatologic Care</h2>
       <div class="mission-text">
-        <p>The Connecticut Society of Dermatology and Dermatologic Surgery is the professional home for Connecticut's dermatologists — connecting physicians to each other, to national organizations, and to the legislative processes that shape their practice.</p>
-        <p>Founded in 1968, the Society advocates for patients and physicians at the state and federal level, facilitates continuing medical education, and supports members through every stage of their career.</p>
-        <a href="about.html" class="btn btn-primary" style="margin-top:1rem;">About the Society</a>
+        <p>The Connecticut Society of Dermatology and Dermatologic Surgery was established to advance the practice of dermatology in Connecticut through education, research, and advocacy at the state and federal level.</p>
+        <p>The Society connects its members to national organizations, legislative processes, continuing medical education, and the broader professional community of dermatologists practicing in the state.</p>
+        <a href="about.html" class="btn btn-primary" style="margin-top:0.5rem;display:inline-block;">About the Society</a>
       </div>
     </div>
     <div>
-      <div class="section-label">Our Values</div>
+      <div class="section-label">Values</div>
       <div class="rule-bar"></div>
       <ul class="values-list">
         <li>
           <div class="values-dot"></div>
-          <div><strong>Patients First</strong><span>Compassion and excellence in dermatologic care are at the heart of everything we do.</span></div>
+          <div><strong>Patients First</strong><span>Compassion and the highest-quality dermatologic care are central to everything the Society represents.</span></div>
         </li>
         <li>
           <div class="values-dot"></div>
-          <div><strong>Professionalism</strong><span>Adhering to the highest clinical and ethical standards set forth by the AMA and AAD.</span></div>
+          <div><strong>Professionalism</strong><span>Adherence to the clinical and ethical standards of the AMA and American Academy of Dermatology.</span></div>
         </li>
         <li>
           <div class="values-dot"></div>
-          <div><strong>Collaboration</strong><span>Working with specialty organizations nationally with collegiality and transparency.</span></div>
+          <div><strong>Collaboration</strong><span>Coordinated partnerships with specialty organizations at the state and national level.</span></div>
         </li>
         <li>
           <div class="values-dot"></div>
-          <div><strong>Lifelong Learning</strong><span>Pursuing knowledge and continuous improvement at every stage of a physician's career.</span></div>
+          <div><strong>Lifelong Learning</strong><span>Continuous professional development through self-assessment, CME, and ongoing education.</span></div>
         </li>
         <li>
           <div class="values-dot"></div>
-          <div><strong>Social Responsibility</strong><span>Community leadership and stewardship as hallmarks of dermatology in Connecticut.</span></div>
+          <div><strong>Social Responsibility</strong><span>Community leadership and a dedication to public health in Connecticut and beyond.</span></div>
         </li>
       </ul>
     </div>
@@ -497,8 +485,8 @@
       <div class="event-body">
         <div class="event-title">CTDS Spring Membership Meeting</div>
         <div class="event-meta">Hartford, CT &nbsp;·&nbsp; 6:00 PM</div>
-        <p style="font-size:13px;color:var(--text-body);line-height:1.6;margin-bottom:.75rem;">Annual spring gathering featuring legislative updates, CME presentations, and society business.</p>
-        <a href="events.html" class="event-link">View Details →</a>
+        <div class="event-desc">Annual spring gathering with legislative updates, CME presentations, and society business.</div>
+        <a href="events.html" class="event-link">View Details</a>
       </div>
     </div>
     <div class="event-card">
@@ -509,8 +497,8 @@
       <div class="event-body">
         <div class="event-title">AAD Summer Academy Meeting</div>
         <div class="event-meta">Chicago, IL &nbsp;·&nbsp; National</div>
-        <p style="font-size:13px;color:var(--text-body);line-height:1.6;margin-bottom:.75rem;">American Academy of Dermatology summer scientific sessions and advocacy day on Capitol Hill.</p>
-        <a href="https://www.aad.org" target="_blank" class="event-link">AAD Website →</a>
+        <div class="event-desc">American Academy of Dermatology summer scientific sessions and advocacy programming.</div>
+        <a href="https://www.aad.org/member/meetings-events" target="_blank" class="event-link">AAD Website</a>
       </div>
     </div>
     <div class="event-card">
@@ -521,20 +509,20 @@
       <div class="event-body">
         <div class="event-title">CTDS Annual Fall Meeting</div>
         <div class="event-meta">New Haven, CT &nbsp;·&nbsp; Full Day</div>
-        <p style="font-size:13px;color:var(--text-body);line-height:1.6;margin-bottom:.75rem;">The Society's flagship annual meeting with CME sessions, keynote address, and awards dinner.</p>
-        <a href="events.html" class="event-link">Register →</a>
+        <div class="event-desc">The Society's annual meeting with full-day CME programming, keynote address, and awards dinner.</div>
+        <a href="events.html" class="event-link">View Details</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PARTNER ORGS -->
+<!-- PARTNER ORGANIZATIONS -->
 <section class="section">
   <div class="container">
-    <div class="section-label">Partner Organizations</div>
+    <div class="section-label">Affiliates</div>
     <div class="rule-bar"></div>
-    <h2 class="section-heading">National &amp; State Affiliates</h2>
-    <p style="font-size:14px;color:var(--text-muted);max-width:540px;">The CTDS maintains active relationships with national dermatology organizations, providing members with access to resources, meetings, and advocacy at every level.</p>
+    <h2 class="section-heading">National &amp; State Organizations</h2>
+    <p style="font-size:14px;color:var(--text-muted);max-width:560px;margin-top:0.25rem;">The Society maintains active relationships with national dermatology organizations, providing members with access to resources, meetings, and advocacy at every level.</p>
   </div>
   <div class="orgs-grid">
     <a href="https://www.aad.org" target="_blank" class="org-card">
@@ -570,7 +558,7 @@
     <a href="https://medicine.yale.edu/dermatology/" target="_blank" class="org-card">
       <div class="org-abbr">Yale</div>
       <div class="org-name">Yale School of Medicine — Dermatology</div>
-      <span class="org-arrow">yale.edu →</span>
+      <span class="org-arrow">medicine.yale.edu →</span>
     </a>
     <a href="https://www.cancer.org" target="_blank" class="org-card">
       <div class="org-abbr">ACS</div>
@@ -580,13 +568,59 @@
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-band">
-  <h2>Ready to join the <em>Connecticut Society?</em></h2>
-  <p>Membership is open to board-certified and board-eligible dermatologists practicing in Connecticut.</p>
-  <div class="cta-actions">
-    <a href="signup.html" class="btn btn-parchment">Apply for Membership</a>
-    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+<!-- MEMBERSHIP -->
+<div class="membership-band">
+  <div class="membership-inner">
+    <div>
+      <div class="section-label">Membership</div>
+      <div class="rule-bar"></div>
+      <h2 class="section-heading">Annual Dues</h2>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:0.5rem;">Membership in the Connecticut Society of Dermatology and Dermatologic Surgery is open to board-certified and board-eligible dermatologists practicing in Connecticut. Dues are tiered by years in practice.</p>
+      <table class="dues-table">
+        <tr>
+          <td>Regular Membership</td>
+          <td>$450 / year</td>
+        </tr>
+        <tr>
+          <td>
+            First Year in Practice
+            <span class="dues-note">New practitioners</span>
+          </td>
+          <td>$175 / year</td>
+        </tr>
+        <tr>
+          <td>Second Year in Practice</td>
+          <td>$260 / year</td>
+        </tr>
+        <tr>
+          <td>Third Year in Practice</td>
+          <td>$350 / year</td>
+        </tr>
+        <tr>
+          <td>
+            Senior Member
+            <span class="dues-note">Age 67 or older, practicing fewer than 20 hours per week</span>
+          </td>
+          <td>$175 / year</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <div class="section-label">Member Access</div>
+      <div class="rule-bar"></div>
+      <h2 class="section-heading">Society Benefits</h2>
+      <ul class="values-list" style="margin-top:0.5rem;">
+        <li><div class="values-dot"></div><div><span>Access to the private member directory</span></div></li>
+        <li><div class="values-dot"></div><div><span>Direct communication with the CTDS legislative lobbyist</span></div></li>
+        <li><div class="values-dot"></div><div><span>CME lecture library and continuing education resources</span></div></li>
+        <li><div class="values-dot"></div><div><span>Clinical trial listings and coordinator contact information</span></div></li>
+        <li><div class="values-dot"></div><div><span>SMS and email alerts for meetings and legislative updates</span></div></li>
+        <li><div class="values-dot"></div><div><span>Discounted registration at CTDS annual meetings</span></div></li>
+        <li><div class="values-dot"></div><div><span>Legislative advocacy at the state and federal level</span></div></li>
+        <li><div class="values-dot"></div><div><span>CTDS newsletters and archived society resources</span></div></li>
+      </ul>
+      <a href="signup.html" class="btn btn-primary" style="margin-top:1.5rem;display:inline-block;">Membership Information</a>
+    </div>
   </div>
 </div>
 
@@ -601,7 +635,7 @@
     <li><a href="trials.html">Clinical Trials</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <p>Connecticut Society of Dermatology &amp; Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a></p>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; P.O. Box 1079, Litchfield, CT 06759 &nbsp;·&nbsp; <a href="tel:8605673787">(860) 567-3787</a> &nbsp;·&nbsp; <a href="mailto:debbieosborn36@yahoo.com">debbieosborn36@yahoo.com</a></p>
   <p style="margin-top:6px;">© 2025 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
 </footer>
 
