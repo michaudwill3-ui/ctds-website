@@ -38,7 +38,9 @@ nav {
   z-index: 100;
   gap: 16px;
 }
-.nav-brand { text-decoration: none; flex-shrink: 0; }
+.nav-brand { text-decoration: none; flex-shrink: 0; display: flex; align-items: center; gap: 11px; }
+.nav-seal { width: 40px; height: 40px; flex-shrink: 0; }
+.nav-brand-text { display: block; }
 .nav-logo-main {
   font-family: var(--serif);
   color: #fff;
@@ -390,3 +392,7 @@ textarea {
   .page-header h1 { font-size: 24px; }
   .btn { padding: 9px 18px; font-size: 11px; }
 }
+
+/* ── NAV SEAL — RESPONSIVE ── */
+@media (max-width: 768px) { .nav-brand { gap: 9px; } .nav-seal { width: 34px; height: 34px; } }
+@media (max-width: 480px) { .nav-seal { width: 30px; height: 30px; } }
