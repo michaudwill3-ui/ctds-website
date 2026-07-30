@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Member Login — Connecticut Society of Dermatology and Dermatologic Surgery</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
 <style>
 
   body {
@@ -289,8 +290,11 @@
 
 <nav>
   <a href="index.html" class="nav-brand">
-    <span class="nav-logo-main">Connecticut Society of Dermatology</span>
-    <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
+    <img src="images/ctderm-seal-white.png" alt="CTDS seal" class="nav-seal">
+    <span class="nav-brand-text">
+      <span class="nav-logo-main">Connecticut Society of Dermatology</span>
+      <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
+    </span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -401,22 +405,31 @@
   </p>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
 <script>
+  var params = new URLSearchParams(window.location.search);
+  var next = params.get('next') || 'dashboard.html';
+
+  // If already signed in, skip the form.
+  CTDS.getSession().then(function (s) { if (s) window.location.href = next; });
+
   function togglePassword() {
-    const pw = document.getElementById('login-pw');
+    var pw = document.getElementById('login-pw');
     pw.type = pw.type === 'password' ? 'text' : 'password';
   }
 
   function showMsg(text, type) {
-    const el = document.getElementById('info-msg');
+    var el = document.getElementById('info-msg');
     el.textContent = text;
     el.className = 'info-msg visible ' + type;
   }
 
-  function handleLogin() {
-    const email = document.getElementById('login-email').value.trim();
-    const pw = document.getElementById('login-pw').value.trim();
-    const btn = document.querySelector('.btn-login');
+  async function handleLogin() {
+    var email = document.getElementById('login-email').value.trim();
+    var pw = document.getElementById('login-pw').value;
+    var btn = document.querySelector('.btn-login');
 
     if (!email || !pw) {
       showMsg('Please enter your email address and password.', 'error');
@@ -427,17 +440,37 @@
     btn.disabled = true;
     btn.style.opacity = '0.7';
 
-    setTimeout(() => {
-      showMsg('Member portal authentication is being configured. Please contact Emma Deveran at (860) 810-0931 for assistance.', 'info');
-      btn.textContent = 'Sign In';
-      btn.disabled = false;
-      btn.style.opacity = '1';
-    }, 1200);
+    var result = await CTDS.signIn(email, pw);
+
+    btn.textContent = 'Sign In';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+
+    if (result.error) {
+      var msg = /confirm/i.test(result.error.message)
+        ? 'Please confirm your email first — check your inbox for the confirmation link.'
+        : 'Incorrect email or password.';
+      showMsg(msg, 'error');
+      return;
+    }
+    window.location.href = next;
   }
 
-  function handleForgot(e) {
+  async function handleForgot(e) {
     e.preventDefault();
-    showMsg('To reset your password, contact Emma Deveran at ctdermexec@outlook.com or (860) 810-0931.', 'info');
+    var email = document.getElementById('login-email').value.trim();
+    if (!email) {
+      showMsg('Enter your email address above first, then click “Forgot your password.”', 'info');
+      return;
+    }
+    var result = await window.sb.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + '/login.html'
+    });
+    if (result.error) {
+      showMsg(result.error.message, 'error');
+    } else {
+      showMsg('Password reset link sent — check your email.', 'info');
+    }
   }
 </script>
 
