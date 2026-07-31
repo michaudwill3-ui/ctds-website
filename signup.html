@@ -243,6 +243,20 @@
   .dues-table td { padding: 9px 0; font-size: 13px; color: var(--text-body); vertical-align: top; }
   .dues-table td:last-child { text-align: right; font-weight: 600; color: var(--navy); white-space: nowrap; padding-left: 8px; }
   .dues-note { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; font-weight: 400; }
+  .tier-old { text-decoration: line-through; color: var(--text-muted); font-weight: 400; font-size: 12px; margin-right: 5px; }
+  .dues-old { text-decoration: line-through; color: var(--text-muted); font-weight: 400; margin-right: 5px; }
+  .dues-deal { font-size: 11px; color: #2d6a2d; font-weight: 600; margin-top: 10px; line-height: 1.5; }
+  .tier-promo {
+    background: #eef4ee;
+    border: 0.5px solid #bcd9c0;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-size: 12px;
+    color: #24603a;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+  .tier-promo strong { font-weight: 600; }
 
   /* ── CONTACT CARD ── */
   .contact-info { font-size: 13px; color: var(--text-body); line-height: 1.85; }
@@ -259,11 +273,8 @@
 
 <nav>
   <a href="index.html" class="nav-brand">
-    <img src="images/ctderm-seal-white.png" alt="CTDS seal" class="nav-seal">
-    <span class="nav-brand-text">
-      <span class="nav-logo-main">Connecticut Society of Dermatology</span>
-      <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
-    </span>
+    <span class="nav-logo-main">Connecticut Society of Dermatology</span>
+    <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -434,6 +445,8 @@
       <span class="step-num">3</span> Membership Tier
     </div>
 
+    <div class="tier-promo"><strong>Current offer:</strong> Regular membership is now $250, and all other tiers are free. Join now and your membership runs through December 31, 2027.</div>
+
     <div class="tier-grid">
       <label class="tier-option selected" id="tier-regular">
         <input type="radio" name="tier" value="regular" checked onchange="selectTier(this)">
@@ -441,7 +454,7 @@
           <div class="tier-name">Regular Membership</div>
           <div class="tier-desc">Active dermatologists in practice</div>
         </div>
-        <div class="tier-price">$450 / yr</div>
+        <div class="tier-price"><span class="tier-old">$450</span> $250 / yr</div>
       </label>
       <label class="tier-option" id="tier-y1">
         <input type="radio" name="tier" value="y1" onchange="selectTier(this)">
@@ -449,7 +462,7 @@
           <div class="tier-name">First Year in Practice</div>
           <div class="tier-desc">Reduced rate for first-year practitioners</div>
         </div>
-        <div class="tier-price">$175 / yr</div>
+        <div class="tier-price"><span class="tier-old">$175</span> $0</div>
       </label>
       <label class="tier-option" id="tier-y2">
         <input type="radio" name="tier" value="y2" onchange="selectTier(this)">
@@ -457,7 +470,7 @@
           <div class="tier-name">Second Year in Practice</div>
           <div class="tier-desc">Transitional rate</div>
         </div>
-        <div class="tier-price">$260 / yr</div>
+        <div class="tier-price"><span class="tier-old">$260</span> $0</div>
       </label>
       <label class="tier-option" id="tier-y3">
         <input type="radio" name="tier" value="y3" onchange="selectTier(this)">
@@ -465,7 +478,7 @@
           <div class="tier-name">Third Year in Practice</div>
           <div class="tier-desc">Transitional rate</div>
         </div>
-        <div class="tier-price">$350 / yr</div>
+        <div class="tier-price"><span class="tier-old">$350</span> $0</div>
       </label>
       <label class="tier-option" id="tier-senior">
         <input type="radio" name="tier" value="senior" onchange="selectTier(this)">
@@ -473,7 +486,7 @@
           <div class="tier-name">Senior Member</div>
           <div class="tier-desc">Age 67 or older, practicing fewer than 20 hours per week</div>
         </div>
-        <div class="tier-price">$175 / yr</div>
+        <div class="tier-price"><span class="tier-old">$175</span> $0</div>
       </label>
     </div>
 
@@ -589,31 +602,32 @@
         <table class="dues-table">
           <tr>
             <td>Regular Membership</td>
-            <td>$450</td>
+            <td><span class="dues-old">$450</span> $250</td>
           </tr>
           <tr>
             <td>
               1st Year in Practice
               <span class="dues-note">New practitioners</span>
             </td>
-            <td>$175</td>
+            <td><span class="dues-old">$175</span> $0</td>
           </tr>
           <tr>
             <td>2nd Year in Practice</td>
-            <td>$260</td>
+            <td><span class="dues-old">$260</span> $0</td>
           </tr>
           <tr>
             <td>3rd Year in Practice</td>
-            <td>$350</td>
+            <td><span class="dues-old">$350</span> $0</td>
           </tr>
           <tr>
             <td>
               Senior Member
               <span class="dues-note">Age 67+, &lt;20 hrs/week</span>
             </td>
-            <td>$175</td>
+            <td><span class="dues-old">$175</span> $0</td>
           </tr>
         </table>
+        <div class="dues-deal">Join now — your membership runs through December 31, 2027.</div>
       </div>
     </div>
 

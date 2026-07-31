@@ -302,17 +302,70 @@
     .membership-band { padding: 56px 1.25rem; }
   }
 .nav-logo-main { font-size: 14px !important; } .nav-logo-sub { font-size: 12px !important; }
+
+  /* ── LOGO SEAL ── */
+  .hero-seal {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 10px;
+    border: 1.5px solid rgba(232,224,208,0.7);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.28);
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 1.75rem;
+  }
+  @media (max-width: 640px) {
+    .hero-seal { width: 84px; height: 84px; padding: 8px; margin-bottom: 1.25rem; }
+  }
+
+  /* ── FEATURED EVENT ── */
+  .event-feature { max-width: 1100px; margin: 2.5rem auto 0; padding: 0 2rem; }
+  .event-feature-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
+  .event-feature-date {
+    background: var(--navy);
+    color: #fff;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-right: 3px solid var(--parchment);
+  }
+  .event-feature-month { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--parchment); }
+  .event-feature-day { font-family: var(--serif); font-size: 52px; font-weight: 700; line-height: 1; margin: 4px 0; }
+  .event-feature-year { font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; }
+  .event-feature-body { padding: 2rem 2.25rem; }
+  .event-feature-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); border: 0.5px solid var(--navy); border-radius: 1px; display: inline-block; padding: 2px 8px; margin-bottom: 0.85rem; }
+  .event-feature-title { font-family: var(--sans); font-size: 24px; font-weight: 500; color: var(--navy); line-height: 1.25; margin-bottom: 0.5rem; }
+  .event-feature-meta { font-size: 13px; color: var(--text-muted); margin-bottom: 0.9rem; }
+  .event-feature-desc { font-size: 14px; color: var(--text-body); line-height: 1.7; margin-bottom: 1.35rem; max-width: 620px; }
+  .event-feature-actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+  @media (max-width: 640px) {
+    .event-feature { padding: 0 1.25rem; }
+    .event-feature-card { grid-template-columns: 1fr; }
+    .event-feature-date { flex-direction: row; gap: 10px; padding: 1rem; border-right: none; border-bottom: 3px solid var(--parchment); }
+    .event-feature-day { font-size: 34px; margin: 0; }
+    .event-feature-body { padding: 1.5rem; }
+    .event-feature-title { font-size: 20px; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-brand">
-    <img src="images/ctderm-seal-white.png" alt="CTDS seal" class="nav-seal">
-    <span class="nav-brand-text">
-      <span class="nav-logo-main">Connecticut Society of Dermatology</span>
-      <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
-    </span>
+    <span class="nav-logo-main">Connecticut Society of Dermatology</span>
+    <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
@@ -332,19 +385,19 @@
   <div class="ticker-label">Updates</div>
   <div class="ticker-overflow">
     <div class="ticker-track">
-      <span class="ticker-item">CTDS Annual Fall Meeting — October 28, 2026 · Maurice R. Greenberg Conference Center, Yale · New Haven, CT</span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">Contact Emma Deveran to register for the Fall Meeting</span>
+      <span class="ticker-item">Fall Meeting — October 28, 2026 · Yale, New Haven, CT</span>
       <span class="ticker-dot">·</span>
       <span class="ticker-item">2026 Legislative Priorities — now available</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">Contact Emma Deveran to register for the Fall Meeting</span>
       <span class="ticker-dot">·</span>
       <span class="ticker-item">Doctor's Day at the Capitol — Legislative Office Building, Hartford</span>
       <span class="ticker-dot">·</span>
-      <span class="ticker-item">CTDS Annual Fall Meeting — October 28, 2026 · Maurice R. Greenberg Conference Center, Yale · New Haven, CT</span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">Contact Emma Deveran to register for the Fall Meeting</span>
+      <span class="ticker-item">Fall Meeting — October 28, 2026 · Yale, New Haven, CT</span>
       <span class="ticker-dot">·</span>
       <span class="ticker-item">2026 Legislative Priorities — now available</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">Contact Emma Deveran to register for the Fall Meeting</span>
       <span class="ticker-dot">·</span>
       <span class="ticker-item">Doctor's Day at the Capitol — Legislative Office Building, Hartford</span>
       <span class="ticker-dot">·</span>
@@ -354,6 +407,7 @@
 
 <!-- HERO -->
 <div class="hero">
+  <img src="images/ctderm-seal.png" alt="Connecticut Society of Dermatology and Dermatologic Surgery seal" class="hero-seal">
   <span class="hero-eyebrow">The Professional Society for Connecticut's Dermatologists</span>
   <h1>Excellence in <em>Dermatology,</em><br>Rooted in <em>Connecticut</em></h1>
   <p class="hero-sub">The Connecticut Society of Dermatology and Dermatologic Surgery serves the state's physicians through legislative advocacy, continuing education, and professional community.</p>
@@ -375,8 +429,8 @@
       <div class="stat-label">Continuing education and clinical trial access</div>
     </div>
     <div class="stat-item">
-      <div class="stat-val">Free – $250</div>
-      <div class="stat-label">Annual dues, tiered by years in practice</div>
+      <div class="stat-val">Free &ndash; $250</div>
+      <div class="stat-label">$250 regular dues; all other tiers free through 2027</div>
     </div>
   </div>
 </div>
@@ -464,40 +518,24 @@
   <div class="container">
     <div class="section-label">Calendar</div>
     <div class="rule-bar"></div>
-    <h2 class="section-heading">Meetings &amp; Events</h2>
+    <h2 class="section-heading">Fall Meeting 2026</h2>
   </div>
-  <div class="events-grid">
-    <div class="event-card">
-      <div class="event-date-bar">
-        <span class="event-month">Fall 2026</span>
+  <div class="event-feature">
+    <div class="event-feature-card">
+      <div class="event-feature-date">
+        <span class="event-feature-month">October</span>
+        <span class="event-feature-day">28</span>
+        <span class="event-feature-year">2026</span>
       </div>
-      <div class="event-body">
-        <div class="event-title">CTDS Annual Fall Meeting</div>
-        <div class="event-meta">Oct 28, 2026 · Greenberg Conference Center, Yale · New Haven, CT</div>
-        <div class="event-desc">The Society's premier scientific meeting — 8:00 AM–12:00 PM with full CME programming. Contact Emma Deveran to register.</div>
-        <a href="events.html" class="event-link">Meeting Details</a>
-      </div>
-    </div>
-    <div class="event-card">
-      <div class="event-date-bar">
-        <span class="event-month">Annual</span>
-      </div>
-      <div class="event-body">
-        <div class="event-title">Doctor's Day at the Capitol</div>
-        <div class="event-meta">Legislative Office Building, 300 Capitol Ave, Hartford, CT</div>
-        <div class="event-desc">Connecticut dermatologists meet with state legislators on medical issues affecting dermatology practice in Connecticut.</div>
-        <a href="legislation.html" class="event-link">Legislation &amp; Advocacy</a>
-      </div>
-    </div>
-    <div class="event-card">
-      <div class="event-date-bar">
-        <span class="event-month">National</span>
-      </div>
-      <div class="event-body">
-        <div class="event-title">AAD Annual Meeting</div>
-        <div class="event-meta">National Conference · Washington, DC</div>
-        <div class="event-desc">The American Academy of Dermatology Annual Meeting — the premier national conference for dermatologists.</div>
-        <a href="https://www.aad.org/member/meetings-events" target="_blank" class="event-link">AAD Website</a>
+      <div class="event-feature-body">
+        <span class="event-feature-tag">Featured &middot; Semi-Annual Meeting</span>
+        <div class="event-feature-title">CTDS Fall Scientific Meeting</div>
+        <div class="event-feature-meta">October 28, 2026 &middot; Yale, New Haven, CT</div>
+        <div class="event-feature-desc">The Society's fall scientific meeting brings together Connecticut's dermatologists for CME sessions, clinical updates, and professional community. Registration is open &mdash; contact Executive Director Emma Deveran to reserve your place.</div>
+        <div class="event-feature-actions">
+          <a href="mailto:Ctdermexec@outlook.com?subject=Fall%20Meeting%20Registration" class="btn btn-primary">Register &mdash; Contact Emma Deveran</a>
+          <a href="events.html" class="event-link">Full Calendar</a>
+        </div>
       </div>
     </div>
   </div>
@@ -510,21 +548,30 @@
       <div class="section-label">Annual Dues</div>
       <div class="rule-bar"></div>
       <h2 class="section-heading">Membership</h2>
-      <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Membership is open to board-certified and board-eligible dermatologists practicing in Connecticut. Dues are tiered by years in practice.</p>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Membership is open to board-certified and board-eligible dermatologists practicing in Connecticut. Regular dues are now $250, and all other tiers are free. Join now and your membership runs through December 31, 2027.</p>
       <table class="dues-table">
         <tr>
           <td>Regular Membership</td>
-          <td>$250 / year</td>
+          <td><span style="text-decoration:line-through;color:var(--text-muted);font-weight:400;margin-right:5px;">$450</span> $250 / year</td>
         </tr>
         <tr>
-          <td>Residents, Medical Students &amp; New Physicians<span class="dues-note">Fewer than 3 years from graduation</span></td>
-          <td>Free</td>
+          <td>First Year in Practice<span class="dues-note">New practitioners</span></td>
+          <td><span style="text-decoration:line-through;color:var(--text-muted);font-weight:400;margin-right:5px;">$175</span> $0</td>
+        </tr>
+        <tr>
+          <td>Second Year in Practice</td>
+          <td><span style="text-decoration:line-through;color:var(--text-muted);font-weight:400;margin-right:5px;">$260</span> $0</td>
+        </tr>
+        <tr>
+          <td>Third Year in Practice</td>
+          <td><span style="text-decoration:line-through;color:var(--text-muted);font-weight:400;margin-right:5px;">$350</span> $0</td>
         </tr>
         <tr>
           <td>Senior Member<span class="dues-note">Age 67 or older, fewer than 20 hours per week</span></td>
-          <td>$175 / year</td>
+          <td><span style="text-decoration:line-through;color:var(--text-muted);font-weight:400;margin-right:5px;">$175</span> $0</td>
         </tr>
       </table>
+      <div style="font-size:11px;color:#2d6a2d;font-weight:600;margin-top:10px;line-height:1.5;">Join now — your membership runs through December 31, 2027.</div>
       <a href="signup.html" class="btn btn-primary" style="margin-top:1.5rem;display:inline-block;">Membership Application</a>
     </div>
     <div>
@@ -588,7 +635,7 @@
     <li><a href="trials.html">Clinical Trials</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; 241 Asylum Street, Unit 700 West, Hartford, CT 06103 &nbsp;·&nbsp; <a href="tel:8608100931">(860) 810-0931</a> &nbsp;·&nbsp; <a href="mailto:ctdermexec@outlook.com">ctdermexec@outlook.com</a></p>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; 241 Asylum Street, Unit 700 West, Hartford, CT 06103 &nbsp;·&nbsp; <a href="tel:8608100931">(860) 810-0931</a> &nbsp;·&nbsp; <a href="mailto:Ctdermexec@outlook.com">Ctdermexec@outlook.com</a></p>
   <p style="margin-top:6px;">© 2026 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
 </footer>
 
