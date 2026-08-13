@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fall Meeting Interest — Connecticut Society of Dermatology and Dermatologic Surgery</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<style>
+  .partner-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 2rem 80px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: start;
+  }
+  .form-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 2.5rem;
+  }
+  .form-section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-divider { border: none; border-top: 0.5px solid var(--rule); margin: 1.75rem 0; }
+
+  .partner-msg { display: none; padding: 12px 14px; border-radius: 6px; font-size: 13px; line-height: 1.5; margin-top: 1.25rem; }
+
+  .btn-submit {
+    width: 100%;
+    padding: 14px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--navy);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background 0.15s;
+  }
+  .btn-submit:hover { background: var(--navy-mid); }
+  .form-note { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 0.75rem; line-height: 1.5; }
+
+  .partner-sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .sidebar-card { background: var(--white); border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .sidebar-card-header { background: var(--navy); padding: 0.85rem 1.25rem; }
+  .sidebar-card-header h3 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .sidebar-card-body { padding: 1.25rem; }
+  .contact-info { font-size: 13px; color: var(--text-body); line-height: 1.85; }
+  .contact-info strong { color: var(--navy); display: block; margin-bottom: 2px; }
+  .contact-info a { color: var(--navy-light); text-decoration: none; }
+  .meeting-facts { font-size: 13px; color: var(--text-body); line-height: 1.7; }
+  .meeting-facts strong { color: var(--navy); }
+
+  @media (max-width: 960px) {
+    .partner-main { grid-template-columns: 1fr; }
+    .form-row-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="images/ctderm-seal-white.png" alt="CTDS seal" class="nav-seal">
+    <span class="nav-brand-text">
+      <span class="nav-logo-main">Connecticut Society of Dermatology</span>
+      <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="signup.html">Membership</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="cme.html">CME</a></li>
+    <li><a href="legislation.html">Legislation</a></li>
+    <li><a href="trials.html">Clinical Trials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="login.html" class="nav-cta" data-nav-cta>Member Login</a>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">CTDS Annual Fall Meeting</div>
+  <h1>Register Your Interest</h1>
+  <p>Let us know you'd like to attend the CTDS Annual Fall Meeting on October 28, 2026 at the Maurice R. Greenberg Conference Center, Yale University, New Haven. Complete the form and the Executive Director will follow up with full registration details.</p>
+</div>
+
+<div class="partner-main">
+
+  <div class="form-card">
+
+    <div class="form-section-title">Your Information</div>
+    <div class="form-row-2 form-group">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="full_name" placeholder="Jane Smith, MD">
+      </div>
+      <div class="form-group">
+        <label>Credentials <span class="optional">optional</span></label>
+        <select id="credentials">
+          <option value="">Select</option>
+          <option>MD</option>
+          <option>DO</option>
+          <option>MD/PhD</option>
+          <option>PA-C</option>
+          <option>APRN</option>
+          <option>Resident</option>
+          <option>Medical Student</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row-2 form-group">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="jsmith@practice.com">
+      </div>
+      <div class="form-group">
+        <label>Phone <span class="optional">optional</span></label>
+        <input type="tel" id="phone" placeholder="(860) 555-0100">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Practice / Institution <span class="optional">optional</span></label>
+      <input type="text" id="practice_name" placeholder="e.g. Yale School of Medicine, Private Practice">
+    </div>
+
+    <hr class="form-divider">
+
+    <div class="form-section-title">Attendance</div>
+    <div class="form-row-2 form-group">
+      <div class="form-group">
+        <label>Are you planning to attend?</label>
+        <select id="attending">
+          <option value="">Select</option>
+          <option>Yes, I plan to attend</option>
+          <option>Likely</option>
+          <option>Just interested for now</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Additional guests <span class="optional">optional</span></label>
+        <input type="text" id="guests" placeholder="e.g. 1 colleague">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Notes / Questions <span class="optional">optional</span></label>
+      <textarea id="notes" rows="4" placeholder="Anything you'd like the Society to know..."></textarea>
+    </div>
+
+    <div class="partner-msg" id="partner-msg"></div>
+
+    <button class="btn-submit" onclick="handleSubmit()">Submit Interest</button>
+    <p class="form-note">Submitting this form registers your interest in the Fall Meeting. The Executive Director will contact you with full registration details.</p>
+
+  </div>
+
+  <div class="partner-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-card-header"><h3>Meeting Details</h3></div>
+      <div class="sidebar-card-body">
+        <div class="meeting-facts">
+          <strong>CTDS Annual Fall Meeting</strong><br>
+          October 28, 2026<br>
+          8:00 AM &ndash; 12:00 PM<br><br>
+          Maurice R. Greenberg Conference Center<br>
+          Yale University<br>
+          New Haven, CT
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header"><h3>Questions</h3></div>
+      <div class="sidebar-card-body">
+        <div class="contact-info">
+          <strong>Emma Deveran</strong>
+          Executive Director<br>
+          Connecticut Society of Dermatology and Dermatologic Surgery<br><br>
+          <a href="tel:8608100931">(860) 810-0931</a><br>
+          <a href="mailto:ctdermexec@outlook.com">ctdermexec@outlook.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="signup.html">Membership</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="cme.html">CME</a></li>
+    <li><a href="legislation.html">Legislation</a></li>
+    <li><a href="trials.html">Clinical Trials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; 241 Asylum Street, Unit 700 West, Hartford, CT 06103 &nbsp;·&nbsp; <a href="tel:8608100931">(860) 810-0931</a> &nbsp;·&nbsp; <a href="mailto:ctdermexec@outlook.com">ctdermexec@outlook.com</a></p>
+  <p style="margin-top:6px;">© 2026 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  function showPartnerMsg(type, text) {
+    var el = document.getElementById('partner-msg');
+    el.style.display = 'block';
+    el.textContent = text;
+    if (type === 'error') {
+      el.style.background = '#fdecec'; el.style.border = '0.5px solid #e7bcbc'; el.style.color = '#8a2b2b';
+    } else {
+      el.style.background = '#eef5ee'; el.style.border = '0.5px solid #bcd9c0'; el.style.color = '#24603a';
+    }
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  async function handleSubmit() {
+    var btn = document.querySelector('.btn-submit');
+    var v = function (id) { var e = document.getElementById(id); return e ? e.value.trim() : ''; };
+
+    var name = v('full_name');
+    var email = v('email');
+    if (!name || !email) {
+      return showPartnerMsg('error', 'Please enter at least your name and email.');
+    }
+
+    btn.textContent = 'Submitting…';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    var result = await window.sb.from('meeting_interest').insert([{
+      full_name: name,
+      email: email,
+      phone: v('phone'),
+      practice_name: v('practice_name'),
+      credentials: v('credentials'),
+      attending: v('attending'),
+      guests: v('guests'),
+      notes: v('notes')
+    }]);
+
+    if (result.error) {
+      btn.textContent = 'Submit Interest';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      return showPartnerMsg('error', result.error.message);
+    }
+
+    showPartnerMsg('success', 'Thank you — your interest has been received. The Executive Director will be in touch with full registration details.');
+    btn.textContent = '\u2713 Interest Submitted';
+    btn.style.background = '#2d6a4f';
+    btn.style.opacity = '1';
+  }
+</script>
+
+</body>
+</html>
