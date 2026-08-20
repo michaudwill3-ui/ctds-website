@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Connecticut Society of Dermatology and Dermatologic Surgery</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<style>
+  .admin-main { max-width: 1200px; margin: 0 auto; padding: 48px 2rem 80px; }
+  .admin-status { font-size: 13px; color: var(--text-muted); margin-bottom: 1.75rem; }
+
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .summary-stat {
+    flex: 1; min-width: 150px; background: var(--white); border: 0.5px solid var(--rule);
+    border-radius: 10px; padding: 1.25rem 1.5rem;
+  }
+  .summary-stat .num { font-family: var(--sans); font-size: 34px; font-weight: 300; color: var(--navy); line-height: 1; }
+  .summary-stat .lbl { font-size: 12px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.02em; }
+
+  .admin-section { margin-bottom: 2.75rem; }
+  .section-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 0.9rem; }
+  .section-bar h2 { font-size: 18px; color: var(--navy); font-weight: 600; display: flex; align-items: center; gap: 10px; }
+  .section-bar h2 .count {
+    font-size: 12px; background: var(--navy); color: #fff; border-radius: 11px;
+    padding: 2px 9px; font-weight: 600;
+  }
+  .btn-export {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--navy); background: #fff; border: 0.5px solid var(--navy); border-radius: 3px;
+    padding: 8px 14px; cursor: pointer;
+  }
+  .btn-export:hover { background: var(--navy); color: #fff; }
+
+  .table-wrap { overflow-x: auto; border: 0.5px solid var(--rule); border-radius: 8px; background: #fff; }
+  table.admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.admin-table th {
+    text-align: left; padding: 11px 14px; background: var(--parchment);
+    color: var(--navy); font-weight: 600; white-space: nowrap; border-bottom: 0.5px solid var(--rule);
+  }
+  table.admin-table td { padding: 10px 14px; border-bottom: 0.5px solid var(--rule); color: var(--text-body); vertical-align: top; }
+  table.admin-table tr:last-child td { border-bottom: none; }
+  .empty-note { padding: 2.5rem 1rem; text-align: center; color: var(--text-muted); font-size: 14px; }
+
+  .gate { max-width: 520px; margin: 80px auto; text-align: center; }
+  .gate h1 { font-size: 22px; color: var(--navy); margin-bottom: 0.75rem; }
+  .gate p { color: var(--text-body); line-height: 1.6; }
+  .gate a { color: var(--navy-light); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="images/ctderm-seal-white.png" alt="CTDS seal" class="nav-seal">
+    <span class="nav-brand-text">
+      <span class="nav-logo-main">Connecticut Society of Dermatology</span>
+      <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="signup.html">Membership</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="cme.html">CME</a></li>
+    <li><a href="legislation.html">Legislation</a></li>
+    <li><a href="trials.html">Clinical Trials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="dashboard.html" class="nav-cta" data-nav-cta>My Account</a>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">Administration</div>
+  <h1>Registrations &amp; Signups</h1>
+  <p>Everyone who has registered through the website, at a glance. Use Export CSV to download any list.</p>
+</div>
+
+<div class="admin-main">
+  <div id="gate" class="gate" style="display:none;">
+    <h1>Admin access only</h1>
+    <p>This page is limited to Society administrators. If you're an admin, please <a href="login.html">log in</a> with your admin account. Otherwise, head back to your <a href="dashboard.html">account</a>.</p>
+  </div>
+
+  <div id="content" style="display:none;">
+    <div class="admin-status" id="admin-status">Loading…</div>
+
+    <div class="summary-row">
+      <div class="summary-stat"><div class="num" id="s-members">0</div><div class="lbl">Members registered</div></div>
+      <div class="summary-stat"><div class="num" id="s-meeting">0</div><div class="lbl">Fall Meeting interest</div></div>
+      <div class="summary-stat"><div class="num" id="s-partners">0</div><div class="lbl">Sponsors / partners</div></div>
+    </div>
+
+    <div class="admin-section">
+      <div class="section-bar">
+        <h2>Members <span class="count" id="c-members">0</span></h2>
+        <button class="btn-export" onclick="exportCSV('members')">Export CSV</button>
+      </div>
+      <div class="table-wrap" id="wrap-members"></div>
+    </div>
+
+    <div class="admin-section">
+      <div class="section-bar">
+        <h2>Fall Meeting Interest <span class="count" id="c-meeting">0</span></h2>
+        <button class="btn-export" onclick="exportCSV('meeting')">Export CSV</button>
+      </div>
+      <div class="table-wrap" id="wrap-meeting"></div>
+    </div>
+
+    <div class="admin-section">
+      <div class="section-bar">
+        <h2>Sponsors &amp; Partners <span class="count" id="c-partners">0</span></h2>
+        <button class="btn-export" onclick="exportCSV('partners')">Export CSV</button>
+      </div>
+      <div class="table-wrap" id="wrap-partners"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="signup.html">Membership</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="cme.html">CME</a></li>
+    <li><a href="legislation.html">Legislation</a></li>
+    <li><a href="trials.html">Clinical Trials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; 241 Asylum Street, Unit 700 West, Hartford, CT 06103 &nbsp;·&nbsp; <a href="tel:8608100931">(860) 810-0931</a> &nbsp;·&nbsp; <a href="mailto:ctdermexec@outlook.com">ctdermexec@outlook.com</a></p>
+  <p style="margin-top:6px;">© 2026 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  var ADMIN_EMAILS = ["ctdermexec@outlook.com", "willadmin@ctdermatologysociety.net"];
+
+  var COLS = {
+    members: [
+      ["first_name","First"],["last_name","Last"],["email","Email"],
+      ["credentials","Credentials"],["membership_type","Type"],
+      ["practice_name","Practice"],["practice_city","City"],["practice_state","State"],
+      ["mobile_phone","Mobile"],["office_phone","Office"],["status","Status"],["created_at","Signed up"]
+    ],
+    meeting: [
+      ["full_name","Name"],["email","Email"],["phone","Phone"],
+      ["practice_name","Practice"],["credentials","Credentials"],
+      ["attending","Attending"],["guests","Guests"],["notes","Notes"],["created_at","Submitted"]
+    ],
+    partners: [
+      ["company_name","Company"],["contact_name","Contact"],["contact_title","Title"],
+      ["email","Email"],["phone","Phone"],["partnership_level","Level"],
+      ["areas_of_interest","Interests"],["notes","Notes"],["created_at","Submitted"]
+    ]
+  };
+  var TABLE = { members: "members", meeting: "meeting_interest", partners: "partners" };
+  var DATA = { members: [], meeting: [], partners: [] };
+
+  function fmt(key, val) {
+    if (val == null || val === "") return "—";
+    if (key === "created_at") {
+      var d = new Date(val);
+      if (!isNaN(d)) return d.toLocaleDateString() + " " + d.toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"});
+    }
+    return String(val);
+  }
+
+  function renderTable(which) {
+    var cols = COLS[which], rows = DATA[which], wrap = document.getElementById("wrap-" + which);
+    if (!rows.length) { wrap.innerHTML = '<div class="empty-note">No entries yet.</div>'; return; }
+    var html = '<table class="admin-table"><thead><tr>';
+    cols.forEach(function (c) { html += "<th>" + c[1] + "</th>"; });
+    html += "</tr></thead><tbody>";
+    rows.forEach(function (r) {
+      html += "<tr>";
+      cols.forEach(function (c) {
+        var v = fmt(c[0], r[c[0]]);
+        html += "<td>" + v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;") + "</td>";
+      });
+      html += "</tr>";
+    });
+    html += "</tbody></table>";
+    wrap.innerHTML = html;
+  }
+
+  function exportCSV(which) {
+    var cols = COLS[which], rows = DATA[which];
+    var lines = [cols.map(function (c) { return '"' + c[1] + '"'; }).join(",")];
+    rows.forEach(function (r) {
+      lines.push(cols.map(function (c) {
+        var v = r[c[0]]; v = (v == null) ? "" : String(v);
+        return '"' + v.replace(/"/g, '""') + '"';
+      }).join(","));
+    });
+    var blob = new Blob([lines.join("\n")], { type: "text/csv" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = "ctds-" + which + "-" + new Date().toISOString().slice(0,10) + ".csv";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  (async function init() {
+    var session = await CTDS.requireAuth();
+    if (!session) return;
+    var email = (session.user.email || "").toLowerCase();
+    if (ADMIN_EMAILS.indexOf(email) === -1) {
+      document.getElementById("gate").style.display = "block";
+      return;
+    }
+    document.getElementById("content").style.display = "block";
+
+    var keys = ["members", "meeting", "partners"];
+    for (var i = 0; i < keys.length; i++) {
+      var which = keys[i];
+      var res = await window.sb.from(TABLE[which]).select("*").order("created_at", { ascending: false });
+      DATA[which] = res.error ? [] : (res.data || []);
+      document.getElementById("c-" + which).textContent = DATA[which].length;
+      document.getElementById("s-" + which).textContent = DATA[which].length;
+      renderTable(which);
+    }
+    var total = DATA.members.length + DATA.meeting.length + DATA.partners.length;
+    document.getElementById("admin-status").textContent =
+      "Signed in as " + email + " · " + total + " total records.";
+  })();
+</script>
+
+</body>
+</html>
