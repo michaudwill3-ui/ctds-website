@@ -68,6 +68,8 @@
     <button id="logout" class="btn btn-primary">Log Out</button>
   </div>
 
+  <a href="admin.html" id="admin-banner" style="display:none;align-items:center;justify-content:space-between;gap:16px;background:var(--navy);color:#fff;border-radius:10px;padding:20px 24px;text-decoration:none;margin-bottom:26px;"><span style="font-family:var(--sans);font-size:17px;font-weight:600;color:#fff;">View All Registrations &amp; Signups</span><span style="font-size:13px;color:var(--parchment);white-space:nowrap;">Members &middot; Fall Meeting &middot; Sponsors &rarr;</span></a>
+
   <div class="dash-grid">
     <div class="profile-card">
       <div class="profile-name" id="p-name">—</div>
@@ -111,6 +113,12 @@
 
     const member = await CTDS.getMember();
     const user = session.user;
+
+    var ADMIN_EMAILS = ["ctdermexec@outlook.com", "willadmin@ctdermatologysociety.net"];
+    if (ADMIN_EMAILS.indexOf((user.email || "").toLowerCase()) > -1) {
+      var ab = document.getElementById("admin-banner");
+      if (ab) ab.style.display = "flex";
+    }
 
     const fullName = member ? `${member.first_name || ""} ${member.last_name || ""}`.trim() : "";
     document.getElementById("welcome").textContent = fullName ? `Hello, ${member.first_name}` : "Welcome";
