@@ -396,3 +396,13 @@ textarea {
 /* ── NAV SEAL — RESPONSIVE ── */
 @media (max-width: 768px) { .nav-brand { gap: 9px; } .nav-seal { width: 34px; height: 34px; } }
 @media (max-width: 480px) { .nav-seal { width: 30px; height: 30px; } }
+
+/* MOBILE NAV FIT FIX */
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; }
+  nav { gap: 10px; }
+  .nav-brand { flex-shrink: 1; min-width: 0; }
+  .nav-brand-text { min-width: 0; }
+  .nav-logo-main { white-space: normal; line-height: 1.15; }
+  .nav-cta { flex-shrink: 0; }
+}
