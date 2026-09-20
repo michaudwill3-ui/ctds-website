@@ -752,6 +752,27 @@
       return showSignupMsg('error', result.error.message);
     }
 
+    if (tier === 'regular') {
+      showSignupMsg('success', 'Account created. Redirecting to secure payment for your $250 dues...');
+      btn.textContent = 'Redirecting to payment...';
+      try {
+        const uid = result.data.user ? result.data.user.id : '';
+        const resp = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: accountEmail, uid: uid })
+        });
+        const pay = await resp.json();
+        if (pay.url) { window.location.href = pay.url; return; }
+        showSignupMsg('error', (pay.error || 'Could not start payment.') + ' Your account was created; you can pay later from the dashboard.');
+        btn.textContent = 'Submit Application'; btn.disabled = false; btn.style.opacity = '1';
+      } catch (e) {
+        showSignupMsg('error', 'Could not reach payment. Your account was created; you can pay later. ' + e);
+        btn.textContent = 'Submit Application'; btn.disabled = false; btn.style.opacity = '1';
+      }
+      return;
+    }
+
     if (result.data.user && !result.data.session) {
       showSignupMsg('success', 'Application received. Check your email to confirm your address, then sign in to the member portal.');
       btn.textContent = '\u2713 Application Submitted';
