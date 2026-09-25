@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industry Partnerships — Connecticut Society of Dermatology and Dermatologic Surgery</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<style>
+  .partner-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 2rem 80px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: start;
+  }
+  .form-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 2.5rem;
+  }
+  .form-section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-divider { border: none; border-top: 0.5px solid var(--rule); margin: 1.75rem 0; }
+
+  .interest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .interest-option {
+    border: 0.5px solid var(--rule);
+    border-radius: 6px;
+    padding: 0.6rem 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    transition: border-color 0.15s, background 0.15s;
+    font-size: 13px;
+    color: var(--text-body);
+  }
+  .interest-option:hover { border-color: var(--navy-light); background: #f5f8ff; }
+  .interest-option input[type="checkbox"] { width: 14px; height: 14px; accent-color: var(--navy); flex-shrink: 0; }
+
+  .logo-note {
+    background: var(--warm-white);
+    border: 0.5px solid var(--rule);
+    border-radius: 6px;
+    padding: 0.9rem 1.1rem;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .partner-msg { display: none; padding: 12px 14px; border-radius: 6px; font-size: 13px; line-height: 1.5; margin-top: 1.25rem; }
+
+  .btn-submit {
+    width: 100%;
+    padding: 14px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--navy);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background 0.15s;
+  }
+  .btn-submit:hover { background: var(--navy-mid); }
+  .form-note { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 0.75rem; line-height: 1.5; }
+
+  .partner-sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .sidebar-card { background: var(--white); border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .sidebar-card-header { background: var(--navy); padding: 0.85rem 1.25rem; }
+  .sidebar-card-header h3 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .sidebar-card-body { padding: 1.25rem; }
+  .why-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .why-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--text-body); line-height: 1.55; }
+  .why-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--navy); flex-shrink: 0; margin-top: 7px; }
+  .contact-info { font-size: 13px; color: var(--text-body); line-height: 1.85; }
+  .contact-info strong { color: var(--navy); display: block; margin-bottom: 2px; }
+  .contact-info a { color: var(--navy-light); text-decoration: none; }
+
+  @media (max-width: 960px) {
+    .partner-main { grid-template-columns: 1fr; }
+    .form-row-2 { grid-template-columns: 1fr; }
+    .interest-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="images/ctderm-seal-white.png" alt="CTDS seal" class="nav-seal">
+    <span class="nav-brand-text">
+      <span class="nav-logo-main">Connecticut Society of Dermatology</span>
+      <span class="nav-logo-sub">&amp; Dermatologic Surgery</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="signup.html">Membership</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="cme.html">CME</a></li>
+    <li><a href="legislation.html">Legislation</a></li>
+    <li><a href="trials.html">Clinical Trials</a></li>
+    <li><a href="partnership.html">Partnerships</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="login.html" class="nav-cta" data-nav-cta>Member Login</a>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">Industry Partnerships</div>
+  <h1>Partner with the Society</h1>
+  <p>Support the Connecticut Society of Dermatology and Dermatologic Surgery through an annual industry partnership. Partners help sustain the Society's educational programming, annual meeting, and advocacy on behalf of Connecticut's dermatologists.</p>
+</div>
+
+<div class="partner-main">
+
+  <!-- FORM -->
+  <div class="form-card">
+
+    <div class="form-section-title">Company</div>
+    <div class="form-group">
+      <label>Company Name</label>
+      <input type="text" id="company_name" placeholder="e.g. Acme Dermatology, Inc.">
+    </div>
+    <div class="form-group">
+      <label>Company Website <span class="optional">optional</span></label>
+      <input type="text" id="website" placeholder="https://">
+    </div>
+
+    <hr class="form-divider">
+
+    <div class="form-section-title">Primary Contact</div>
+    <div class="form-row-2 form-group">
+      <div class="form-group">
+        <label>Contact Name</label>
+        <input type="text" id="contact_name" placeholder="Jane Smith">
+      </div>
+      <div class="form-group">
+        <label>Title <span class="optional">optional</span></label>
+        <input type="text" id="contact_title" placeholder="Director of Partnerships">
+      </div>
+    </div>
+    <div class="form-row-2 form-group">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="jsmith@company.com">
+      </div>
+      <div class="form-group">
+        <label>Phone <span class="optional">optional</span></label>
+        <input type="tel" id="phone" placeholder="(860) 555-0100">
+      </div>
+    </div>
+
+    <hr class="form-divider">
+
+    <div class="form-section-title">Partnership</div>
+    <div class="form-group">
+      <label>Partnership Level</label>
+      <select id="partnership_level">
+        <option value="">Select</option>
+        <option>Platinum Partner</option>
+        <option>Gold Partner</option>
+        <option>Silver Partner</option>
+        <option>Bronze Partner</option>
+        <option>Undecided — please advise</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Areas of Interest <span class="optional">select all that apply</span></label>
+      <div class="interest-grid">
+        <label class="interest-option"><input type="checkbox" name="interest" value="CME &amp; Education"> CME &amp; Education</label>
+        <label class="interest-option"><input type="checkbox" name="interest" value="Annual Meeting"> Annual Meeting</label>
+        <label class="interest-option"><input type="checkbox" name="interest" value="Newsletter"> Newsletter</label>
+        <label class="interest-option"><input type="checkbox" name="interest" value="Member Communications"> Member Communications</label>
+        <label class="interest-option"><input type="checkbox" name="interest" value="Research &amp; Trials"> Research &amp; Trials</label>
+        <label class="interest-option"><input type="checkbox" name="interest" value="General Support"> General Support</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Notes / Message <span class="optional">optional</span></label>
+      <textarea id="notes" rows="4" placeholder="Tell us about your partnership goals or any questions..."></textarea>
+    </div>
+
+    <div class="logo-note">Your company logo isn't needed on this form — after you submit, the Executive Director will follow up to collect your logo and finalize partnership details.</div>
+
+    <div class="partner-msg" id="partner-msg"></div>
+
+    <button class="btn-submit" onclick="handleSubmit()">Submit Partnership Inquiry</button>
+    <p class="form-note">Submitting this form expresses interest in an industry partnership. The Executive Director will contact you to discuss levels, benefits, and next steps.</p>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="partner-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-card-header"><h3>Why Partner</h3></div>
+      <div class="sidebar-card-body">
+        <ul class="why-list">
+          <li><div class="why-dot"></div>Support CME and educational programming for Connecticut dermatologists</li>
+          <li><div class="why-dot"></div>Visibility at the Society's annual meeting</li>
+          <li><div class="why-dot"></div>Recognition in Society communications and newsletters</li>
+          <li><div class="why-dot"></div>Connect with the state's dermatology community</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header"><h3>Partnership Contact</h3></div>
+      <div class="sidebar-card-body">
+        <div class="contact-info">
+          <strong>Emma Deveran</strong>
+          Executive Director<br>
+          Connecticut Society of Dermatology and Dermatologic Surgery<br><br>
+          <a href="tel:8608100931">(860) 810-0931</a><br>
+          <a href="mailto:ctdermexec@outlook.com">ctdermexec@outlook.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="signup.html">Membership</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="cme.html">CME</a></li>
+    <li><a href="legislation.html">Legislation</a></li>
+    <li><a href="trials.html">Clinical Trials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;·&nbsp; 241 Asylum Street, Unit 700 West, Hartford, CT 06103 &nbsp;·&nbsp; <a href="tel:8608100931">(860) 810-0931</a> &nbsp;·&nbsp; <a href="mailto:ctdermexec@outlook.com">ctdermexec@outlook.com</a></p>
+  <p style="margin-top:6px;">© 2025 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  function showPartnerMsg(type, text) {
+    var el = document.getElementById('partner-msg');
+    el.style.display = 'block';
+    el.textContent = text;
+    if (type === 'error') {
+      el.style.background = '#fdecec'; el.style.border = '0.5px solid #e7bcbc'; el.style.color = '#8a2b2b';
+    } else {
+      el.style.background = '#eef5ee'; el.style.border = '0.5px solid #bcd9c0'; el.style.color = '#24603a';
+    }
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  async function handleSubmit() {
+    var btn = document.querySelector('.btn-submit');
+    var v = function (id) { var e = document.getElementById(id); return e ? e.value.trim() : ''; };
+
+    var company = v('company_name');
+    var email = v('email');
+    if (!company || !email) {
+      return showPartnerMsg('error', 'Please enter at least your company name and email.');
+    }
+
+    var interests = Array.prototype.slice
+      .call(document.querySelectorAll('input[name="interest"]:checked'))
+      .map(function (c) { return c.value; })
+      .join(', ');
+
+    btn.textContent = 'Submitting…';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    var result = await window.sb.from('partners').insert([{
+      company_name: company,
+      website: v('website'),
+      contact_name: v('contact_name'),
+      contact_title: v('contact_title'),
+      email: email,
+      phone: v('phone'),
+      partnership_level: v('partnership_level'),
+      areas_of_interest: interests,
+      notes: v('notes')
+    }]);
+
+    if (result.error) {
+      btn.textContent = 'Submit Partnership Inquiry';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      return showPartnerMsg('error', result.error.message);
+    }
+
+    showPartnerMsg('success', 'Thank you — your partnership inquiry has been received. The Executive Director will be in touch shortly.');
+    btn.textContent = '\u2713 Inquiry Submitted';
+    btn.style.background = '#2d6a4f';
+    btn.style.opacity = '1';
+  }
+</script>
+
+</body>
+</html>
