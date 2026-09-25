@@ -154,7 +154,7 @@
     partners: [
       ["company_name","Company"],["contact_name","Contact"],["contact_title","Title"],
       ["email","Email"],["phone","Phone"],["partnership_level","Level"],
-      ["areas_of_interest","Interests"],["notes","Notes"],["created_at","Submitted"]
+      ["areas_of_interest","Interests"],["notes","Notes"],["status","Status"],["created_at","Submitted"]
     ]
   };
   var TABLE = { members: "members", meeting: "meeting_interest", partners: "partners" };
@@ -172,8 +172,10 @@
   function renderTable(which) {
     var cols = COLS[which], rows = DATA[which], wrap = document.getElementById("wrap-" + which);
     if (!rows.length) { wrap.innerHTML = '<div class="empty-note">No entries yet.</div>'; return; }
+    var isPartners = (which === "partners");
     var html = '<table class="admin-table"><thead><tr>';
     cols.forEach(function (c) { html += "<th>" + c[1] + "</th>"; });
+    if (isPartners) html += "<th>Action</th>";
     html += "</tr></thead><tbody>";
     rows.forEach(function (r) {
       html += "<tr>";
@@ -181,10 +183,27 @@
         var v = fmt(c[0], r[c[0]]);
         html += "<td>" + v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;") + "</td>";
       });
+      if (isPartners) {
+        var st = (r.status || "new");
+        var cell;
+        if (st === "approved") cell = '<span style="color:#24603a;font-weight:600;">Approved</span>';
+        else if (st === "paid") cell = '<span style="color:#24603a;font-weight:600;">Paid</span>';
+        else cell = '<button class="btn-export" style="border-color:#24603a;color:#24603a;" onclick="approvePartner(\'' + r.id + '\')">Approve</button>';
+        html += "<td>" + cell + "</td>";
+      }
       html += "</tr>";
     });
     html += "</tbody></table>";
     wrap.innerHTML = html;
+  }
+
+  async function approvePartner(id) {
+    var res = await window.sb.from("partners").update({ status: "approved" }).eq("id", id);
+    if (res.error) { alert("Could not approve: " + res.error.message); return; }
+    for (var i = 0; i < DATA.partners.length; i++) {
+      if (DATA.partners[i].id === id) DATA.partners[i].status = "approved";
+    }
+    renderTable("partners");
   }
 
   function exportCSV(which) {
