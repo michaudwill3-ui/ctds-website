@@ -187,9 +187,17 @@
       if (isPartners) {
         var st = (r.status || "new");
         var cell;
-        if (st === "approved") cell = '<span style="color:#24603a;font-weight:600;">Approved</span>';
-        else if (st === "paid") cell = '<span style="color:#24603a;font-weight:600;">Paid</span>';
-        else cell = '<button class="btn-export" style="border-color:#24603a;color:#24603a;" onclick="approvePartner(\'' + r.id + '\')">Approve</button>';
+        if (st === "paid") {
+          cell = '<span style="color:#24603a;font-weight:600;">Paid</span>';
+        } else if (st === "approved") {
+          if (r.pay_url) {
+            cell = '<span style="white-space:nowrap;">$' + (r.fee_amount || "") + ' &middot; <button class="btn-export" onclick="copyPayLink(\'' + r.id + '\')">Copy pay link</button></span>';
+          } else {
+            cell = '<span style="white-space:nowrap;">$<input id="amt-' + r.id + '" type="number" min="1" step="1" placeholder="amt" style="width:64px;padding:4px 6px;margin:0 4px;"><button class="btn-export" onclick="createPayLink(\'' + r.id + '\')">Create pay link</button></span>';
+          }
+        } else {
+          cell = '<button class="btn-export" style="border-color:#24603a;color:#24603a;" onclick="approvePartner(\'' + r.id + '\')">Approve</button>';
+        }
         html += "<td>" + cell + "</td>";
       }
       html += "</tr>";
@@ -205,6 +213,37 @@
       if (DATA.partners[i].id === id) DATA.partners[i].status = "approved";
     }
     renderTable("partners");
+  }
+
+  function partnerById(id) {
+    for (var i = 0; i < DATA.partners.length; i++) { if (DATA.partners[i].id === id) return DATA.partners[i]; }
+    return null;
+  }
+
+  async function createPayLink(id) {
+    var input = document.getElementById("amt-" + id);
+    var amount = input ? parseFloat(input.value) : 0;
+    if (!amount || amount <= 0) { alert("Enter an amount first."); return; }
+    var p = partnerById(id);
+    var resp = await fetch("/api/partner-paylink", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: amount, partner_id: id, company: (p && p.company_name) || "" })
+    });
+    var data = await resp.json();
+    if (!data.url) { alert("Could not create link: " + (data.error || "unknown")); return; }
+    var upd = await window.sb.from("partners").update({ pay_url: data.url, fee_amount: amount }).eq("id", id);
+    if (upd.error) { alert("Link created but could not save: " + upd.error.message); }
+    if (p) { p.pay_url = data.url; p.fee_amount = amount; }
+    renderTable("partners");
+  }
+
+  function copyPayLink(id) {
+    var p = partnerById(id);
+    if (!p || !p.pay_url) return;
+    navigator.clipboard.writeText(p.pay_url).then(
+      function () { alert("Pay link copied. Send it to the vendor."); },
+      function () { window.prompt("Copy this pay link:", p.pay_url); }
+    );
   }
 
   function exportCSV(which) {
@@ -248,6 +287,5 @@
       "Signed in as " + email + " · " + total + " total records.";
   })();
 </script>
-
 </body>
 </html>
