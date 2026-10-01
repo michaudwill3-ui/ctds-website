@@ -227,7 +227,7 @@
     var p = partnerById(id);
     var resp = await fetch("/api/partner-paylink", {
       method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: amount, partner_id: id, company: (p && p.company_name) || "" })
+      body: JSON.stringify({ amount: amount, partner_id: id, company: (p && p.company_name) || "", email: (p && p.email) || "" })
     });
     var data = await resp.json();
     if (!data.url) { alert("Could not create link: " + (data.error || "unknown")); return; }
