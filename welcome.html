@@ -41,5 +41,20 @@
   <p>Connecticut Society of Dermatology and Dermatologic Surgery &nbsp;&middot;&nbsp; 241 Asylum Street, Unit 700 West, Hartford, CT 06103 &nbsp;&middot;&nbsp; <a href="tel:8608100931">(860) 810-0931</a> &nbsp;&middot;&nbsp; <a href="mailto:ctdermexec@outlook.com">ctdermexec@outlook.com</a></p>
   <p style="margin-top:6px;">© 2026 Connecticut Society of Dermatology and Dermatologic Surgery. All Rights Reserved.</p>
 </footer>
+<script id="partner-welcome-fix">
+(function(){
+  var isPartner = new URLSearchParams(location.search).get("partner") === "1";
+  if(!isPartner) return;
+  var eyebrow=document.querySelector(".eyebrow");
+  var h1=document.querySelector(".page-header h1");
+  var paras=document.querySelectorAll(".container p");
+  if(eyebrow) eyebrow.textContent="Payment Received";
+  if(h1) h1.textContent="Thank you for your support";
+  if(paras[0]) paras[0].textContent="Your partnership payment has been received. Thank you for supporting the Connecticut Society of Dermatology and Dermatologic Surgery.";
+  if(paras[1]) paras[1].textContent="A receipt has been emailed to you. The Executive Director will be in touch with any next steps.";
+  var btn=document.querySelector(".container a.btn");
+  if(btn){ btn.textContent="Return to Home"; btn.setAttribute("href","index.html"); }
+})();
+</script>
 </body>
 </html>
