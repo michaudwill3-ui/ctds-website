@@ -62,6 +62,9 @@
   .sidebar-card-header { background: var(--navy); padding: 0.85rem 1.25rem; }
   .sidebar-card-header h3 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
   .sidebar-card-body { padding: 1.25rem; }
+  .why-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .why-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--text-body); line-height: 1.55; }
+  .why-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--navy); flex-shrink: 0; margin-top: 7px; }
   .contact-info { font-size: 13px; color: var(--text-body); line-height: 1.85; }
   .contact-info strong { color: var(--navy); display: block; margin-bottom: 2px; }
   .contact-info a { color: var(--navy-light); text-decoration: none; }
@@ -92,7 +95,6 @@
     <li><a href="cme.html">CME</a></li>
     <li><a href="legislation.html">Legislation</a></li>
     <li><a href="trials.html">Clinical Trials</a></li>
-    <li><a href="partnership.html">Partnerships</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <a href="login.html" class="nav-cta" data-nav-cta>Member Login</a>
@@ -100,80 +102,24 @@
 
 <div class="page-header">
   <div class="eyebrow">CTDS Annual Fall Meeting</div>
-  <h1>Register Your Interest</h1>
-  <p>Let us know you'd like to attend the CTDS Annual Fall Meeting on October 28, 2026 at the Maurice R. Greenberg Conference Center, Yale University, New Haven. Complete the form and the Executive Director will follow up with full registration details.</p>
+  <h1>Registration Is Now Closed</h1>
+  <p>Thank you for your interest in the CTDS Annual Fall Meeting on October 28, 2026 at the Maurice R. Greenberg Conference Center, Yale University, New Haven. Registration for this year's meeting has closed. If you still have questions or need to reach the Society, the Executive Director is happy to help.</p>
 </div>
 
 <div class="partner-main">
 
+  <!-- FORM (registration closed) -->
   <div class="form-card">
-
-    <div class="form-section-title">Your Information</div>
-    <div class="form-row-2 form-group">
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" id="full_name" placeholder="Jane Smith, MD">
-      </div>
-      <div class="form-group">
-        <label>Credentials <span class="optional">optional</span></label>
-        <select id="credentials">
-          <option value="">Select</option>
-          <option>MD</option>
-          <option>DO</option>
-          <option>MD/PhD</option>
-          <option>PA-C</option>
-          <option>APRN</option>
-          <option>Resident</option>
-          <option>Medical Student</option>
-          <option>Other</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row-2 form-group">
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="email" placeholder="jsmith@practice.com">
-      </div>
-      <div class="form-group">
-        <label>Phone <span class="optional">optional</span></label>
-        <input type="tel" id="phone" placeholder="(860) 555-0100">
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Practice / Institution <span class="optional">optional</span></label>
-      <input type="text" id="practice_name" placeholder="e.g. Yale School of Medicine, Private Practice">
-    </div>
-
-    <hr class="form-divider">
-
-    <div class="form-section-title">Attendance</div>
-    <div class="form-row-2 form-group">
-      <div class="form-group">
-        <label>Are you planning to attend?</label>
-        <select id="attending">
-          <option value="">Select</option>
-          <option>Yes, I plan to attend</option>
-          <option>Likely</option>
-          <option>Just interested for now</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Additional guests <span class="optional">optional</span></label>
-        <input type="text" id="guests" placeholder="e.g. 1 colleague">
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Notes / Questions <span class="optional">optional</span></label>
-      <textarea id="notes" rows="4" placeholder="Anything you'd like the Society to know..."></textarea>
-    </div>
-
-    <div class="partner-msg" id="partner-msg"></div>
-
-    <button class="btn-submit" onclick="handleSubmit()">Submit Interest</button>
-    <p class="form-note">Submitting this form registers your interest in the Fall Meeting. The Executive Director will contact you with full registration details.</p>
-
+    <div class="form-section-title">Registration Closed</div>
+    <p style="font-size:14px;line-height:1.7;color:var(--text-body);margin-bottom:1rem;">
+      Registration for the CTDS Annual Fall Meeting is now closed and we are no longer accepting new sign-ups through this form.
+    </p>
+    <p style="font-size:14px;line-height:1.7;color:var(--text-body);margin:0;">
+      If you have already registered, the Executive Director will be in touch with final details ahead of the meeting. If you need to reach the Society about attending, please contact Emma Deveran using the details to the right.
+    </p>
   </div>
 
+  <!-- SIDEBAR -->
   <div class="partner-sidebar">
     <div class="sidebar-card">
       <div class="sidebar-card-header"><h3>Meeting Details</h3></div>
@@ -274,6 +220,5 @@
     btn.style.opacity = '1';
   }
 </script>
-
 </body>
 </html>
