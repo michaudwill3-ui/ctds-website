@@ -88,14 +88,23 @@
     <div class="admin-status" id="admin-status">Loading…</div>
 
     <div class="summary-row">
-      <div class="summary-stat"><div class="num" id="s-members">0</div><div class="lbl">Members registered</div></div>
+      <div class="summary-stat"><div class="num" id="s-mapps">0</div><div class="lbl">Membership applications</div></div>
+      <div class="summary-stat"><div class="num" id="s-members">0</div><div class="lbl">Members (existing)</div></div>
       <div class="summary-stat"><div class="num" id="s-meeting">0</div><div class="lbl">Fall Meeting interest</div></div>
       <div class="summary-stat"><div class="num" id="s-partners">0</div><div class="lbl">Sponsors / partners</div></div>
     </div>
 
     <div class="admin-section">
       <div class="section-bar">
-        <h2>Members <span class="count" id="c-members">0</span></h2>
+        <h2>Membership Applications <span class="count" id="c-mapps">0</span></h2>
+        <button class="btn-export" onclick="exportCSV('mapps')">Export CSV</button>
+      </div>
+      <div class="table-wrap" id="wrap-mapps"></div>
+    </div>
+
+    <div class="admin-section">
+      <div class="section-bar">
+        <h2>Members (existing) <span class="count" id="c-members">0</span></h2>
         <button class="btn-export" onclick="exportCSV('members')">Export CSV</button>
       </div>
       <div class="table-wrap" id="wrap-members"></div>
@@ -141,6 +150,11 @@
   var ADMIN_EMAILS = ["ctdermexec@outlook.com", "willadmin@ctdermatologysociety.net"];
 
   var COLS = {
+    mapps: [
+      ["full_name","Name"],["email","Email"],["phone","Phone"],
+      ["credentials","Credentials"],["membership_type","Type"],
+      ["practice_name","Practice"],["status","Status"],["created_at","Applied"]
+    ],
     members: [
       ["first_name","First"],["last_name","Last"],["email","Email"],
       ["credentials","Credentials"],["membership_type","Type"],
@@ -158,8 +172,8 @@
       ["areas_of_interest","Interests"],["notes","Notes"],["status","Status"],["created_at","Submitted"]
     ]
   };
-  var TABLE = { members: "members", meeting: "meeting_interest", partners: "partners" };
-  var DATA = { members: [], meeting: [], partners: [] };
+  var TABLE = { mapps: "member_applications", members: "members", meeting: "meeting_interest", partners: "partners" };
+  var DATA = { mapps: [], members: [], meeting: [], partners: [] };
 
   function fmt(key, val) {
     if (val == null || val === "") return "—";
@@ -174,9 +188,11 @@
     var cols = COLS[which], rows = DATA[which], wrap = document.getElementById("wrap-" + which);
     if (!rows.length) { wrap.innerHTML = '<div class="empty-note">No entries yet.</div>'; return; }
     var isPartners = (which === "partners");
+    var isMapps = (which === "mapps");
+    var isAction = isPartners || isMapps;
     var html = '<table class="admin-table"><thead><tr>';
     cols.forEach(function (c) { html += "<th>" + c[1] + "</th>"; });
-    if (isPartners) html += "<th>Action</th>";
+    if (isAction) html += "<th>Action</th>";
     html += "</tr></thead><tbody>";
     rows.forEach(function (r) {
       html += "<tr>";
@@ -184,19 +200,23 @@
         var v = fmt(c[0], r[c[0]]);
         html += "<td>" + v.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;") + "</td>";
       });
-      if (isPartners) {
+      if (isAction) {
         var st = (r.status || "new");
         var cell;
+        var approveFn = isMapps ? "approveMember" : "approvePartner";
+        var createFn = isMapps ? "createMemberPayLink" : "createPayLink";
+        var copyFn = isMapps ? "copyMemberPayLink" : "copyPayLink";
+        var defAmt = isMapps ? "250" : "";
         if (st === "paid") {
           cell = '<span style="color:#24603a;font-weight:600;">Paid</span>';
         } else if (st === "approved") {
           if (r.pay_url) {
-            cell = '<span style="white-space:nowrap;">$' + (r.fee_amount || "") + ' &middot; <button class="btn-export" onclick="copyPayLink(\'' + r.id + '\')">Copy pay link</button></span>';
+            cell = '<span style="white-space:nowrap;">$' + (r.fee_amount || "") + ' &middot; <button class="btn-export" onclick="' + copyFn + '(\'' + r.id + '\')">Copy pay link</button></span>';
           } else {
-            cell = '<span style="white-space:nowrap;">$<input id="amt-' + r.id + '" type="number" min="1" step="1" placeholder="amt" style="width:64px;padding:4px 6px;margin:0 4px;"><button class="btn-export" onclick="createPayLink(\'' + r.id + '\')">Create pay link</button></span>';
+            cell = '<span style="white-space:nowrap;">$<input id="amt-' + r.id + '" type="number" min="1" step="1" value="' + defAmt + '" placeholder="amt" style="width:64px;padding:4px 6px;margin:0 4px;"><button class="btn-export" onclick="' + createFn + '(\'' + r.id + '\')">Create pay link</button></span>';
           }
         } else {
-          cell = '<button class="btn-export" style="border-color:#24603a;color:#24603a;" onclick="approvePartner(\'' + r.id + '\')">Approve</button>';
+          cell = '<button class="btn-export" style="border-color:#24603a;color:#24603a;" onclick="' + approveFn + '(\'' + r.id + '\')">Approve</button>';
         }
         html += "<td>" + cell + "</td>";
       }
@@ -246,6 +266,46 @@
     );
   }
 
+  async function approveMember(id) {
+    var res = await window.sb.from("member_applications").update({ status: "approved" }).eq("id", id);
+    if (res.error) { alert("Could not approve: " + res.error.message); return; }
+    for (var i = 0; i < DATA.mapps.length; i++) {
+      if (DATA.mapps[i].id === id) DATA.mapps[i].status = "approved";
+    }
+    renderTable("mapps");
+  }
+
+  function memberById(id) {
+    for (var i = 0; i < DATA.mapps.length; i++) { if (DATA.mapps[i].id === id) return DATA.mapps[i]; }
+    return null;
+  }
+
+  async function createMemberPayLink(id) {
+    var input = document.getElementById("amt-" + id);
+    var amount = input ? parseFloat(input.value) : 0;
+    if (!amount || amount <= 0) { alert("Enter an amount first."); return; }
+    var m = memberById(id);
+    var resp = await fetch("/api/member-paylink", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: amount, member_id: id, name: (m && m.full_name) || "", email: (m && m.email) || "" })
+    });
+    var data = await resp.json();
+    if (!data.url) { alert("Could not create link: " + (data.error || "unknown")); return; }
+    var upd = await window.sb.from("member_applications").update({ pay_url: data.url, fee_amount: amount }).eq("id", id);
+    if (upd.error) { alert("Link created but could not save: " + upd.error.message); }
+    if (m) { m.pay_url = data.url; m.fee_amount = amount; }
+    renderTable("mapps");
+  }
+
+  function copyMemberPayLink(id) {
+    var m = memberById(id);
+    if (!m || !m.pay_url) return;
+    navigator.clipboard.writeText(m.pay_url).then(
+      function () { alert("Pay link copied. Send it to the applicant."); },
+      function () { window.prompt("Copy this pay link:", m.pay_url); }
+    );
+  }
+
   function exportCSV(which) {
     var cols = COLS[which], rows = DATA[which];
     var lines = [cols.map(function (c) { return '"' + c[1] + '"'; }).join(",")];
@@ -273,7 +333,7 @@
     }
     document.getElementById("content").style.display = "block";
 
-    var keys = ["members", "meeting", "partners"];
+    var keys = ["mapps", "members", "meeting", "partners"];
     for (var i = 0; i < keys.length; i++) {
       var which = keys[i];
       var res = await window.sb.from(TABLE[which]).select("*").order("created_at", { ascending: false });
@@ -282,7 +342,7 @@
       document.getElementById("s-" + which).textContent = DATA[which].length;
       renderTable(which);
     }
-    var total = DATA.members.length + DATA.meeting.length + DATA.partners.length;
+    var total = DATA.mapps.length + DATA.members.length + DATA.meeting.length + DATA.partners.length;
     document.getElementById("admin-status").textContent =
       "Signed in as " + email + " · " + total + " total records.";
   })();
